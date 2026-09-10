@@ -1,13 +1,33 @@
 # Running the scraper on your Mac via launchd (fallback)
 
-Use this only if GitHub Actions turns out to be Cloudflare-blocked (see
-README for how that was verified). launchd is used instead of cron because
-it can wake a sleeping Mac and reliably restarts the job if it dies.
+Use this as a reliable fallback since GitHub Actions' `schedule` cron has
+turned out to be intermittent on this account (fired once, then went
+silent for hours — see README/session notes). launchd is used instead of
+cron because it can wake a sleeping Mac and reliably restarts the job if
+it dies. This runs independently of GitHub Actions — both can keep running
+in parallel, and their CSVs can be merged later (same schema, just
+concatenate and de-duplicate by timestamp+gym_name).
 
-## 1. One-time setup
+## 0. Prerequisites
+
+Check you have git and Python 3 (macOS usually has both, but confirm):
 
 ```bash
-cd ~/activesgmonitor   # wherever you cloned this repo
+git --version
+python3 --version   # need 3.9+
+```
+
+If either is missing, install Xcode Command Line Tools (`xcode-select --install`)
+for git, or `brew install python3` for Python.
+
+## 1. Clone the repo and one-time setup
+
+```bash
+cd ~   # or wherever you want the project to live
+git clone https://github.com/aposeidoonnnnn/activesgmonitor.git
+cd activesgmonitor
+git checkout claude/activesg-gym-crowd-scraper-slihpx
+
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
