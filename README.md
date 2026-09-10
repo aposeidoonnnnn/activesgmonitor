@@ -3,25 +3,26 @@
 Scrapes crowd levels from https://activesg.gov.sg/gym-pool-crowd every 15
 minutes and logs them to `data/crowd_log.csv`.
 
-## Status (be honest about what's verified)
+## Status (verified, not assumed)
 
-- **Selectors are best-effort, not confirmed against the live DOM.** The
-  build environment used to write this code has no general internet access
-  (its outbound network is locked to an allowlist that excludes the target
-  site, and even excludes downloading the Chromium browser binary
-  Playwright needs), so `scrape.py` could not be run against the real page
-  before being committed. See `debug/` after the first real run —
-  `debug/last_success.html`/`.png` (or `last_failure.*` if extraction
-  failed) will show exactly what the live page renders, and the selector
-  logic in `scrape.py` should be tightened against that.
-- **Cloudflare pass/fail has not yet been verified.** That will only be
-  known once a real run happens, either via GitHub Actions
-  (`workflow_dispatch` or the schedule, once merged to the default branch)
-  or manually. Check `data/run_log.txt` after a run — it logs `SUCCESS`,
-  `BLOCKED` (Cloudflare challenge detected), or `FAIL` (page loaded but no
-  data found) for every attempt.
+- **Cloudflare: confirmed passed.** A manual `workflow_dispatch` run on
+  GitHub Actions (run #1, 2026-09-10) navigated to the live page and
+  extracted real data with no challenge page — see
+  `debug/last_success.html`/`.png` for the exact DOM that was captured.
+  This branch is also the repo's default branch, so the 15-minute
+  `schedule` cron will run unattended from here.
+- **Real data confirmed**: 30 actual ActiveSG gyms (Ang Mo Kio, Bishan,
+  Yishun, Tampines, etc.) with plausible crowd percentages (18-79%),
+  committed to `data/crowd_log.csv`.
+- The site is a Chakra UI app; each facility renders as
+  `div.chakra-card > div.chakra-card__body > (name, "NN% full" badge)`.
+  The first run's selector (`[class*='card']`) matched both the outer and
+  inner div (both class names contain "card"), producing exact duplicate
+  rows — fixed by de-duplicating results before writing to CSV. The first
+  run's 60 raw rows were cleaned to 30 unique rows in this commit.
 - `generate_report.py` has been tested against synthetic sample data and
-  produces correct output (verified locally, not with real crowd data yet).
+  produces correct output; it will be re-verified against real data once
+  a few days of scheduled runs accumulate.
 
 ## Files
 
@@ -36,13 +37,19 @@ minutes and logs them to `data/crowd_log.csv`.
   Cloudflare-blocked (GitHub's runner IPs are well-known datacenter ranges,
   which some sites block harder than residential IPs).
 
-## Important GitHub Actions caveat
+## GitHub Actions notes
 
-GitHub only fires the `schedule` (cron) trigger for the workflow file as it
-exists on the **default branch** of the repo. If `.github/workflows/scrape.yml`
-only lives on a feature branch, the cron will not run — only manual
-`workflow_dispatch` runs will. Merge this to the default branch (or open a
-PR) if you want the unattended 15-minute schedule to actually run.
+- This repo was empty when this branch was first pushed, so GitHub set
+  `claude/activesg-gym-crowd-scraper-slihpx` as the default branch
+  automatically — the `schedule` cron (which only fires for workflow files
+  on the default branch) is active.
+- After the first push, the workflow didn't show up in the Actions tab or
+  API for several minutes (`list_workflows` returned 0 results) even
+  though the YAML was valid and Actions was enabled in repo settings. A
+  trivial follow-up commit to the workflow file made GitHub re-index it
+  immediately. If you ever add a new workflow file and it doesn't appear
+  in the Actions tab, try a small follow-up commit before assuming
+  something is misconfigured.
 
 ## Running locally
 
