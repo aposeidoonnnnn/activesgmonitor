@@ -1,0 +1,86 @@
+name: ActiveSG Gym Crowd Scraper
+
+# NOTE: GitHub only fires the `schedule` trigger for the workflow file as it
+# exists on the repository's DEFAULT branch. If this file only lives on a
+# feature branch, the cron below will not run until it is merged. Until then,
+# use workflow_dispatch (Actions tab -> Run workflow, or the API) to test.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: activesg-scraper
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check 7-day monitoring window
+        id: window
+        run: |
+          mkdir -p data
+          START_FILE="data/start_date.txt"
+          if [ ! -f "$START_FILE" ]; then
+            date -u +%Y-%m-%dT%H:%M:%SZ > "$START_FILE"
+            echo "Created start date: $(cat "$START_FILE")"
+          fi
+          START=$(cat "$START_FILE")
+          START_EPOCH=$(date -u -d "$START" +%s)
+          NOW_EPOCH=$(date -u +%s)
+          ELAPSED_DAYS=$(( (NOW_EPOCH - START_EPOCH) / 86400 ))
+          echo "Start date: $START"
+          echo "Elapsed days: $ELAPSED_DAYS"
+          if [ "$ELAPSED_DAYS" -ge 7 ]; then
+            echo "expired=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "expired=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.window.outputs.expired != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.window.outputs.expired != 'true'
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run scraper
+        if: steps.window.outputs.expired != 'true'
+        run: python scrape.py
+        continue-on-error: true
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ debug/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Scrape crowd data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            for i in 1 2 3 4; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+              echo "Push attempt $i failed, retrying..."
+              sleep $((i * 3))
+            done
+          fi
+
+      - name: Report monitoring window expired
+        if: steps.window.outputs.expired == 'true'
+        run: |
+          echo "::warning::7-day monitoring window has elapsed (start date: $(cat data/start_date.txt)). Scraper is skipping runs. Disable the schedule trigger or delete/disable this workflow when ready."
