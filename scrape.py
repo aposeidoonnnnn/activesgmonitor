@@ -170,6 +170,8 @@ def scrape() -> list[tuple[str, str]]:
         # Give the SPA extra time to hydrate/render crowd data client-side.
         page.wait_for_timeout(5_000)
 
+        # The page also has a separate "Pool" tab; we only track the "Gym"
+        # tab (active by default) per the task scope.
         results = extract_via_cards(page)
         if not results:
             results = extract_via_text_scan(page)
