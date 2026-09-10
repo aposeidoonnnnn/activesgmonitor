@@ -1,18 +1,22 @@
-# Debug: forcing a fresh push to check whether GitHub's workflow metadata
-# (and cron scheduler) re-syncs. As of 2026-09-10T10:15Z the workflow
-# object's updated_at was stuck at its original registration time despite
-# real intervening commits to this file, and the schedule trigger had not
-# fired once in ~2 hours / 8 expected 15-minute windows.
 name: ActiveSG Gym Crowd Scraper
 
 # NOTE: GitHub only fires the `schedule` trigger for the workflow file as it
 # exists on the repository's DEFAULT branch. If this file only lives on a
 # feature branch, the cron below will not run until it is merged. Until then,
 # use workflow_dispatch (Actions tab -> Run workflow, or the API) to test.
+#
+# NOTE: this account's schedule trigger has proven intermittent in practice
+# (fired once, then went silent for hours despite everything -- YAML,
+# permissions, billing -- checking out fine). A Mac launchd fallback
+# (see MAC_SETUP.md) runs in parallel for reliability.
+#
+# Restricted to ActiveSG's typical 7am-10pm opening hours (Singapore time,
+# UTC+8), which is 23:00-14:00 UTC -- wraps past midnight UTC, hence the
+# split "0-14,23" hour range below.
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/15 0-14,23 * * *'
   workflow_dispatch: {}
 
 permissions:

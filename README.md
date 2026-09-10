@@ -39,10 +39,15 @@ minutes and logs them to `data/crowd_log.csv`.
 - `generate_report.py` — reads the CSV and writes `reports/report.md`
   (`--html` for an HTML copy, `--website` for the dashboard) with the full
   analysis described above.
-- `.github/workflows/scrape.yml` — runs the scraper every 15 minutes via
-  GitHub Actions and commits the CSV back. Includes a 30-day cutoff based on
+- `.github/workflows/scrape.yml` — runs the scraper every 15 minutes,
+  7am-10pm Singapore time (ActiveSG's typical opening hours), via GitHub
+  Actions and commits the CSV back. Includes a 30-day cutoff based on
   `data/start_date.txt` (auto-created on first run: 2026-09-10T08:19:57Z,
-  so it self-disables around 2026-10-10).
+  so it self-disables around 2026-10-10). **Known issue**: the `schedule`
+  trigger has proven intermittent on this account (fired once, then went
+  silent for hours, despite YAML/permissions/billing all checking out
+  fine) — see `MAC_SETUP.md` for the reliable fallback running in
+  parallel.
 - `.github/workflows/report.yml` — runs `generate_report.py --html --website`
   **once a week** (Monday 02:00 UTC) against the full accumulated CSV and
   commits `reports/` + `docs/` back. Weekly rather than every 15 minutes so
