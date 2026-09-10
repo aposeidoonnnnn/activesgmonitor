@@ -1,0 +1,51 @@
+name: ActiveSG Gym Crowd Report & Dashboard
+
+# Regenerates reports/report.md and the docs/ dashboard website from the
+# full accumulated data/crowd_log.csv. Runs weekly (separate from the
+# 15-minute scrape.yml scraper) so the website shows a stable weekly
+# snapshot rather than churning on every scrape run.
+
+on:
+  schedule:
+    - cron: '0 2 * * 1' # Every Monday 02:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: activesg-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate report and dashboard
+        run: python generate_report.py --html --website
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/ docs/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update weekly report and dashboard $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            for i in 1 2 3 4; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+              echo "Push attempt $i failed, retrying..."
+              sleep $((i * 3))
+            done
+          fi

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActiveSG Gym Crowd Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; background: #0b0d12; color: #e6e8eb; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .sub { color: #9aa2ad; margin-bottom: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .card { background: #161a22; border: 1px solid #262b36; border-radius: 10px; padding: 16px; }
+  .card .label { color: #9aa2ad; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card .value { font-size: 1.6rem; font-weight: 600; margin-top: 4px; }
+  section { margin-bottom: 40px; }
+  h2 { font-size: 1.15rem; border-bottom: 1px solid #262b36; padding-bottom: 8px; margin-bottom: 16px; }
+  .chart-wrap { background: #161a22; border: 1px solid #262b36; border-radius: 10px; padding: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #262b36; }
+  th { color: #9aa2ad; font-weight: 600; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+  .rank-list { list-style: none; padding: 0; margin: 0; }
+  .rank-list li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262f; }
+  footer { color: #666e7a; font-size: 0.8rem; margin-top: 40px; }
+</style>
+</head>
+<body>
+<h1>ActiveSG Gym Crowd Dashboard</h1>
+<p class="sub" id="subtitle">Loading...</p>
+
+<div class="grid" id="stat-cards"></div>
+
+<section>
+  <h2>Average crowd per gym</h2>
+  <div class="chart-wrap"><canvas id="gymChart" height="110"></canvas></div>
+</section>
+
+<div class="two-col">
+  <section>
+    <h2>Time-of-day pattern</h2>
+    <div class="chart-wrap"><canvas id="hourChart" height="180"></canvas></div>
+  </section>
+  <section>
+    <h2>Daily trend</h2>
+    <div class="chart-wrap"><canvas id="trendChart" height="180"></canvas></div>
+  </section>
+</div>
+
+<section>
+  <h2>Week-over-week</h2>
+  <div class="chart-wrap"><canvas id="weeklyChart" height="90"></canvas></div>
+</section>
+
+<div class="two-col">
+  <section>
+    <h2>Busiest gyms</h2>
+    <ul class="rank-list" id="busiest-list"></ul>
+  </section>
+  <section>
+    <h2>Quietest gyms</h2>
+    <ul class="rank-list" id="quietest-list"></ul>
+  </section>
+</div>
+
+<section>
+  <h2>Most unpredictable gyms (highest variability)</h2>
+  <ul class="rank-list" id="variable-list"></ul>
+</section>
+
+<section>
+  <h2>All gyms</h2>
+  <table id="gym-table">
+    <thead>
+      <tr><th>Gym</th><th>Readings</th><th>Avg</th><th>Peak</th><th>Min</th>
+          <th>Std dev</th><th>Busiest hour</th><th>Quietest hour</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<footer id="footer"></footer>
+
+<script id="report-data" type="application/json">{"generated_at": "2026-09-10T08:51:41.600743Z", "total_readings": 60, "numeric_readings": 60, "has_data": true, "span_start": "2026-09-10T08:20:35.729033+00:00", "span_end": "2026-09-10T08:27:33.388522+00:00", "per_gym": [{"name": "ActiveSG Gym @ Ang Mo Kio Community Centre", "count": 2, "average": 32.0, "peak": 32.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 32.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 32.0, "quietest_hour": 8, "quietest_hour_avg": 32.0}, {"name": "ActiveSG Gym @ Enabling Village", "count": 2, "average": 18.0, "peak": 18.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 18.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 18.0, "quietest_hour": 8, "quietest_hour_avg": 18.0}, {"name": "ActiveSG Gym @ Fernvale Square", "count": 2, "average": 39.5, "peak": 42.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 37.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 2.5, "busiest_hour": 8, "busiest_hour_avg": 39.5, "quietest_hour": 8, "quietest_hour_avg": 39.5}, {"name": "ActiveSG Gym @ Serangoon Central", "count": 2, "average": 37.0, "peak": 37.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 37.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 37.0, "quietest_hour": 8, "quietest_hour_avg": 37.0}, {"name": "ActiveSG Gym @ Toa Payoh", "count": 2, "average": 54.5, "peak": 56.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 53.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 1.5, "busiest_hour": 8, "busiest_hour_avg": 54.5, "quietest_hour": 8, "quietest_hour_avg": 54.5}, {"name": "ActiveSG Gym @ Toa Payoh West Community Centre", "count": 2, "average": 19.5, "peak": 20.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 19.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 19.5, "quietest_hour": 8, "quietest_hour_avg": 19.5}, {"name": "ActiveSG Hockey Village @ Boon Lay Gym", "count": 2, "average": 26.0, "peak": 26.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 26.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 26.0, "quietest_hour": 8, "quietest_hour_avg": 26.0}, {"name": "ActiveSG Sport Park @ Teck Ghee ActiveSG Gym", "count": 2, "average": 40.5, "peak": 41.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 40.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 40.5, "quietest_hour": 8, "quietest_hour_avg": 40.5}, {"name": "Bishan ActiveSG Gym", "count": 2, "average": 46.0, "peak": 46.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 46.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 46.0, "quietest_hour": 8, "quietest_hour_avg": 46.0}, {"name": "Bukit Batok ActiveSG Gym", "count": 2, "average": 46.5, "peak": 48.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 45.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 1.5, "busiest_hour": 8, "busiest_hour_avg": 46.5, "quietest_hour": 8, "quietest_hour_avg": 46.5}, {"name": "Bukit Canberra ActiveSG Gym", "count": 2, "average": 43.5, "peak": 45.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 42.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 1.5, "busiest_hour": 8, "busiest_hour_avg": 43.5, "quietest_hour": 8, "quietest_hour_avg": 43.5}, {"name": "Bukit Gombak ActiveSG Gym", "count": 2, "average": 79.0, "peak": 79.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 79.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 79.0, "quietest_hour": 8, "quietest_hour_avg": 79.0}, {"name": "Choa Chu Kang ActiveSG Gym", "count": 2, "average": 57.5, "peak": 58.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 57.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 57.5, "quietest_hour": 8, "quietest_hour_avg": 57.5}, {"name": "Clementi ActiveSG Gym", "count": 2, "average": 37.0, "peak": 41.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 33.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 4.0, "busiest_hour": 8, "busiest_hour_avg": 37.0, "quietest_hour": 8, "quietest_hour_avg": 37.0}, {"name": "Delta ActiveSG Gym", "count": 2, "average": 31.0, "peak": 31.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 31.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 31.0, "quietest_hour": 8, "quietest_hour_avg": 31.0}, {"name": "Heartbeat @ Bedok ActiveSG Gym", "count": 2, "average": 53.5, "peak": 54.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 53.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 53.5, "quietest_hour": 8, "quietest_hour_avg": 53.5}, {"name": "Hougang ActiveSG Gym", "count": 2, "average": 50.0, "peak": 50.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 50.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 50.0, "quietest_hour": 8, "quietest_hour_avg": 50.0}, {"name": "Jalan Besar ActiveSG Gym", "count": 2, "average": 72.5, "peak": 73.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 72.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 72.5, "quietest_hour": 8, "quietest_hour_avg": 72.5}, {"name": "Jurong East ActiveSG Gym", "count": 2, "average": 33.5, "peak": 34.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 33.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 33.5, "quietest_hour": 8, "quietest_hour_avg": 33.5}, {"name": "Jurong Lake Gardens ActiveSG Gym", "count": 2, "average": 26.0, "peak": 26.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 26.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 26.0, "quietest_hour": 8, "quietest_hour_avg": 26.0}, {"name": "Jurong West ActiveSG Gym", "count": 2, "average": 22.0, "peak": 22.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 22.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.0, "busiest_hour": 8, "busiest_hour_avg": 22.0, "quietest_hour": 8, "quietest_hour_avg": 22.0}, {"name": "Katong ActiveSG Gym", "count": 2, "average": 53.0, "peak": 55.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 51.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 2.0, "busiest_hour": 8, "busiest_hour_avg": 53.0, "quietest_hour": 8, "quietest_hour_avg": 53.0}, {"name": "Pasir Ris ActiveSG Gym", "count": 2, "average": 39.5, "peak": 40.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 39.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 39.5, "quietest_hour": 8, "quietest_hour_avg": 39.5}, {"name": "Queenstown ActiveSG Gym", "count": 2, "average": 49.0, "peak": 50.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 48.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 1.0, "busiest_hour": 8, "busiest_hour_avg": 49.0, "quietest_hour": 8, "quietest_hour_avg": 49.0}, {"name": "Sengkang ActiveSG Gym", "count": 2, "average": 72.5, "peak": 74.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 71.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 1.5, "busiest_hour": 8, "busiest_hour_avg": 72.5, "quietest_hour": 8, "quietest_hour_avg": 72.5}, {"name": "Senja-Cashew ActiveSG Gym", "count": 2, "average": 70.5, "peak": 72.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 69.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 1.5, "busiest_hour": 8, "busiest_hour_avg": 70.5, "quietest_hour": 8, "quietest_hour_avg": 70.5}, {"name": "Tampines ActiveSG Gym", "count": 2, "average": 65.0, "peak": 66.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 64.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 1.0, "busiest_hour": 8, "busiest_hour_avg": 65.0, "quietest_hour": 8, "quietest_hour_avg": 65.0}, {"name": "Woodlands ActiveSG Gym", "count": 2, "average": 42.5, "peak": 43.0, "peak_time": "2026-09-10T08:20:35.729033+00:00", "min": 42.0, "min_time": "2026-09-10T08:27:33.388522+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 42.5, "quietest_hour": 8, "quietest_hour_avg": 42.5}, {"name": "Yio Chu Kang ActiveSG Gym", "count": 2, "average": 23.5, "peak": 24.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 23.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 0.5, "busiest_hour": 8, "busiest_hour_avg": 23.5, "quietest_hour": 8, "quietest_hour_avg": 23.5}, {"name": "Yishun ActiveSG Gym", "count": 2, "average": 38.0, "peak": 40.0, "peak_time": "2026-09-10T08:27:33.388522+00:00", "min": 36.0, "min_time": "2026-09-10T08:20:35.729033+00:00", "stdev": 2.0, "busiest_hour": 8, "busiest_hour_avg": 38.0, "quietest_hour": 8, "quietest_hour_avg": 38.0}], "gym_count": 30, "top_busiest_gyms": [{"name": "Bukit Gombak ActiveSG Gym", "average": 79.0}, {"name": "Jalan Besar ActiveSG Gym", "average": 72.5}, {"name": "Sengkang ActiveSG Gym", "average": 72.5}, {"name": "Senja-Cashew ActiveSG Gym", "average": 70.5}, {"name": "Tampines ActiveSG Gym", "average": 65.0}], "top_quietest_gyms": [{"name": "ActiveSG Gym @ Enabling Village", "average": 18.0}, {"name": "ActiveSG Gym @ Toa Payoh West Community Centre", "average": 19.5}, {"name": "Jurong West ActiveSG Gym", "average": 22.0}, {"name": "Yio Chu Kang ActiveSG Gym", "average": 23.5}, {"name": "Jurong Lake Gardens ActiveSG Gym", "average": 26.0}], "most_variable_gyms": [{"name": "Clementi ActiveSG Gym", "stdev": 4.0}, {"name": "ActiveSG Gym @ Fernvale Square", "stdev": 2.5}, {"name": "Katong ActiveSG Gym", "stdev": 2.0}, {"name": "Yishun ActiveSG Gym", "stdev": 2.0}, {"name": "ActiveSG Gym @ Toa Payoh", "stdev": 1.5}], "hour_profile": [{"hour": 0, "label": "00:00", "average": null}, {"hour": 1, "label": "01:00", "average": null}, {"hour": 2, "label": "02:00", "average": null}, {"hour": 3, "label": "03:00", "average": null}, {"hour": 4, "label": "04:00", "average": null}, {"hour": 5, "label": "05:00", "average": null}, {"hour": 6, "label": "06:00", "average": null}, {"hour": 7, "label": "07:00", "average": null}, {"hour": 8, "label": "08:00", "average": 43.95}, {"hour": 9, "label": "09:00", "average": null}, {"hour": 10, "label": "10:00", "average": null}, {"hour": 11, "label": "11:00", "average": null}, {"hour": 12, "label": "12:00", "average": null}, {"hour": 13, "label": "13:00", "average": null}, {"hour": 14, "label": "14:00", "average": null}, {"hour": 15, "label": "15:00", "average": null}, {"hour": 16, "label": "16:00", "average": null}, {"hour": 17, "label": "17:00", "average": null}, {"hour": 18, "label": "18:00", "average": null}, {"hour": 19, "label": "19:00", "average": null}, {"hour": 20, "label": "20:00", "average": null}, {"hour": 21, "label": "21:00", "average": null}, {"hour": 22, "label": "22:00", "average": null}, {"hour": 23, "label": "23:00", "average": null}], "quietest_hours": [{"hour": 8, "average": 43.95}], "busiest_hours": [{"hour": 8, "average": 43.95}], "weekday_average": 43.95, "weekend_average": null, "daily_trend": [{"date": "2026-09-10", "average": 43.95}], "weekly_trend": [{"week": "2026-W37", "average": 43.95, "readings": 60}], "trend_slope_per_day": null, "trend_direction": "not enough days yet"}</script>
+<script>
+const data = JSON.parse(document.getElementById('report-data').textContent);
+
+function fmt(v, digits = 1) { return v === null || v === undefined ? 'n/a' : v.toFixed(digits); }
+function hourLabel(h) { return h === null || h === undefined ? 'n/a' : String(h).padStart(2, '0') + ':00'; }
+
+if (!data.has_data) {
+  document.getElementById('subtitle').textContent = 'No data collected yet.';
+} else {
+  document.getElementById('subtitle').textContent =
+    `${data.span_start} to ${data.span_end} — ${data.total_readings} readings across ${data.gym_count} gyms`;
+
+  const cards = [
+    ['Weekday average', fmt(data.weekday_average)],
+    ['Weekend average', fmt(data.weekend_average)],
+    ['Trend', data.trend_direction],
+    ['Total readings', data.total_readings],
+  ];
+  document.getElementById('stat-cards').innerHTML = cards.map(([label, value]) =>
+    `<div class="card"><div class="label">${label}</div><div class="value">${value}</div></div>`
+  ).join('');
+
+  const gyms = data.per_gym.filter(g => g.average !== null).sort((a, b) => b.average - a.average);
+  new Chart(document.getElementById('gymChart'), {
+    type: 'bar',
+    data: {
+      labels: gyms.map(g => g.name),
+      datasets: [{ label: 'Average crowd %', data: gyms.map(g => g.average), backgroundColor: '#5b8def' }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { x: { beginAtZero: true, max: 100 } }
+    }
+  });
+
+  const hours = data.hour_profile;
+  new Chart(document.getElementById('hourChart'), {
+    type: 'bar',
+    data: {
+      labels: hours.map(h => h.label),
+      datasets: [{ label: 'Avg crowd %', data: hours.map(h => h.average), backgroundColor: '#f2a65a' }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100 } } }
+  });
+
+  new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: {
+      labels: data.daily_trend.map(d => d.date),
+      datasets: [{ label: 'Avg crowd %', data: data.daily_trend.map(d => d.average),
+                   borderColor: '#5bd68a', backgroundColor: 'rgba(91,214,138,0.15)', fill: true, tension: 0.3 }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100 } } }
+  });
+
+  new Chart(document.getElementById('weeklyChart'), {
+    type: 'bar',
+    data: {
+      labels: data.weekly_trend.map(w => w.week),
+      datasets: [{ label: 'Avg crowd %', data: data.weekly_trend.map(w => w.average), backgroundColor: '#c17ee0' }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100 } } }
+  });
+
+  document.getElementById('busiest-list').innerHTML = data.top_busiest_gyms.map(g =>
+    `<li><span>${g.name}</span><span>${fmt(g.average)}</span></li>`).join('');
+  document.getElementById('quietest-list').innerHTML = data.top_quietest_gyms.map(g =>
+    `<li><span>${g.name}</span><span>${fmt(g.average)}</span></li>`).join('');
+  document.getElementById('variable-list').innerHTML = data.most_variable_gyms.map(g =>
+    `<li><span>${g.name}</span><span>${fmt(g.stdev)}</span></li>`).join('');
+
+  const tbody = document.querySelector('#gym-table tbody');
+  tbody.innerHTML = data.per_gym.map(g => `<tr>
+    <td>${g.name}</td><td>${g.count}</td><td>${fmt(g.average)}</td><td>${fmt(g.peak)}</td>
+    <td>${fmt(g.min)}</td><td>${fmt(g.stdev)}</td>
+    <td>${hourLabel(g.busiest_hour)}</td><td>${hourLabel(g.quietest_hour)}</td>
+  </tr>`).join('');
+}
+
+document.getElementById('footer').textContent = 'Generated ' + data.generated_at + ' UTC';
+</script>
+</body>
+</html>
