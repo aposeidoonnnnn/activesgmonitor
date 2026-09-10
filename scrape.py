@@ -174,6 +174,11 @@ def scrape() -> list[tuple[str, str]]:
         if not results:
             results = extract_via_text_scan(page)
 
+        # The live page renders each facility card twice (mobile + desktop
+        # layout variants both present in the DOM), so de-duplicate while
+        # preserving order.
+        results = list(dict.fromkeys(results))
+
         if not results:
             dump_debug(page, "last_failure")
             log("FAIL no gym crowd data extracted; see debug/last_failure.html")
