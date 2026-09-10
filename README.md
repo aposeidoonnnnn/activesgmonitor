@@ -31,8 +31,9 @@ minutes and logs them to `data/crowd_log.csv`.
   an HTML copy too) summary: per-gym average/peak, best/worst hours, daily
   trend.
 - `.github/workflows/scrape.yml` — runs the scraper every 15 minutes via
-  GitHub Actions and commits the CSV back. Includes a 7-day cutoff based on
-  `data/start_date.txt` (auto-created on first run).
+  GitHub Actions and commits the CSV back. Includes a 30-day cutoff based on
+  `data/start_date.txt` (auto-created on first run: 2026-09-10T08:19:57Z,
+  so it self-disables around 2026-10-10).
 - `MAC_SETUP.md` — launchd-based fallback if GitHub Actions gets
   Cloudflare-blocked (GitHub's runner IPs are well-known datacenter ranges,
   which some sites block harder than residential IPs).

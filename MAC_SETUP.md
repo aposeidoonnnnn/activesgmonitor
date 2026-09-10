@@ -90,16 +90,16 @@ tail -f ~/activesgmonitor/data/launchd.err.log
 code of `0`. A non-zero code means the last run failed — check
 `data/launchd.err.log` and `data/run_log.txt`.
 
-## 4. The 7-day safeguard
+## 4. The 30-day safeguard
 
-`scrape.py` doesn't itself enforce the 7-day cutoff on your Mac (that logic
+`scrape.py` doesn't itself enforce the 30-day cutoff on your Mac (that logic
 lives in the GitHub Actions workflow). On the Mac, the safeguard is: you
-unload the job after 7 days (step 5). If you want it to also self-limit,
+unload the job after 30 days (step 5). If you want it to also self-limit,
 check `data/start_date.txt` (created by the first GitHub Actions run, or
 you can create it yourself with `date -u +%Y-%m-%dT%H:%M:%SZ > data/start_date.txt`)
 and compare against the current date before letting the job proceed.
 
-## 5. Uninstall after the week is up
+## 5. Uninstall after the month is up
 
 ```bash
 launchctl unload ~/Library/LaunchAgents/com.user.activesgmonitor.plist

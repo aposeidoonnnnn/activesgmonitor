@@ -27,7 +27,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check 7-day monitoring window
+      - name: Check 30-day monitoring window
         id: window
         run: |
           mkdir -p data
@@ -42,7 +42,7 @@ jobs:
           ELAPSED_DAYS=$(( (NOW_EPOCH - START_EPOCH) / 86400 ))
           echo "Start date: $START"
           echo "Elapsed days: $ELAPSED_DAYS"
-          if [ "$ELAPSED_DAYS" -ge 7 ]; then
+          if [ "$ELAPSED_DAYS" -ge 30 ]; then
             echo "expired=true" >> "$GITHUB_OUTPUT"
           else
             echo "expired=false" >> "$GITHUB_OUTPUT"
@@ -84,4 +84,4 @@ jobs:
       - name: Report monitoring window expired
         if: steps.window.outputs.expired == 'true'
         run: |
-          echo "::warning::7-day monitoring window has elapsed (start date: $(cat data/start_date.txt)). Scraper is skipping runs. Disable the schedule trigger or delete/disable this workflow when ready."
+          echo "::warning::30-day monitoring window has elapsed (start date: $(cat data/start_date.txt)). Scraper is skipping runs. Disable the schedule trigger or delete/disable this workflow when ready."
