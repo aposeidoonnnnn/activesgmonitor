@@ -61,3 +61,6 @@
 2026-09-13T14:42:32.085628+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
 2026-09-13T14:42:42.212409+00:00 FAIL no gym crowd data extracted; see debug/last_failure.html
 2026-09-13T14:42:42.250893+00:00 No rows scraped this run; CSV not updated
+2026-09-13T17:43:02.335046+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-13T17:43:12.944818+00:00 FAIL no gym crowd data extracted; see debug/last_failure.html
+2026-09-13T17:43:12.976969+00:00 No rows scraped this run; CSV not updated
