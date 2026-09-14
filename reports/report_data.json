@@ -1,504 +1,504 @@
 {
-  "generated_at": "2026-09-10T08:54:51.189713Z",
-  "total_readings": 60,
-  "numeric_readings": 60,
+  "generated_at": "2026-09-14T07:14:47.404551Z",
+  "total_readings": 390,
+  "numeric_readings": 390,
   "has_data": true,
   "span_start": "2026-09-10T08:20:35.729033+00:00",
-  "span_end": "2026-09-10T08:27:33.388522+00:00",
+  "span_end": "2026-09-14T05:55:42.422685+00:00",
   "per_gym": [
     {
       "name": "ActiveSG Gym @ Ang Mo Kio Community Centre",
-      "count": 2,
-      "average": 32.0,
-      "peak": 32.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 32.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 32.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 32.0
+      "count": 13,
+      "average": 33.38461538461539,
+      "peak": 47.0,
+      "peak_time": "2026-09-14T00:49:37.792489+00:00",
+      "min": 15.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 9.127628907194662,
+      "busiest_hour": 13,
+      "busiest_hour_avg": 43.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 31.0
     },
     {
       "name": "ActiveSG Gym @ Enabling Village",
-      "count": 2,
-      "average": 18.0,
-      "peak": 18.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 18.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 18.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 18.0
+      "count": 13,
+      "average": 21.53846153846154,
+      "peak": 44.0,
+      "peak_time": "2026-09-10T10:06:16.287892+00:00",
+      "min": 0.0,
+      "min_time": "2026-09-14T00:49:37.792489+00:00",
+      "stdev": 12.719551181096003,
+      "busiest_hour": 10,
+      "busiest_hour_avg": 39.666666666666664,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 9.0
     },
     {
       "name": "ActiveSG Gym @ Fernvale Square",
-      "count": 2,
-      "average": 39.5,
-      "peak": 42.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 37.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 2.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 39.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 39.5
+      "count": 13,
+      "average": 46.46153846153846,
+      "peak": 67.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 27.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 11.777523473616924,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 67.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 37.5
     },
     {
       "name": "ActiveSG Gym @ Serangoon Central",
-      "count": 2,
-      "average": 37.0,
-      "peak": 37.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 37.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 37.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 37.0
+      "count": 13,
+      "average": 47.46153846153846,
+      "peak": 83.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 17.0,
+      "min_time": "2026-09-12T13:10:16.475692+00:00",
+      "stdev": 15.872644026827,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 83.0,
+      "quietest_hour": 13,
+      "quietest_hour_avg": 17.0
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh",
-      "count": 2,
-      "average": 54.5,
-      "peak": 56.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 53.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 1.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 54.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 54.5
+      "count": 13,
+      "average": 49.30769230769231,
+      "peak": 77.0,
+      "peak_time": "2026-09-11T10:01:51.502331+00:00",
+      "min": 25.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 14.413586621307717,
+      "busiest_hour": 10,
+      "busiest_hour_avg": 67.66666666666667,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 33.5
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh West Community Centre",
-      "count": 2,
-      "average": 19.5,
-      "peak": 20.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 19.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 19.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 19.5
+      "count": 13,
+      "average": 22.153846153846153,
+      "peak": 51.0,
+      "peak_time": "2026-09-13T10:31:11.761485+00:00",
+      "min": 11.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 9.138642836844445,
+      "busiest_hour": 10,
+      "busiest_hour_avg": 32.333333333333336,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 15.0
     },
     {
       "name": "ActiveSG Hockey Village @ Boon Lay Gym",
-      "count": 2,
+      "count": 13,
       "average": 26.0,
-      "peak": 26.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 26.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 26.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 26.0
+      "peak": 44.0,
+      "peak_time": "2026-09-11T10:01:51.502331+00:00",
+      "min": 14.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 7.3484692283495345,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 34.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 17.0
     },
     {
       "name": "ActiveSG Sport Park @ Teck Ghee ActiveSG Gym",
-      "count": 2,
-      "average": 40.5,
-      "peak": 41.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 40.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 40.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 40.5
+      "count": 13,
+      "average": 34.69230769230769,
+      "peak": 42.0,
+      "peak_time": "2026-09-10T10:06:16.287892+00:00",
+      "min": 19.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 7.619656921255257,
+      "busiest_hour": 10,
+      "busiest_hour_avg": 41.666666666666664,
+      "quietest_hour": 13,
+      "quietest_hour_avg": 26.0
     },
     {
       "name": "Bishan ActiveSG Gym",
-      "count": 2,
-      "average": 46.0,
-      "peak": 46.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 46.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 46.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 46.0
+      "count": 13,
+      "average": 41.61538461538461,
+      "peak": 69.0,
+      "peak_time": "2026-09-14T05:55:42.422685+00:00",
+      "min": 18.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 13.4137613696845,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 64.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 25.5
     },
     {
       "name": "Bukit Batok ActiveSG Gym",
-      "count": 2,
-      "average": 46.5,
-      "peak": 48.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 45.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 1.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 46.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 46.5
+      "count": 13,
+      "average": 45.53846153846154,
+      "peak": 78.0,
+      "peak_time": "2026-09-10T10:06:16.287892+00:00",
+      "min": 28.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 12.971064748510786,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 63.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 39.0
     },
     {
       "name": "Bukit Canberra ActiveSG Gym",
-      "count": 2,
-      "average": 43.5,
-      "peak": 45.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 42.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 1.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 43.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 43.5
+      "count": 13,
+      "average": 47.92307692307692,
+      "peak": 82.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 25.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 14.365886614645547,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 82.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 32.0
     },
     {
       "name": "Bukit Gombak ActiveSG Gym",
-      "count": 2,
-      "average": 79.0,
-      "peak": 79.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 79.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 79.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 79.0
+      "count": 13,
+      "average": 58.53846153846154,
+      "peak": 93.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 29.0,
+      "min_time": "2026-09-13T05:24:40.123944+00:00",
+      "stdev": 19.53149482095081,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 93.0,
+      "quietest_hour": 5,
+      "quietest_hour_avg": 41.0
     },
     {
       "name": "Choa Chu Kang ActiveSG Gym",
-      "count": 2,
-      "average": 57.5,
-      "peak": 58.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 57.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 57.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 57.5
+      "count": 13,
+      "average": 53.07692307692308,
+      "peak": 83.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 27.0,
+      "min_time": "2026-09-11T05:41:53.328739+00:00",
+      "stdev": 15.12238045191776,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 83.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 36.0
     },
     {
       "name": "Clementi ActiveSG Gym",
-      "count": 2,
-      "average": 37.0,
-      "peak": 41.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 33.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 4.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 37.0,
+      "count": 13,
+      "average": 53.69230769230769,
+      "peak": 83.0,
+      "peak_time": "2026-09-14T05:55:42.422685+00:00",
+      "min": 28.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 15.121989161913117,
+      "busiest_hour": 10,
+      "busiest_hour_avg": 64.33333333333333,
       "quietest_hour": 8,
       "quietest_hour_avg": 37.0
     },
     {
       "name": "Delta ActiveSG Gym",
-      "count": 2,
-      "average": 31.0,
-      "peak": 31.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 31.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 31.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 31.0
+      "count": 13,
+      "average": 34.30769230769231,
+      "peak": 72.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 0.0,
+      "min_time": "2026-09-14T00:49:37.792489+00:00",
+      "stdev": 18.619198592125755,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 72.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 19.0
     },
     {
       "name": "Heartbeat @ Bedok ActiveSG Gym",
-      "count": 2,
-      "average": 53.5,
-      "peak": 54.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 53.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 53.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 53.5
+      "count": 13,
+      "average": 46.84615384615385,
+      "peak": 58.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 31.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 10.316873064183993,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 58.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 31.5
     },
     {
       "name": "Hougang ActiveSG Gym",
-      "count": 2,
-      "average": 50.0,
-      "peak": 50.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 50.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 50.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 50.0
+      "count": 13,
+      "average": 44.30769230769231,
+      "peak": 68.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 25.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 10.208477739187135,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 68.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 30.0
     },
     {
       "name": "Jalan Besar ActiveSG Gym",
-      "count": 2,
-      "average": 72.5,
+      "count": 13,
+      "average": 55.15384615384615,
       "peak": 73.0,
       "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 72.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
+      "min": 24.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 15.791166731611764,
       "busiest_hour": 8,
       "busiest_hour_avg": 72.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 72.5
+      "quietest_hour": 5,
+      "quietest_hour_avg": 41.0
     },
     {
       "name": "Jurong East ActiveSG Gym",
-      "count": 2,
-      "average": 33.5,
-      "peak": 34.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 33.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 33.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 33.5
+      "count": 13,
+      "average": 33.23076923076923,
+      "peak": 56.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 15.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 13.02160244276851,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 56.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 21.0
     },
     {
       "name": "Jurong Lake Gardens ActiveSG Gym",
-      "count": 2,
-      "average": 26.0,
-      "peak": 26.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 26.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 26.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 26.0
+      "count": 13,
+      "average": 26.692307692307693,
+      "peak": 35.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 14.0,
+      "min_time": "2026-09-13T05:24:40.123944+00:00",
+      "stdev": 6.043236720431494,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 35.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 20.0
     },
     {
       "name": "Jurong West ActiveSG Gym",
-      "count": 2,
-      "average": 22.0,
-      "peak": 22.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 22.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 22.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 22.0
+      "count": 13,
+      "average": 25.076923076923077,
+      "peak": 39.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 16.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 5.770769025695708,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 39.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 20.0
     },
     {
       "name": "Katong ActiveSG Gym",
-      "count": 2,
-      "average": 53.0,
-      "peak": 55.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 51.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 2.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 53.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 53.0
+      "count": 13,
+      "average": 46.53846153846154,
+      "peak": 72.0,
+      "peak_time": "2026-09-13T10:31:11.761485+00:00",
+      "min": 26.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 12.845923535475755,
+      "busiest_hour": 13,
+      "busiest_hour_avg": 54.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 30.5
     },
     {
       "name": "Pasir Ris ActiveSG Gym",
-      "count": 2,
-      "average": 39.5,
-      "peak": 40.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 39.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 39.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 39.5
+      "count": 13,
+      "average": 38.69230769230769,
+      "peak": 55.0,
+      "peak_time": "2026-09-13T10:31:11.761485+00:00",
+      "min": 21.0,
+      "min_time": "2026-09-11T05:41:53.328739+00:00",
+      "stdev": 9.84795656574043,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 53.0,
+      "quietest_hour": 13,
+      "quietest_hour_avg": 26.0
     },
     {
       "name": "Queenstown ActiveSG Gym",
-      "count": 2,
-      "average": 49.0,
-      "peak": 50.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 48.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 1.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 49.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 49.0
+      "count": 13,
+      "average": 37.61538461538461,
+      "peak": 72.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 0.0,
+      "min_time": "2026-09-14T00:49:37.792489+00:00",
+      "stdev": 19.925007331485812,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 72.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 15.0
     },
     {
       "name": "Sengkang ActiveSG Gym",
-      "count": 2,
-      "average": 72.5,
-      "peak": 74.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 71.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 1.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 72.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 72.5
+      "count": 13,
+      "average": 67.07692307692308,
+      "peak": 81.0,
+      "peak_time": "2026-09-11T10:01:51.502331+00:00",
+      "min": 47.0,
+      "min_time": "2026-09-12T05:36:16.815387+00:00",
+      "stdev": 11.207562957914682,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 80.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 56.0
     },
     {
       "name": "Senja-Cashew ActiveSG Gym",
-      "count": 2,
-      "average": 70.5,
-      "peak": 72.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 69.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 1.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 70.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 70.5
+      "count": 13,
+      "average": 61.76923076923077,
+      "peak": 88.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 37.0,
+      "min_time": "2026-09-11T05:41:53.328739+00:00",
+      "stdev": 14.26212761209451,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 88.0,
+      "quietest_hour": 13,
+      "quietest_hour_avg": 49.0
     },
     {
       "name": "Tampines ActiveSG Gym",
-      "count": 2,
-      "average": 65.0,
-      "peak": 66.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 64.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 1.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 65.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 65.0
+      "count": 13,
+      "average": 50.07692307692308,
+      "peak": 67.0,
+      "peak_time": "2026-09-12T13:10:16.475692+00:00",
+      "min": 36.0,
+      "min_time": "2026-09-12T05:36:16.815387+00:00",
+      "stdev": 11.538974347578854,
+      "busiest_hour": 13,
+      "busiest_hour_avg": 67.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 36.0
     },
     {
       "name": "Woodlands ActiveSG Gym",
-      "count": 2,
-      "average": 42.5,
-      "peak": 43.0,
-      "peak_time": "2026-09-10T08:20:35.729033+00:00",
-      "min": 42.0,
-      "min_time": "2026-09-10T08:27:33.388522+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 42.5,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 42.5
+      "count": 13,
+      "average": 43.46153846153846,
+      "peak": 63.0,
+      "peak_time": "2026-09-12T13:10:16.475692+00:00",
+      "min": 27.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 10.149766080028147,
+      "busiest_hour": 13,
+      "busiest_hour_avg": 63.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 30.5
     },
     {
       "name": "Yio Chu Kang ActiveSG Gym",
-      "count": 2,
-      "average": 23.5,
-      "peak": 24.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 23.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 0.5,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 23.5,
+      "count": 13,
+      "average": 34.0,
+      "peak": 56.0,
+      "peak_time": "2026-09-10T12:23:59.068164+00:00",
+      "min": 11.0,
+      "min_time": "2026-09-11T05:41:53.328739+00:00",
+      "stdev": 12.253727847224539,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 56.0,
       "quietest_hour": 8,
       "quietest_hour_avg": 23.5
     },
     {
       "name": "Yishun ActiveSG Gym",
-      "count": 2,
-      "average": 38.0,
-      "peak": 40.0,
-      "peak_time": "2026-09-10T08:27:33.388522+00:00",
-      "min": 36.0,
-      "min_time": "2026-09-10T08:20:35.729033+00:00",
-      "stdev": 2.0,
-      "busiest_hour": 8,
-      "busiest_hour_avg": 38.0,
-      "quietest_hour": 8,
-      "quietest_hour_avg": 38.0
+      "count": 13,
+      "average": 39.0,
+      "peak": 71.0,
+      "peak_time": "2026-09-10T10:06:16.287892+00:00",
+      "min": 25.0,
+      "min_time": "2026-09-13T00:40:47.601622+00:00",
+      "stdev": 13.06198241521495,
+      "busiest_hour": 12,
+      "busiest_hour_avg": 62.0,
+      "quietest_hour": 0,
+      "quietest_hour_avg": 31.0
     }
   ],
   "gym_count": 30,
   "top_busiest_gyms": [
     {
-      "name": "Bukit Gombak ActiveSG Gym",
-      "average": 79.0
-    },
-    {
-      "name": "Jalan Besar ActiveSG Gym",
-      "average": 72.5
-    },
-    {
       "name": "Sengkang ActiveSG Gym",
-      "average": 72.5
+      "average": 67.07692307692308
     },
     {
       "name": "Senja-Cashew ActiveSG Gym",
-      "average": 70.5
+      "average": 61.76923076923077
     },
     {
-      "name": "Tampines ActiveSG Gym",
-      "average": 65.0
+      "name": "Bukit Gombak ActiveSG Gym",
+      "average": 58.53846153846154
+    },
+    {
+      "name": "Jalan Besar ActiveSG Gym",
+      "average": 55.15384615384615
+    },
+    {
+      "name": "Clementi ActiveSG Gym",
+      "average": 53.69230769230769
     }
   ],
   "top_quietest_gyms": [
     {
       "name": "ActiveSG Gym @ Enabling Village",
-      "average": 18.0
+      "average": 21.53846153846154
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh West Community Centre",
-      "average": 19.5
+      "average": 22.153846153846153
     },
     {
       "name": "Jurong West ActiveSG Gym",
-      "average": 22.0
+      "average": 25.076923076923077
     },
     {
-      "name": "Yio Chu Kang ActiveSG Gym",
-      "average": 23.5
+      "name": "ActiveSG Hockey Village @ Boon Lay Gym",
+      "average": 26.0
     },
     {
       "name": "Jurong Lake Gardens ActiveSG Gym",
-      "average": 26.0
+      "average": 26.692307692307693
     }
   ],
   "most_variable_gyms": [
     {
-      "name": "Clementi ActiveSG Gym",
-      "stdev": 4.0
+      "name": "Queenstown ActiveSG Gym",
+      "stdev": 19.925007331485812
     },
     {
-      "name": "ActiveSG Gym @ Fernvale Square",
-      "stdev": 2.5
+      "name": "Bukit Gombak ActiveSG Gym",
+      "stdev": 19.53149482095081
     },
     {
-      "name": "Katong ActiveSG Gym",
-      "stdev": 2.0
+      "name": "Delta ActiveSG Gym",
+      "stdev": 18.619198592125755
     },
     {
-      "name": "Yishun ActiveSG Gym",
-      "stdev": 2.0
+      "name": "ActiveSG Gym @ Serangoon Central",
+      "stdev": 15.872644026827
     },
     {
-      "name": "ActiveSG Gym @ Toa Payoh",
-      "stdev": 1.5
+      "name": "Jalan Besar ActiveSG Gym",
+      "stdev": 15.791166731611764
     }
   ],
   "hour_profile": [
     {
       "hour": 0,
       "label": "00:00",
-      "average": null
+      "average": 31.5
     },
     {
       "hour": 1,
@@ -523,7 +523,7 @@
     {
       "hour": 5,
       "label": "05:00",
-      "average": null
+      "average": 37.25833333333333
     },
     {
       "hour": 6,
@@ -548,7 +548,7 @@
     {
       "hour": 10,
       "label": "10:00",
-      "average": null
+      "average": 49.03333333333333
     },
     {
       "hour": 11,
@@ -558,12 +558,12 @@
     {
       "hour": 12,
       "label": "12:00",
-      "average": null
+      "average": 59.56666666666667
     },
     {
       "hour": 13,
       "label": "13:00",
-      "average": null
+      "average": 41.666666666666664
     },
     {
       "hour": 14,
@@ -618,31 +618,68 @@
   ],
   "quietest_hours": [
     {
-      "hour": 8,
-      "average": 43.95
+      "hour": 0,
+      "average": 31.5
+    },
+    {
+      "hour": 5,
+      "average": 37.25833333333333
+    },
+    {
+      "hour": 13,
+      "average": 41.666666666666664
     }
   ],
   "busiest_hours": [
     {
+      "hour": 12,
+      "average": 59.56666666666667
+    },
+    {
+      "hour": 10,
+      "average": 49.03333333333333
+    },
+    {
       "hour": 8,
       "average": 43.95
     }
   ],
-  "weekday_average": 43.95,
-  "weekend_average": null,
+  "weekday_average": 44.4125,
+  "weekend_average": 38.593333333333334,
   "daily_trend": [
     {
       "date": "2026-09-10",
-      "average": 43.95
+      "average": 49.825
+    },
+    {
+      "date": "2026-09-11",
+      "average": 41.28333333333333
+    },
+    {
+      "date": "2026-09-12",
+      "average": 40.11666666666667
+    },
+    {
+      "date": "2026-09-13",
+      "average": 37.577777777777776
+    },
+    {
+      "date": "2026-09-14",
+      "average": 36.71666666666667
     }
   ],
   "weekly_trend": [
     {
       "week": "2026-W37",
-      "average": 43.95,
+      "average": 43.166666666666664,
+      "readings": 330
+    },
+    {
+      "week": "2026-W38",
+      "average": 36.71666666666667,
       "readings": 60
     }
   ],
-  "trend_slope_per_day": null,
-  "trend_direction": "not enough days yet"
+  "trend_slope_per_day": -2.9922222222222223,
+  "trend_direction": "falling"
 }
