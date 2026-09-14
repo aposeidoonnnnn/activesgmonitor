@@ -67,3 +67,6 @@
 2026-09-14T00:49:29.068119+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
 2026-09-14T00:49:37.755919+00:00 SUCCESS extracted 30 gyms
 2026-09-14T00:49:37.792618+00:00 Appended 30 rows to /home/runner/work/activesgmonitor/activesgmonitor/data/crowd_log.csv
+2026-09-14T05:55:33.385125+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-14T05:55:42.382766+00:00 SUCCESS extracted 30 gyms
+2026-09-14T05:55:42.422826+00:00 Appended 30 rows to /home/runner/work/activesgmonitor/activesgmonitor/data/crowd_log.csv
