@@ -102,3 +102,8 @@
 2026-09-16T15:33:48.602586+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
 2026-09-16T15:33:59.457567+00:00 FAIL no gym crowd data extracted; see debug/last_failure.html
 2026-09-16T15:33:59.499851+00:00 No rows scraped this run; CSV not updated
+2026-09-17T01:09:49.559770+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-17T01:10:19.767309+00:00 WARN networkidle wait timed out, continuing anyway
+2026-09-17T01:10:19.776602+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
+2026-09-17T01:10:29.857675+00:00 BLOCKED Cloudflare challenge still present, giving up this run
+2026-09-17T01:10:29.895233+00:00 No rows scraped this run; CSV not updated
