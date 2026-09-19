@@ -144,3 +144,8 @@
 2026-09-19T05:55:23.013595+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
 2026-09-19T05:55:33.869520+00:00 SUCCESS extracted 30 gyms
 2026-09-19T05:55:33.910312+00:00 Appended 30 rows to /home/runner/work/activesgmonitor/activesgmonitor/data/crowd_log.csv
+2026-09-19T10:31:18.178186+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-19T10:31:48.318861+00:00 WARN networkidle wait timed out, continuing anyway
+2026-09-19T10:31:48.324321+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
+2026-09-19T10:31:58.415109+00:00 BLOCKED Cloudflare challenge still present, giving up this run
+2026-09-19T10:31:58.460585+00:00 No rows scraped this run; CSV not updated
