@@ -531,14 +531,20 @@ def render_website(data: dict) -> str:
   .tab-btn[aria-selected="true"] {{ color: var(--text); border-bottom-color: var(--accent); }}
   .tab-panel[hidden] {{ display: none; }}
 
-  .gym-tabs {{ display: flex; gap: 8px; overflow-x: auto; padding: 4px 4px 14px; margin-bottom: 8px; }}
-  .gym-pill {{
-    background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); border-radius: 999px;
-    padding: 9px 16px; font-size: 0.88rem; font-weight: 500; white-space: nowrap; cursor: pointer; flex: none;
-    min-height: 40px;
+  .gym-select-wrap {{ margin-bottom: 24px; max-width: 420px; }}
+  .gym-select-label {{
+    display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
   }}
-  .gym-pill:hover {{ color: var(--text); border-color: var(--accent); }}
-  .gym-pill[aria-selected="true"] {{ background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }}
+  .gym-select {{
+    width: 100%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text);
+    border-radius: 10px; padding: 12px 40px 12px 14px; font-size: 1rem; font-family: inherit;
+    min-height: 44px; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a7aebb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+  }}
+  .gym-select:hover {{ border-color: var(--accent); }}
 
   nav.subtabs {{ display: flex; gap: 4px; margin: 4px 0 24px; }}
   .subtab-btn {{
@@ -646,7 +652,10 @@ def render_website(data: dict) -> str:
 </div>
 
 <div class="tab-panel" id="tab-bygym" role="tabpanel" aria-labelledby="tabbtn-bygym" hidden>
-  <div class="gym-tabs" id="gym-tabs" role="tablist" aria-label="Choose a gym"></div>
+  <div class="gym-select-wrap">
+    <label class="gym-select-label" for="gym-select">Choose a gym</label>
+    <select class="gym-select" id="gym-select"></select>
+  </div>
 
   <nav class="subtabs" role="tablist" aria-label="Gym detail view">
     <button class="subtab-btn" id="subtabbtn-charts" role="tab" aria-selected="true" aria-controls="subtab-charts" data-subtab="charts">Charts</button>
@@ -873,22 +882,17 @@ function renderBestTime(gymName) {{
 
 function renderGymDetail(gymName) {{
   selectedGym = gymName;
-  document.querySelectorAll('.gym-pill').forEach(p => {{
-    const active = p.dataset.gym === gymName;
-    p.setAttribute('aria-selected', active ? 'true' : 'false');
-  }});
+  const select = document.getElementById('gym-select');
+  if (select.value !== gymName) select.value = gymName;
   renderGymCharts(gymName);
   renderBestTime(gymName);
 }}
 
 function renderGymTabs() {{
-  const tabsEl = document.getElementById('gym-tabs');
+  const select = document.getElementById('gym-select');
   const names = data.per_gym.map(g => g.name);
-  tabsEl.innerHTML = names.map(n =>
-    `<button class="gym-pill" role="tab" aria-selected="false" data-gym="${{n}}">${{n}}</button>`).join('');
-  tabsEl.querySelectorAll('.gym-pill').forEach(btn => {{
-    btn.addEventListener('click', () => renderGymDetail(btn.dataset.gym));
-  }});
+  select.innerHTML = names.map(n => `<option value="${{n}}">${{n}}</option>`).join('');
+  select.onchange = () => renderGymDetail(select.value);
   if (names.length) renderGymDetail(selectedGym && names.includes(selectedGym) ? selectedGym : names[0]);
 }}
 
