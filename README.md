@@ -111,10 +111,33 @@ and `docs/index.html`.
 ## Website
 
 `docs/index.html` is a self-contained dashboard (dark theme, Chart.js)
-showing: average crowd per gym, 24-hour crowd pattern, daily and
-week-over-week trend charts, busiest/quietest/most-variable gym rankings,
-and a full per-gym stats table. It reads its data from a JSON blob embedded
-in the page at generation time — no server or build step needed.
+with two tabs:
+- **Overview**: average crowd per gym, a day-trend chart (7am-9:45pm SGT,
+  15-min resolution), day-of-week pattern, week-over-week trend,
+  busiest/quietest/most-variable gym rankings, and a full per-gym stats
+  table.
+- **By Gym**: click any gym (horizontally scrollable pill tabs) to see
+  its own day-trend and day-of-week charts, stats, and a "predicted
+  crowd right now" card based on the historical average for the current
+  SGT day-of-week + hour.
+
+All times are displayed in Singapore time (SGT, UTC+8) even though
+`data/crowd_log.csv` stores UTC — SGT is what matters for opening hours
+and the audience's clock. Scrape events where every single gym reads 0%
+simultaneously are excluded from the report/dashboard (treated as the
+site showing a "closed" state rather than real crowd data); partial
+near-zero readings at open/close are left in since those are genuine
+gym behavior, not an artifact.
+
+**On "live" data**: the page fetches `report_data.json` (same folder)
+on every load, so it always shows whatever data is currently committed
+to the repo rather than a stale snapshot from whenever the page was last
+generated. This is *not* a live scrape of activesg.gov.sg on page
+open — that site is Cloudflare-protected and needs a real headless
+browser to load, which a static page can't run client-side (would hit
+CORS and the same Cloudflare wall `scrape.py` exists to get around).
+The "predicted crowd" feature is a historical-pattern lookup (same
+day-of-week + hour average), not a live reading.
 
 Chart.js is vendored locally as `docs/chart.umd.js` rather than loaded
 from a CDN. It was originally CDN-loaded, but a real visitor reported a
