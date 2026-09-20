@@ -32,6 +32,24 @@ minutes and logs them to `data/crowd_log.csv`.
   was this build environment's own network policy blocking the Chart.js
   CDN — irrelevant for real visitors on GitHub Pages, confirmed by
   re-testing with a locally-hosted copy of the exact same file.
+- **Data source**: `data/crowd_log.csv` is a merge of GitHub Actions' and
+  a Mac (launchd, see `MAC_SETUP.md`) data, deduplicated by exact
+  (timestamp, gym_name, crowd_value). The Mac has been the primary
+  source in practice — GitHub Actions' `schedule` trigger has fired far
+  less often than every 15 minutes despite correct YAML/permissions/
+  billing (see commit history around 2026-09-10/11 for the debugging).
+- **Known data quality caveat**: every gym shows a minimum reading of
+  0%. Most of this is real — gyms are genuinely near-empty right at 7am
+  opening and in the last ~45 min before 10pm closing, and this pattern
+  repeats across many different gyms on many different days. But three
+  specific gyms (Enabling Village, Delta, Queenstown) were flatlined at
+  exactly 0% for a full ~13-hour stretch on 2026-09-14 (a Monday) while
+  showing normal values on 2026-09-13 and 2026-09-15 — confirmed not a
+  scraper bug (the scraper faithfully recorded what the page showed),
+  but unclear whether it reflects real facility closures that day or a
+  stale reading on ActiveSG's own site. Not scrubbed from the data since
+  that couldn't be confirmed either way — worth knowing about if you see
+  a gym's stats look off.
 
 ## Files
 
