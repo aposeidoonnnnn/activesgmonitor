@@ -1,3 +1,4 @@
+# Re-triggering GitHub's workflow indexer for the new push trigger.
 name: ActiveSG Gym Crowd Report & Dashboard
 
 # Regenerates reports/report.md and the docs/ dashboard website from the
