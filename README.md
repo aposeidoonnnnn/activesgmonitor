@@ -110,11 +110,20 @@ and `docs/index.html`.
 
 ## Website
 
-`docs/index.html` is a self-contained dashboard (dark theme, Chart.js via
-CDN) showing: average crowd per gym, 24-hour crowd pattern, daily and
+`docs/index.html` is a self-contained dashboard (dark theme, Chart.js)
+showing: average crowd per gym, 24-hour crowd pattern, daily and
 week-over-week trend charts, busiest/quietest/most-variable gym rankings,
 and a full per-gym stats table. It reads its data from a JSON blob embedded
 in the page at generation time — no server or build step needed.
+
+Chart.js is vendored locally as `docs/chart.umd.js` rather than loaded
+from a CDN. It was originally CDN-loaded, but a real visitor reported a
+blank dashboard (all stat cards worked, all charts/lists/tables empty —
+the exact signature of the `Chart` global not existing, i.e. the CDN
+script failed to load, most likely blocked by a browser extension or
+network policy on their end). Vendoring it removes that whole class of
+failure for any visitor, at the cost of a ~200KB static file checked
+into the repo.
 
 **To make it a live website, enable GitHub Pages once:**
 Settings → Pages → Source: "Deploy from a branch" → Branch:
