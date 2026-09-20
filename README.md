@@ -67,11 +67,13 @@ minutes and logs them to `data/crowd_log.csv`.
   fine) — see `MAC_SETUP.md` for the reliable fallback running in
   parallel.
 - `.github/workflows/report.yml` — runs `generate_report.py --html --website`
-  **once a week** (Monday 02:00 UTC) against the full accumulated CSV and
-  commits `reports/` + `docs/` back. Weekly rather than every 15 minutes so
-  the website shows a stable snapshot and Pages doesn't redeploy 96
-  times/day; trigger it manually any time via Actions → "ActiveSG Gym
-  Crowd Report & Dashboard" → Run workflow.
+  whenever `data/crowd_log.csv` changes (i.e. within minutes of the Mac's
+  auto-push or a GitHub Actions scrape landing new data) and commits
+  `reports/` + `docs/` back, so the published site tracks real data
+  instead of a stale weekly snapshot. A Monday 02:00 UTC cron stays as a
+  fallback in case nothing pushes for a while; trigger it manually any
+  time via Actions → "ActiveSG Gym Crowd Report & Dashboard" → Run
+  workflow.
 - `docs/index.html` — the dashboard website (see "Website" below).
 - `MAC_SETUP.md` — launchd-based fallback if GitHub Actions gets
   Cloudflare-blocked (GitHub's runner IPs are well-known datacenter ranges,
@@ -164,4 +166,5 @@ into the repo.
 Settings → Pages → Source: "Deploy from a branch" → Branch:
 `claude/activesg-gym-crowd-scraper-slihpx` / `/docs` → Save. It will then be
 served at `https://aposeidoonnnnn.github.io/activesgmonitor/` and update
-automatically whenever `report.yml` runs (weekly, or on manual dispatch).
+automatically whenever `report.yml` runs — which is within minutes of new
+data landing in `data/crowd_log.csv`, not just weekly.

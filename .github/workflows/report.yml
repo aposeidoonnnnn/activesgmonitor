@@ -1,13 +1,22 @@
 name: ActiveSG Gym Crowd Report & Dashboard
 
 # Regenerates reports/report.md and the docs/ dashboard website from the
-# full accumulated data/crowd_log.csv. Runs weekly (separate from the
-# 15-minute scrape.yml scraper) so the website shows a stable weekly
-# snapshot rather than churning on every scrape run.
+# full accumulated data/crowd_log.csv.
+#
+# Runs on every push that touches data/crowd_log.csv (from the Mac's
+# auto-push or a GitHub Actions scrape run), so the published site
+# reflects new data within a couple of minutes instead of waiting for the
+# weekly schedule. The weekly cron is kept as a fallback in case no scrape
+# pushes for a while. No infinite-loop risk: this job only ever commits to
+# reports/ and docs/, never to data/crowd_log.csv, so its own commits don't
+# re-trigger it.
 
 on:
+  push:
+    branches: [claude/activesg-gym-crowd-scraper-slihpx]
+    paths: ['data/crowd_log.csv']
   schedule:
-    - cron: '0 2 * * 1' # Every Monday 02:00 UTC
+    - cron: '0 2 * * 1' # Every Monday 02:00 UTC, fallback safety net
   workflow_dispatch: {}
 
 permissions:
@@ -42,7 +51,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update weekly report and dashboard $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git commit -m "Update report and dashboard $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             for i in 1 2 3 4; do
               git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
               echo "Push attempt $i failed, retrying..."
