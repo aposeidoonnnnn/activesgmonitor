@@ -142,6 +142,18 @@ def day_pattern_for(entries: list[dict]) -> list[dict]:
     ]
 
 
+def dow_day_pattern_for(entries: list[dict]) -> dict:
+    """{weekday_name: 15-min day_pattern} -- used to predict the least
+    crowded upcoming slot on the same weekday as "now"."""
+    by_dow: dict = defaultdict(list)
+    for e in entries:
+        by_dow[e["timestamp_sgt"].weekday()].append(e)
+    return {
+        WEEKDAY_NAMES[i]: day_pattern_for(by_dow.get(i, []))
+        for i in range(7)
+    }
+
+
 def day_of_week_pattern_for(entries: list[dict]) -> list[dict]:
     """Average crowd per weekday (Mon..Sun), SGT calendar day."""
     by_dow = defaultdict(list)
@@ -203,11 +215,13 @@ def build_report_data(all_rows: list[dict]) -> dict:
     per_gym_day_pattern = {}
     per_gym_dow_pattern = {}
     per_gym_dow_hour = {}
+    per_gym_dow_day_pattern = {}
     for gym, entries in sorted(by_gym.items()):
         nums = [e for e in entries if e["crowd_value"] is not None]
         per_gym_day_pattern[gym] = day_pattern_for(entries)
         per_gym_dow_pattern[gym] = day_of_week_pattern_for(entries)
         per_gym_dow_hour[gym] = dow_hour_matrix_for(entries)
+        per_gym_dow_day_pattern[gym] = dow_day_pattern_for(entries)
 
         if not nums:
             per_gym.append(
@@ -251,6 +265,7 @@ def build_report_data(all_rows: list[dict]) -> dict:
     data["per_gym_day_pattern"] = per_gym_day_pattern
     data["per_gym_dow_pattern"] = per_gym_dow_pattern
     data["per_gym_dow_hour"] = per_gym_dow_hour
+    data["per_gym_dow_day_pattern"] = per_gym_dow_day_pattern
 
     ranked_by_avg = sorted(
         (g for g in per_gym if g["average"] is not None),
@@ -438,116 +453,210 @@ def render_website(data: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Crowd levels at ActiveSG gyms across Singapore, updated from real scraped data.">
 <title>ActiveSG Gym Crowd Dashboard</title>
 <script src="chart.umd.js"></script>
 <style>
-  :root {{ color-scheme: light dark; }}
-  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; background: #0b0d12; color: #e6e8eb; }}
-  h1 {{ font-size: 1.6rem; margin-bottom: 4px; }}
-  .sub {{ color: #9aa2ad; margin-bottom: 20px; }}
-  .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 28px; }}
-  .card {{ background: #161a22; border: 1px solid #262b36; border-radius: 10px; padding: 16px; }}
-  .card .label {{ color: #9aa2ad; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }}
-  .card .value {{ font-size: 1.6rem; font-weight: 600; margin-top: 4px; }}
-  section {{ margin-bottom: 40px; }}
-  h2 {{ font-size: 1.15rem; border-bottom: 1px solid #262b36; padding-bottom: 8px; margin-bottom: 16px; }}
-  .chart-wrap {{ background: #161a22; border: 1px solid #262b36; border-radius: 10px; padding: 16px; }}
-  table {{ border-collapse: collapse; width: 100%; font-size: 0.9rem; }}
-  th, td {{ text-align: left; padding: 8px 10px; border-bottom: 1px solid #262b36; }}
-  th {{ color: #9aa2ad; font-weight: 600; }}
+  :root {{
+    color-scheme: dark;
+    --bg: #0b0d12;
+    --card-bg: #161a22;
+    --card-bg-raised: #1a1f29;
+    --border: #2a2f3d;
+    --text: #f1f3f5;
+    --text-muted: #a7aebb;
+    --text-dim: #7d8492;
+    --accent: #6c9bff;
+    --accent-strong: #4f7fe8;
+    --good: #4ade80;
+    --warn: #fbbf24;
+    --focus: #8ab4ff;
+  }}
+  * {{ box-sizing: border-box; }}
+  body {{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    max-width: 1120px; margin: 0 auto; padding: 32px 20px 72px;
+    background: var(--bg); color: var(--text); line-height: 1.5; font-size: 16px;
+  }}
+  h1 {{ font-size: 1.75rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }}
+  h2 {{ font-size: 1.2rem; font-weight: 600; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }}
+  h3 {{ font-size: 1rem; font-weight: 600; margin: 0 0 10px; color: var(--text); }}
+  p {{ margin: 0; }}
+  .sub {{ color: var(--text-muted); margin-bottom: 4px; font-size: 0.95rem; }}
+  .visually-hidden {{
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }}
+  a {{ color: var(--accent); }}
+  button {{ font-family: inherit; }}
+  button:focus-visible, a:focus-visible {{
+    outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px;
+  }}
+
+  .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 32px; }}
+  .card {{
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+  }}
+  .card .label {{ color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }}
+  .card .value {{ font-size: 1.75rem; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }}
+
+  section {{ margin-bottom: 44px; }}
+  .chart-wrap {{ background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }}
+  .chart-caption {{ color: var(--text-dim); font-size: 0.82rem; margin-top: 10px; }}
+
+  table {{ border-collapse: collapse; width: 100%; font-size: 0.92rem; }}
+  th, td {{ text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--border); }}
+  th {{ color: var(--text-muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em; }}
+  td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+  tbody tr:hover {{ background: rgba(255,255,255,0.03); }}
+  .table-scroll {{ overflow-x: auto; border-radius: 12px; }}
+
   .two-col {{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }}
   @media (max-width: 700px) {{ .two-col {{ grid-template-columns: 1fr; }} }}
-  .rank-list {{ list-style: none; padding: 0; margin: 0; }}
-  .rank-list li {{ display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262f; }}
-  footer {{ color: #666e7a; font-size: 0.8rem; margin-top: 40px; }}
 
-  .tabs {{ display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid #262b36; }}
-  .tab-btn {{ background: none; border: none; color: #9aa2ad; font-size: 0.95rem; padding: 10px 16px;
-             cursor: pointer; border-bottom: 2px solid transparent; }}
-  .tab-btn.active {{ color: #e6e8eb; border-bottom-color: #5b8def; }}
-  .tab-panel {{ display: none; }}
-  .tab-panel.active {{ display: block; }}
+  .rank-list {{ list-style: none; padding: 0; margin: 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }}
+  .rank-list li {{ display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }}
+  .rank-list li:last-child {{ border-bottom: none; }}
+  .rank-list .name {{ color: var(--text); }}
+  .rank-list .val {{ color: var(--text-muted); font-weight: 600; }}
 
-  .gym-tabs {{ display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }}
-  .gym-pill {{ background: #161a22; border: 1px solid #262b36; color: #c7cbd1; border-radius: 999px;
-              padding: 7px 14px; font-size: 0.85rem; white-space: nowrap; cursor: pointer; flex: none; }}
-  .gym-pill.active {{ background: #5b8def; border-color: #5b8def; color: #fff; }}
-  .predict-card {{ background: linear-gradient(135deg, #1c2333, #161a22); border: 1px solid #2c3548;
-                   border-radius: 10px; padding: 18px; margin-bottom: 20px; }}
-  .predict-card .label {{ color: #9aa2ad; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }}
-  .predict-card .value {{ font-size: 2rem; font-weight: 700; margin-top: 6px; }}
-  .predict-card .note {{ color: #7a828d; font-size: 0.8rem; margin-top: 6px; }}
+  footer {{ color: var(--text-dim); font-size: 0.82rem; margin-top: 48px; }}
+
+  nav.tabs {{ display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 1px solid var(--border); }}
+  .tab-btn {{
+    background: none; border: none; color: var(--text-muted); font-size: 1rem; font-weight: 500;
+    padding: 12px 18px; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px;
+  }}
+  .tab-btn:hover {{ color: var(--text); }}
+  .tab-btn[aria-selected="true"] {{ color: var(--text); border-bottom-color: var(--accent); }}
+  .tab-panel[hidden] {{ display: none; }}
+
+  .gym-tabs {{ display: flex; gap: 8px; overflow-x: auto; padding: 4px 4px 14px; margin-bottom: 8px; }}
+  .gym-pill {{
+    background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); border-radius: 999px;
+    padding: 9px 16px; font-size: 0.88rem; font-weight: 500; white-space: nowrap; cursor: pointer; flex: none;
+    min-height: 40px;
+  }}
+  .gym-pill:hover {{ color: var(--text); border-color: var(--accent); }}
+  .gym-pill[aria-selected="true"] {{ background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }}
+
+  nav.subtabs {{ display: flex; gap: 4px; margin: 4px 0 24px; }}
+  .subtab-btn {{
+    background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted);
+    padding: 9px 16px; font-size: 0.9rem; font-weight: 500; cursor: pointer; border-radius: 8px;
+  }}
+  .subtab-btn:hover {{ color: var(--text); }}
+  .subtab-btn[aria-selected="true"] {{ background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }}
+  .subtab-panel[hidden] {{ display: none; }}
+
+  .predict-card {{
+    background: linear-gradient(135deg, #1c2740, #161a22); border: 1px solid #2f3c5c;
+    border-radius: 12px; padding: 22px; margin-bottom: 20px;
+  }}
+  .predict-card .label {{ color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }}
+  .predict-card .value {{ font-size: 2.1rem; font-weight: 700; margin-top: 8px; font-variant-numeric: tabular-nums; }}
+  .predict-card .note {{ color: var(--text-dim); font-size: 0.85rem; margin-top: 8px; }}
+
+  .best-time-hero {{
+    background: linear-gradient(135deg, #16321f, #161a22); border: 1px solid #2a4b34;
+    border-radius: 12px; padding: 24px; margin-bottom: 20px;
+  }}
+  .best-time-hero .label {{ color: var(--good); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }}
+  .best-time-hero .value {{ font-size: 2.3rem; font-weight: 700; margin-top: 8px; }}
+  .best-time-hero .value .pct {{ color: var(--text-muted); font-size: 1.3rem; font-weight: 600; margin-left: 10px; }}
+  .best-time-hero .note {{ color: var(--text-dim); font-size: 0.85rem; margin-top: 10px; }}
+  .alt-slots {{ margin-top: 18px; }}
+  .alt-slots ul {{ list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }}
+  .alt-slots li {{
+    background: var(--card-bg-raised); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 14px; font-size: 0.88rem; font-variant-numeric: tabular-nums;
+  }}
 </style>
 </head>
 <body>
 <h1>ActiveSG Gym Crowd Dashboard</h1>
-<p class="sub" id="subtitle">Loading...</p>
-<p class="sub" id="fetch-status" style="font-size:0.8rem;"></p>
+<p class="sub" id="subtitle">Loading…</p>
+<p class="sub" id="fetch-status" style="font-size:0.8rem;" role="status"></p>
 
-<div class="tabs">
-  <button class="tab-btn active" data-tab="overview">Overview</button>
-  <button class="tab-btn" data-tab="bygym">By Gym</button>
-</div>
+<nav class="tabs" role="tablist" aria-label="Dashboard sections">
+  <button class="tab-btn" id="tabbtn-overview" role="tab" aria-selected="true" aria-controls="tab-overview" data-tab="overview">Overview</button>
+  <button class="tab-btn" id="tabbtn-bygym" role="tab" aria-selected="false" aria-controls="tab-bygym" data-tab="bygym">By Gym</button>
+</nav>
 
-<div class="tab-panel active" id="tab-overview">
+<main>
+<div class="tab-panel" id="tab-overview" role="tabpanel" aria-labelledby="tabbtn-overview">
 
-<div class="grid" id="stat-cards"></div>
+<div class="grid" id="stat-cards" aria-label="Summary statistics"></div>
 
-<section>
-  <h2>Average crowd per gym</h2>
-  <div class="chart-wrap"><canvas id="gymChart" height="110"></canvas></div>
+<section aria-labelledby="h-gym-avg">
+  <h2 id="h-gym-avg">Average crowd per gym</h2>
+  <div class="chart-wrap"><canvas id="gymChart" height="110" role="img" aria-label="Bar chart of average crowd percentage per gym"></canvas></div>
 </section>
 
-<section>
-  <h2>Day trend, 7am-9:45pm (SGT)</h2>
-  <div class="chart-wrap"><canvas id="dayPatternChart" height="90"></canvas></div>
+<section aria-labelledby="h-day-trend">
+  <h2 id="h-day-trend">Day trend, 7am–9:45pm (SGT)</h2>
+  <div class="chart-wrap">
+    <canvas id="dayPatternChart" height="90" role="img" aria-label="Line chart of average crowd percentage through the day, all gyms combined"></canvas>
+    <p class="chart-caption" id="day-trend-caption"></p>
+  </div>
 </section>
 
 <div class="two-col">
-  <section>
-    <h2>Day-of-week pattern</h2>
-    <div class="chart-wrap"><canvas id="dowChart" height="180"></canvas></div>
+  <section aria-labelledby="h-dow">
+    <h2 id="h-dow">Day-of-week pattern</h2>
+    <div class="chart-wrap"><canvas id="dowChart" height="180" role="img" aria-label="Bar chart of average crowd percentage by day of week"></canvas></div>
   </section>
-  <section>
-    <h2>Week-over-week</h2>
-    <div class="chart-wrap"><canvas id="weeklyChart" height="180"></canvas></div>
+  <section aria-labelledby="h-weekly">
+    <h2 id="h-weekly">Week-over-week</h2>
+    <div class="chart-wrap"><canvas id="weeklyChart" height="180" role="img" aria-label="Bar chart of average crowd percentage per calendar week"></canvas></div>
   </section>
 </div>
 
 <div class="two-col">
-  <section>
-    <h2>Busiest gyms</h2>
+  <section aria-labelledby="h-busiest">
+    <h2 id="h-busiest">Busiest gyms</h2>
     <ul class="rank-list" id="busiest-list"></ul>
   </section>
-  <section>
-    <h2>Quietest gyms</h2>
+  <section aria-labelledby="h-quietest">
+    <h2 id="h-quietest">Quietest gyms</h2>
     <ul class="rank-list" id="quietest-list"></ul>
   </section>
 </div>
 
-<section>
-  <h2>Most unpredictable gyms (highest variability)</h2>
+<section aria-labelledby="h-variable">
+  <h2 id="h-variable">Most unpredictable gyms (highest variability)</h2>
   <ul class="rank-list" id="variable-list"></ul>
 </section>
 
-<section>
-  <h2>All gyms</h2>
+<section aria-labelledby="h-allgyms">
+  <h2 id="h-allgyms">All gyms</h2>
+  <div class="table-scroll">
   <table id="gym-table">
+    <caption class="visually-hidden">Full statistics for every gym: readings, average, peak, minimum, standard deviation, busiest and quietest hour</caption>
     <thead>
-      <tr><th>Gym</th><th>Readings</th><th>Avg</th><th>Peak</th><th>Min</th>
-          <th>Std dev</th><th>Busiest hour</th><th>Quietest hour</th></tr>
+      <tr><th scope="col">Gym</th><th scope="col" class="num">Readings</th><th scope="col" class="num">Avg</th>
+          <th scope="col" class="num">Peak</th><th scope="col" class="num">Min</th>
+          <th scope="col" class="num">Std dev</th><th scope="col">Busiest hour</th><th scope="col">Quietest hour</th></tr>
     </thead>
     <tbody></tbody>
   </table>
+  </div>
 </section>
 
 </div>
 
-<div class="tab-panel" id="tab-bygym">
-  <div class="gym-tabs" id="gym-tabs"></div>
-  <div id="gym-detail"></div>
+<div class="tab-panel" id="tab-bygym" role="tabpanel" aria-labelledby="tabbtn-bygym" hidden>
+  <div class="gym-tabs" id="gym-tabs" role="tablist" aria-label="Choose a gym"></div>
+
+  <nav class="subtabs" role="tablist" aria-label="Gym detail view">
+    <button class="subtab-btn" id="subtabbtn-charts" role="tab" aria-selected="true" aria-controls="subtab-charts" data-subtab="charts">Charts</button>
+    <button class="subtab-btn" id="subtabbtn-besttime" role="tab" aria-selected="false" aria-controls="subtab-besttime" data-subtab="besttime">Best Time to Visit</button>
+  </nav>
+
+  <div class="subtab-panel" id="subtab-charts" role="tabpanel" aria-labelledby="subtabbtn-charts"></div>
+  <div class="subtab-panel" id="subtab-besttime" role="tabpanel" aria-labelledby="subtabbtn-besttime" hidden></div>
 </div>
+</main>
 
 <footer id="footer"></footer>
 
@@ -556,10 +665,13 @@ def render_website(data: dict) -> str:
 const embeddedData = JSON.parse(document.getElementById('report-data').textContent);
 let data = embeddedData;
 let charts = {{}};
+const DAY_NAMES_SUN_FIRST = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-function fmt(v, digits = 1) {{ return v === null || v === undefined ? 'n/a' : v.toFixed(digits); }}
+function fmtPct(v, digits = 1) {{ return v === null || v === undefined ? 'n/a' : v.toFixed(digits) + '%'; }}
+function fmtNum(v) {{ return v === null || v === undefined ? 'n/a' : Number(v).toLocaleString('en-US'); }}
 function hourLabel(h) {{ return h === null || h === undefined ? 'n/a' : String(h).padStart(2, '0') + ':00'; }}
 function destroyChart(id) {{ if (charts[id]) {{ charts[id].destroy(); delete charts[id]; }} }}
+function nowSgt() {{ return new Date(new Date().toLocaleString('en-US', {{ timeZone: 'Asia/Singapore' }})); }}
 
 function renderOverview() {{
   if (!data.has_data) {{
@@ -567,14 +679,14 @@ function renderOverview() {{
     return;
   }}
   document.getElementById('subtitle').textContent =
-    `${{data.span_start}} to ${{data.span_end}} (SGT) — ${{data.total_readings}} readings across ${{data.gym_count}} gyms`
+    `${{data.span_start}} to ${{data.span_end}} (SGT) — ${{fmtNum(data.total_readings)}} readings across ${{data.gym_count}} gyms`
     + (data.excluded_all_zero_events ? ` (${{data.excluded_all_zero_events}} closed-state events excluded)` : '');
 
   const cards = [
-    ['Weekday average', fmt(data.weekday_average)],
-    ['Weekend average', fmt(data.weekend_average)],
+    ['Weekday average', fmtPct(data.weekday_average)],
+    ['Weekend average', fmtPct(data.weekend_average)],
     ['Trend', data.trend_direction],
-    ['Total readings', data.total_readings],
+    ['Total readings', fmtNum(data.total_readings)],
   ];
   document.getElementById('stat-cards').innerHTML = cards.map(([label, value]) =>
     `<div class="card"><div class="label">${{label}}</div><div class="value">${{value}}</div></div>`
@@ -586,15 +698,19 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: gyms.map(g => g.name),
-      datasets: [{{ label: 'Average crowd %', data: gyms.map(g => g.average), backgroundColor: '#5b8def' }}]
+      datasets: [{{ label: 'Average crowd %', data: gyms.map(g => g.average), backgroundColor: '#6c9bff', borderRadius: 4 }}]
     }},
     options: {{
       indexAxis: 'y', responsive: true,
-      plugins: {{ legend: {{ display: false }} }},
-      scales: {{ x: {{ beginAtZero: true, max: 100 }} }}
+      plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.x.toFixed(1) + '%' }} }} }},
+      scales: {{ x: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }}
     }}
   }});
 
+  const busiestSlot = data.day_pattern.reduce((a, b) => (b.average !== null && (a === null || b.average > a.average)) ? b : a, null);
+  const quietestSlot = data.day_pattern.reduce((a, b) => (b.average !== null && (a === null || b.average < a.average)) ? b : a, null);
+  document.getElementById('day-trend-caption').textContent =
+    busiestSlot && quietestSlot ? `Busiest around ${{busiestSlot.label}} (${{fmtPct(busiestSlot.average)}}), quietest around ${{quietestSlot.label}} (${{fmtPct(quietestSlot.average)}}).` : '';
   destroyChart('dayPatternChart');
   charts.dayPatternChart = new Chart(document.getElementById('dayPatternChart'), {{
     type: 'line',
@@ -603,7 +719,8 @@ function renderOverview() {{
       datasets: [{{ label: 'Avg crowd %', data: data.day_pattern.map(s => s.average),
                    borderColor: '#f2a65a', backgroundColor: 'rgba(242,166,90,0.15)', fill: true, tension: 0.3, pointRadius: 0 }}]
     }},
-    options: {{ plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, max: 100 }} }} }}
+    options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
+                scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
   }});
 
   destroyChart('dowChart');
@@ -611,9 +728,10 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: data.day_of_week_pattern.map(d => d.day.slice(0,3)),
-      datasets: [{{ label: 'Avg crowd %', data: data.day_of_week_pattern.map(d => d.average), backgroundColor: '#5bd68a' }}]
+      datasets: [{{ label: 'Avg crowd %', data: data.day_of_week_pattern.map(d => d.average), backgroundColor: '#4ade80', borderRadius: 4 }}]
     }},
-    options: {{ plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, max: 100 }} }} }}
+    options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
+                scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
   }});
 
   destroyChart('weeklyChart');
@@ -621,22 +739,23 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: data.weekly_trend.map(w => w.week),
-      datasets: [{{ label: 'Avg crowd %', data: data.weekly_trend.map(w => w.average), backgroundColor: '#c17ee0' }}]
+      datasets: [{{ label: 'Avg crowd %', data: data.weekly_trend.map(w => w.average), backgroundColor: '#c17ee0', borderRadius: 4 }}]
     }},
-    options: {{ plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, max: 100 }} }} }}
+    options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
+                scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
   }});
 
   document.getElementById('busiest-list').innerHTML = data.top_busiest_gyms.map(g =>
-    `<li><span>${{g.name}}</span><span>${{fmt(g.average)}}</span></li>`).join('');
+    `<li><span class="name">${{g.name}}</span><span class="val">${{fmtPct(g.average)}}</span></li>`).join('');
   document.getElementById('quietest-list').innerHTML = data.top_quietest_gyms.map(g =>
-    `<li><span>${{g.name}}</span><span>${{fmt(g.average)}}</span></li>`).join('');
+    `<li><span class="name">${{g.name}}</span><span class="val">${{fmtPct(g.average)}}</span></li>`).join('');
   document.getElementById('variable-list').innerHTML = data.most_variable_gyms.map(g =>
-    `<li><span>${{g.name}}</span><span>${{fmt(g.stdev)}}</span></li>`).join('');
+    `<li><span class="name">${{g.name}}</span><span class="val">±${{fmtPct(g.stdev)}}</span></li>`).join('');
 
   const tbody = document.querySelector('#gym-table tbody');
   tbody.innerHTML = data.per_gym.map(g => `<tr>
-    <td>${{g.name}}</td><td>${{g.count}}</td><td>${{fmt(g.average)}}</td><td>${{fmt(g.peak)}}</td>
-    <td>${{fmt(g.min)}}</td><td>${{fmt(g.stdev)}}</td>
+    <td>${{g.name}}</td><td class="num">${{fmtNum(g.count)}}</td><td class="num">${{fmtPct(g.average)}}</td><td class="num">${{fmtPct(g.peak)}}</td>
+    <td class="num">${{fmtPct(g.min)}}</td><td class="num">${{fmtPct(g.stdev)}}</td>
     <td>${{hourLabel(g.busiest_hour)}}</td><td>${{hourLabel(g.quietest_hour)}}</td>
   </tr>`).join('');
 
@@ -648,43 +767,59 @@ let selectedGym = null;
 function predictedCrowdNow(gymName) {{
   const matrix = data.per_gym_dow_hour[gymName];
   if (!matrix) return null;
-  const nowSgt = new Date(new Date().toLocaleString('en-US', {{ timeZone: 'Asia/Singapore' }}));
-  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const dayName = dayNames[nowSgt.getDay()];
-  const hour = nowSgt.getHours();
+  const now = nowSgt();
+  const dayName = DAY_NAMES_SUN_FIRST[now.getDay()];
+  const hour = now.getHours();
   const val = matrix[dayName] ? matrix[dayName][String(hour)] : undefined;
   return {{ dayName, hour, value: val === undefined ? null : val }};
 }}
 
-function renderGymDetail(gymName) {{
-  selectedGym = gymName;
-  document.querySelectorAll('.gym-pill').forEach(p => p.classList.toggle('active', p.dataset.gym === gymName));
+function bestTimeToVisit(gymName) {{
+  const patternByDow = data.per_gym_dow_day_pattern[gymName];
+  if (!patternByDow) return null;
+  const now = nowSgt();
+  const dayName = DAY_NAMES_SUN_FIRST[now.getDay()];
+  const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
+  const todaySlots = (patternByDow[dayName] || []).filter(s => s.average !== null);
+  let source = todaySlots.filter(s => (s.hour * 60 + s.minute) >= nowMinutes);
+  let when = 'later today';
+  if (!source.length) {{
+    const tomorrowName = DAY_NAMES_SUN_FIRST[(now.getDay() + 1) % 7];
+    source = (patternByDow[tomorrowName] || []).filter(s => s.average !== null);
+    when = 'tomorrow';
+  }}
+  if (!source.length) return null;
+  const sorted = [...source].sort((a, b) => a.average - b.average);
+  return {{ when, best: sorted[0], alternatives: sorted.slice(1, 4) }};
+}}
+
+function renderGymCharts(gymName) {{
   const g = data.per_gym.find(x => x.name === gymName);
   const dayPattern = data.per_gym_day_pattern[gymName] || [];
   const dowPattern = data.per_gym_dow_pattern[gymName] || [];
   const pred = predictedCrowdNow(gymName);
 
-  const container = document.getElementById('gym-detail');
+  const container = document.getElementById('subtab-charts');
   container.innerHTML = `
     <div class="predict-card">
       <div class="label">Predicted crowd right now</div>
-      <div class="value">${{pred && pred.value !== null ? fmt(pred.value) + '%' : 'n/a (no historical data for this day/hour)'}}</div>
-      <div class="note">${{pred ? `Based on historical average for ${{pred.dayName}} ${{String(pred.hour).padStart(2,'0')}}:00 SGT` : ''}}</div>
+      <div class="value">${{pred && pred.value !== null ? fmtPct(pred.value) : 'n/a — no historical data for this day/hour yet'}}</div>
+      <div class="note">${{pred ? `Based on the historical average for ${{pred.dayName}} ${{String(pred.hour).padStart(2,'0')}}:00 SGT. Not a live reading.` : ''}}</div>
     </div>
     <div class="grid">
-      <div class="card"><div class="label">Average</div><div class="value">${{fmt(g?.average)}}</div></div>
-      <div class="card"><div class="label">Peak</div><div class="value">${{fmt(g?.peak)}}</div></div>
-      <div class="card"><div class="label">Min</div><div class="value">${{fmt(g?.min)}}</div></div>
-      <div class="card"><div class="label">Std dev</div><div class="value">${{fmt(g?.stdev)}}</div></div>
+      <div class="card"><div class="label">Average</div><div class="value">${{fmtPct(g?.average)}}</div></div>
+      <div class="card"><div class="label">Peak</div><div class="value">${{fmtPct(g?.peak)}}</div></div>
+      <div class="card"><div class="label">Min</div><div class="value">${{fmtPct(g?.min)}}</div></div>
+      <div class="card"><div class="label">Std dev</div><div class="value">±${{fmtPct(g?.stdev)}}</div></div>
     </div>
-    <section>
-      <h2>${{gymName}} — day trend, 7am-9:45pm (SGT)</h2>
-      <div class="chart-wrap"><canvas id="gymDayPatternChart" height="90"></canvas></div>
+    <section aria-labelledby="h-gym-day-trend">
+      <h2 id="h-gym-day-trend">${{gymName}} — day trend, 7am–9:45pm (SGT)</h2>
+      <div class="chart-wrap"><canvas id="gymDayPatternChart" height="90" role="img" aria-label="Line chart of average crowd percentage through the day for ${{gymName}}"></canvas></div>
     </section>
-    <section>
-      <h2>${{gymName}} — day-of-week pattern</h2>
-      <div class="chart-wrap"><canvas id="gymDowChart" height="180"></canvas></div>
+    <section aria-labelledby="h-gym-dow">
+      <h2 id="h-gym-dow">${{gymName}} — day-of-week pattern</h2>
+      <div class="chart-wrap"><canvas id="gymDowChart" height="180" role="img" aria-label="Bar chart of average crowd percentage by day of week for ${{gymName}}"></canvas></div>
     </section>
   `;
 
@@ -694,9 +829,10 @@ function renderGymDetail(gymName) {{
     data: {{
       labels: dayPattern.map(s => s.label),
       datasets: [{{ label: 'Avg crowd %', data: dayPattern.map(s => s.average),
-                   borderColor: '#5b8def', backgroundColor: 'rgba(91,141,239,0.15)', fill: true, tension: 0.3, pointRadius: 0 }}]
+                   borderColor: '#6c9bff', backgroundColor: 'rgba(108,155,255,0.15)', fill: true, tension: 0.3, pointRadius: 0 }}]
     }},
-    options: {{ plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, max: 100 }} }} }}
+    options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
+                scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
   }});
 
   destroyChart('gymDowChart');
@@ -704,20 +840,56 @@ function renderGymDetail(gymName) {{
     type: 'bar',
     data: {{
       labels: dowPattern.map(d => d.day.slice(0,3)),
-      datasets: [{{ label: 'Avg crowd %', data: dowPattern.map(d => d.average), backgroundColor: '#5bd68a' }}]
+      datasets: [{{ label: 'Avg crowd %', data: dowPattern.map(d => d.average), backgroundColor: '#4ade80', borderRadius: 4 }}]
     }},
-    options: {{ plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, max: 100 }} }} }}
+    options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
+                scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
   }});
+}}
+
+function renderBestTime(gymName) {{
+  const result = bestTimeToVisit(gymName);
+  const container = document.getElementById('subtab-besttime');
+  if (!result) {{
+    container.innerHTML = `<p class="sub">Not enough historical data yet to predict the best time to visit ${{gymName}}.</p>`;
+    return;
+  }}
+  const {{ when, best, alternatives }} = result;
+  container.innerHTML = `
+    <div class="best-time-hero">
+      <div class="label">Next best time to go${{when === 'tomorrow' ? ' (today is over)' : ''}}</div>
+      <div class="value">${{when === 'tomorrow' ? 'Tomorrow ' : ''}}${{best.label}} SGT<span class="pct">${{fmtPct(best.average)}} predicted</span></div>
+      <div class="note">Based on the historical average for this time slot on ${{when === 'tomorrow' ? DAY_NAMES_SUN_FIRST[(nowSgt().getDay()+1)%7] : DAY_NAMES_SUN_FIRST[nowSgt().getDay()]}}s. Not a live reading — actual crowd on the day may differ.</div>
+      ${{alternatives.length ? `
+      <div class="alt-slots">
+        <h3>Other good times</h3>
+        <ul>
+          ${{alternatives.map(a => `<li>${{a.label}} — ${{fmtPct(a.average)}}</li>`).join('')}}
+        </ul>
+      </div>` : ''}}
+    </div>
+  `;
+}}
+
+function renderGymDetail(gymName) {{
+  selectedGym = gymName;
+  document.querySelectorAll('.gym-pill').forEach(p => {{
+    const active = p.dataset.gym === gymName;
+    p.setAttribute('aria-selected', active ? 'true' : 'false');
+  }});
+  renderGymCharts(gymName);
+  renderBestTime(gymName);
 }}
 
 function renderGymTabs() {{
   const tabsEl = document.getElementById('gym-tabs');
   const names = data.per_gym.map(g => g.name);
-  tabsEl.innerHTML = names.map(n => `<button class="gym-pill" data-gym="${{n}}">${{n}}</button>`).join('');
+  tabsEl.innerHTML = names.map(n =>
+    `<button class="gym-pill" role="tab" aria-selected="false" data-gym="${{n}}">${{n}}</button>`).join('');
   tabsEl.querySelectorAll('.gym-pill').forEach(btn => {{
     btn.addEventListener('click', () => renderGymDetail(btn.dataset.gym));
   }});
-  if (names.length) renderGymDetail(names[0]);
+  if (names.length) renderGymDetail(selectedGym && names.includes(selectedGym) ? selectedGym : names[0]);
 }}
 
 function renderAll() {{
@@ -727,10 +899,19 @@ function renderAll() {{
 
 document.querySelectorAll('.tab-btn').forEach(btn => {{
   btn.addEventListener('click', () => {{
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => b.setAttribute('aria-selected', 'false'));
+    document.querySelectorAll('main > .tab-panel').forEach(p => p.hidden = true);
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('tab-' + btn.dataset.tab).hidden = false;
+  }});
+}});
+
+document.querySelectorAll('.subtab-btn').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    document.querySelectorAll('.subtab-btn').forEach(b => b.setAttribute('aria-selected', 'false'));
+    document.querySelectorAll('.subtab-panel').forEach(p => p.hidden = true);
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('subtab-' + btn.dataset.subtab).hidden = false;
   }});
 }});
 

@@ -116,10 +116,22 @@ with two tabs:
   15-min resolution), day-of-week pattern, week-over-week trend,
   busiest/quietest/most-variable gym rankings, and a full per-gym stats
   table.
-- **By Gym**: click any gym (horizontally scrollable pill tabs) to see
-  its own day-trend and day-of-week charts, stats, and a "predicted
-  crowd right now" card based on the historical average for the current
-  SGT day-of-week + hour.
+- **By Gym**: click any gym (horizontally scrollable pill tabs), then
+  choose a sub-tab:
+  - **Charts**: that gym's own day-trend and day-of-week charts, stats,
+    and a "predicted crowd right now" card.
+  - **Best Time to Visit**: the least-crowded upcoming 15-min slot for
+    that gym today (same weekday's historical pattern, filtered to times
+    still ahead of now), falling back to tomorrow if today's window has
+    passed, plus 3 runner-up times.
+
+Design/accessibility pass: semantic landmarks and ARIA roles on both tab
+systems (`role="tablist"/"tab"/"tabpanel"`, `aria-selected`), a visible
+focus ring on all interactive elements, right-aligned tabular numbers,
+percentages and thousands separators everywhere a raw number was shown
+before, chart `aria-label`s and a text caption summarizing each chart's
+busiest/quietest point, and a hidden `<caption>` on the data table for
+screen readers.
 
 All times are displayed in Singapore time (SGT, UTC+8) even though
 `data/crowd_log.csv` stores UTC — SGT is what matters for opening hours
