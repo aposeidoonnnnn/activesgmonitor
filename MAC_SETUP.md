@@ -4,9 +4,12 @@ Use this as a reliable fallback since GitHub Actions' `schedule` cron has
 turned out to be intermittent on this account (fired once, then went
 silent for hours — see README/session notes). launchd is used instead of
 cron because it can wake a sleeping Mac and reliably restarts the job if
-it dies. This runs independently of GitHub Actions — both can keep running
-in parallel, and their CSVs can be merged later (same schema, just
-concatenate and de-duplicate by timestamp+gym_name).
+it dies. This runs independently of GitHub Actions.
+
+**`scrape.py` now auto-commits and pushes after every run** (see "Auto-push
+to GitHub" below), so the website reflects your Mac's data directly instead
+of needing a manual CSV merge. If you set this up before that change, run
+`git pull` in your clone to get the updated script.
 
 ## 0. Prerequisites
 
@@ -42,6 +45,41 @@ source .venv/bin/activate
 python scrape.py
 tail data/crowd_log.csv
 ```
+
+## 1.5 Auto-push to GitHub
+
+Every run now does `git add data/ debug/`, commits if there's anything new,
+and pushes to your current branch — with a pull-rebase-and-retry loop (up
+to 4 attempts) in case the Mac and GitHub Actions both wrote around the
+same time. This needs your Mac's git to already be able to push to the
+repo without a prompt:
+
+- **HTTPS**: make sure `git push` doesn't ask for a username/password each
+  time — set up a [credential helper](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git)
+  (macOS: `git config --global credential.helper osxkeychain`, then push
+  once manually and enter a personal access token when prompted; it's
+  cached after that).
+- **SSH**: if you cloned via `git@github.com:...`, this just works as long
+  as your SSH key is loaded (`ssh-add -l` to check).
+
+If a push ever fails (offline, auth expired, conflict that couldn't
+rebase), it's logged as a `WARN` in `data/run_log.txt` — the scrape itself
+still succeeds and the data is safe in your local `data/crowd_log.csv`,
+it just didn't reach GitHub that run. Check that log occasionally.
+
+**To disable auto-push** (keep data local-only, back to the old
+behavior): add an environment variable to the launchd plist —
+
+```xml
+<key>EnvironmentVariables</key>
+<dict>
+    <key>ACTIVESG_NO_PUSH</key>
+    <string>1</string>
+</dict>
+```
+
+(as a sibling key to `ProgramArguments` etc.), then `launchctl unload` and
+`launchctl load` the plist again to pick it up.
 
 ## 2. Install the launchd job
 
@@ -497,4 +535,5 @@ launchctl unload ~/Library/LaunchAgents/com.user.activesgmonitor.plist
 rm ~/Library/LaunchAgents/com.user.activesgmonitor.plist
 ```
 
-Your data stays in `data/crowd_log.csv` — nothing else needs cleanup.
+Your data stays in `data/crowd_log.csv`, and everything collected has
+already been pushed to GitHub along the way — nothing else needs cleanup.

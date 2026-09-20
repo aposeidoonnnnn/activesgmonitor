@@ -455,34 +455,41 @@ def render_website(data: dict) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Crowd levels at ActiveSG gyms across Singapore, updated from real scraped data.">
 <title>ActiveSG Gym Crowd Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="chart.umd.js"></script>
 <style>
   :root {{
     color-scheme: dark;
-    --bg: #0b0d12;
-    --card-bg: #161a22;
-    --card-bg-raised: #1a1f29;
-    --border: #2a2f3d;
-    --text: #f1f3f5;
-    --text-muted: #a7aebb;
-    --text-dim: #7d8492;
-    --accent: #6c9bff;
-    --accent-strong: #4f7fe8;
-    --good: #4ade80;
-    --warn: #fbbf24;
-    --focus: #8ab4ff;
+    --bg: #0B0E14;
+    --card-bg: #12161F;
+    --card-bg-raised: #171C27;
+    --border: #242A38;
+    --text: #EDEFF3;
+    --text-muted: #8B93A3;
+    --text-dim: #5C6478;
+    --accent: #2DD4BF;
+    --accent-strong: #0D9488;
+    --good: #34D399;
+    --warn: #FBBF24;
+    --busy: #F87171;
+    --focus: #5EEAD4;
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }}
   * {{ box-sizing: border-box; }}
   body {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-body);
     max-width: 1120px; margin: 0 auto; padding: 32px 20px 72px;
     background: var(--bg); color: var(--text); line-height: 1.5; font-size: 16px;
   }}
-  h1 {{ font-size: 1.75rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }}
-  h2 {{ font-size: 1.2rem; font-weight: 600; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }}
-  h3 {{ font-size: 1rem; font-weight: 600; margin: 0 0 10px; color: var(--text); }}
+  h1 {{ font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }}
+  h2 {{ font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }}
+  h3 {{ font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 10px; color: var(--text); }}
   p {{ margin: 0; }}
   .sub {{ color: var(--text-muted); margin-bottom: 4px; font-size: 0.95rem; }}
+  .freshness-dot {{ width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }}
   .visually-hidden {{
     position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
@@ -498,7 +505,7 @@ def render_website(data: dict) -> str:
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
   }}
   .card .label {{ color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }}
-  .card .value {{ font-size: 1.75rem; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }}
+  .card .value {{ font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }}
 
   section {{ margin-bottom: 44px; }}
   .chart-wrap {{ background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }}
@@ -556,19 +563,19 @@ def render_website(data: dict) -> str:
   .subtab-panel[hidden] {{ display: none; }}
 
   .predict-card {{
-    background: linear-gradient(135deg, #1c2740, #161a22); border: 1px solid #2f3c5c;
+    background: linear-gradient(135deg, #132A28, #12161F); border: 1px solid #1E4A44;
     border-radius: 12px; padding: 22px; margin-bottom: 20px;
   }}
   .predict-card .label {{ color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }}
-  .predict-card .value {{ font-size: 2.1rem; font-weight: 700; margin-top: 8px; font-variant-numeric: tabular-nums; }}
+  .predict-card .value {{ font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; margin-top: 8px; font-variant-numeric: tabular-nums; }}
   .predict-card .note {{ color: var(--text-dim); font-size: 0.85rem; margin-top: 8px; }}
 
   .best-time-hero {{
-    background: linear-gradient(135deg, #16321f, #161a22); border: 1px solid #2a4b34;
+    background: linear-gradient(135deg, #123B30, #12161F); border: 1px solid #21493B;
     border-radius: 12px; padding: 24px; margin-bottom: 20px;
   }}
   .best-time-hero .label {{ color: var(--good); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }}
-  .best-time-hero .value {{ font-size: 2.3rem; font-weight: 700; margin-top: 8px; }}
+  .best-time-hero .value {{ font-family: var(--font-display); font-size: 2.3rem; font-weight: 700; margin-top: 8px; }}
   .best-time-hero .value .pct {{ color: var(--text-muted); font-size: 1.3rem; font-weight: 600; margin-left: 10px; }}
   .best-time-hero .note {{ color: var(--text-dim); font-size: 0.85rem; margin-top: 10px; }}
   .alt-slots {{ margin-top: 18px; }}
@@ -582,6 +589,7 @@ def render_website(data: dict) -> str:
 <body>
 <h1>ActiveSG Gym Crowd Dashboard</h1>
 <p class="sub" id="subtitle">Loading…</p>
+<p class="sub" id="freshness" role="status" style="display:flex; align-items:center; gap:8px; font-size:0.85rem;"></p>
 <p class="sub" id="fetch-status" style="font-size:0.8rem;" role="status"></p>
 
 <nav class="tabs" role="tablist" aria-label="Dashboard sections">
@@ -678,18 +686,58 @@ const DAY_NAMES_SUN_FIRST = ['Sunday','Monday','Tuesday','Wednesday','Thursday',
 
 function fmtPct(v, digits = 1) {{ return v === null || v === undefined ? 'n/a' : v.toFixed(digits) + '%'; }}
 function fmtNum(v) {{ return v === null || v === undefined ? 'n/a' : Number(v).toLocaleString('en-US'); }}
+function crowdColor(v) {{
+  if (v === null || v === undefined) return 'var(--text)';
+  if (v < 35) return 'var(--good)';
+  if (v < 55) return 'var(--warn)';
+  return 'var(--busy)';
+}}
 function hourLabel(h) {{ return h === null || h === undefined ? 'n/a' : String(h).padStart(2, '0') + ':00'; }}
 function destroyChart(id) {{ if (charts[id]) {{ charts[id].destroy(); delete charts[id]; }} }}
 function nowSgt() {{ return new Date(new Date().toLocaleString('en-US', {{ timeZone: 'Asia/Singapore' }})); }}
 
+function renderFreshness() {{
+  const el = document.getElementById('freshness');
+  if (!data.has_data || !data.span_end) {{ el.innerHTML = ''; return; }}
+
+  const lastTs = new Date(data.span_end);
+  const diffMin = Math.max(0, Math.round((new Date() - lastTs) / 60000));
+  const nowSgtTime = nowSgt();
+  const minutesOfDay = nowSgtTime.getHours() * 60 + nowSgtTime.getMinutes();
+  const withinOperatingHours = minutesOfDay >= 7 * 60 && minutesOfDay <= 21 * 60 + 45;
+
+  const ageLabel = diffMin < 1 ? 'just now'
+    : diffMin < 60 ? `${{diffMin}} min ago`
+    : diffMin < 1440 ? `${{Math.floor(diffMin / 60)}}h ago`
+    : `${{Math.floor(diffMin / 1440)}}d ago`;
+
+  let dotColor, text;
+  if (withinOperatingHours && diffMin > 60) {{
+    dotColor = 'var(--busy)';
+    text = `Updated ${{ageLabel}} — data collection may have stopped`;
+  }} else if (withinOperatingHours && diffMin > 20) {{
+    dotColor = 'var(--warn)';
+    text = `Updated ${{ageLabel}} — may be running behind`;
+  }} else if (withinOperatingHours) {{
+    dotColor = 'var(--good)';
+    text = `Updated ${{ageLabel}}`;
+  }} else {{
+    dotColor = 'var(--text-dim)';
+    text = `Updated ${{ageLabel}} (outside opening hours — next update ~7:00 SGT)`;
+  }}
+  el.innerHTML = `<span class="freshness-dot" style="background:${{dotColor}};"></span><span>${{text}}</span>`;
+}}
+
 function renderOverview() {{
   if (!data.has_data) {{
     document.getElementById('subtitle').textContent = 'No data collected yet.';
+    document.getElementById('freshness').innerHTML = '';
     return;
   }}
   document.getElementById('subtitle').textContent =
     `${{data.span_start}} to ${{data.span_end}} (SGT) — ${{fmtNum(data.total_readings)}} readings across ${{data.gym_count}} gyms`
     + (data.excluded_all_zero_events ? ` (${{data.excluded_all_zero_events}} closed-state events excluded)` : '');
+  renderFreshness();
 
   const cards = [
     ['Weekday average', fmtPct(data.weekday_average)],
@@ -707,7 +755,7 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: gyms.map(g => g.name),
-      datasets: [{{ label: 'Average crowd %', data: gyms.map(g => g.average), backgroundColor: '#6c9bff', borderRadius: 4 }}]
+      datasets: [{{ label: 'Average crowd %', data: gyms.map(g => g.average), backgroundColor: '#2DD4BF', borderRadius: 4 }}]
     }},
     options: {{
       indexAxis: 'y', responsive: true,
@@ -726,7 +774,7 @@ function renderOverview() {{
     data: {{
       labels: data.day_pattern.map(s => s.label),
       datasets: [{{ label: 'Avg crowd %', data: data.day_pattern.map(s => s.average),
-                   borderColor: '#f2a65a', backgroundColor: 'rgba(242,166,90,0.15)', fill: true, tension: 0.3, pointRadius: 0 }}]
+                   borderColor: '#2DD4BF', backgroundColor: 'rgba(45,212,191,0.15)', fill: true, tension: 0.3, pointRadius: 0 }}]
     }},
     options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
                 scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
@@ -737,7 +785,7 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: data.day_of_week_pattern.map(d => d.day.slice(0,3)),
-      datasets: [{{ label: 'Avg crowd %', data: data.day_of_week_pattern.map(d => d.average), backgroundColor: '#4ade80', borderRadius: 4 }}]
+      datasets: [{{ label: 'Avg crowd %', data: data.day_of_week_pattern.map(d => d.average), backgroundColor: '#34D399', borderRadius: 4 }}]
     }},
     options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
                 scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
@@ -748,7 +796,7 @@ function renderOverview() {{
     type: 'bar',
     data: {{
       labels: data.weekly_trend.map(w => w.week),
-      datasets: [{{ label: 'Avg crowd %', data: data.weekly_trend.map(w => w.average), backgroundColor: '#c17ee0', borderRadius: 4 }}]
+      datasets: [{{ label: 'Avg crowd %', data: data.weekly_trend.map(w => w.average), backgroundColor: '#818CF8', borderRadius: 4 }}]
     }},
     options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
                 scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}
@@ -813,7 +861,7 @@ function renderGymCharts(gymName) {{
   container.innerHTML = `
     <div class="predict-card">
       <div class="label">Predicted crowd right now</div>
-      <div class="value">${{pred && pred.value !== null ? fmtPct(pred.value) : 'n/a — no historical data for this day/hour yet'}}</div>
+      <div class="value" style="color:${{crowdColor(pred ? pred.value : null)}};">${{pred && pred.value !== null ? fmtPct(pred.value) : 'n/a — no historical data for this day/hour yet'}}</div>
       <div class="note">${{pred ? `Based on the historical average for ${{pred.dayName}} ${{String(pred.hour).padStart(2,'0')}}:00 SGT. Not a live reading.` : ''}}</div>
     </div>
     <div class="grid">
@@ -849,7 +897,7 @@ function renderGymCharts(gymName) {{
     type: 'bar',
     data: {{
       labels: dowPattern.map(d => d.day.slice(0,3)),
-      datasets: [{{ label: 'Avg crowd %', data: dowPattern.map(d => d.average), backgroundColor: '#4ade80', borderRadius: 4 }}]
+      datasets: [{{ label: 'Avg crowd %', data: dowPattern.map(d => d.average), backgroundColor: '#34D399', borderRadius: 4 }}]
     }},
     options: {{ plugins: {{ legend: {{ display: false }}, tooltip: {{ callbacks: {{ label: c => c.parsed.y.toFixed(1) + '%' }} }} }},
                 scales: {{ y: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Average crowd %' }} }} }} }}

@@ -18,7 +18,9 @@ to debug/ so selectors can be refined against real data. Debug files are
 overwritten each time (not accumulated) to avoid bloating the repo.
 """
 import csv
+import os
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -207,6 +209,52 @@ def append_to_csv(rows: list[tuple[str, str]]) -> None:
             writer.writerow([timestamp, name, value])
 
 
+def git_sync() -> None:
+    """Commit and push new data so the site reflects this run without a
+    manual merge. Best-effort: any failure is logged, never raised -- the
+    scraped data is already saved locally either way. Disable by setting
+    ACTIVESG_NO_PUSH=1 in the environment (e.g. in the launchd plist)."""
+    if os.environ.get("ACTIVESG_NO_PUSH"):
+        return
+
+    def run(*args: str, timeout: int = 30) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            args, cwd=ROOT, capture_output=True, text=True, timeout=timeout
+        )
+
+    try:
+        branch_result = run("git", "rev-parse", "--abbrev-ref", "HEAD")
+        branch = branch_result.stdout.strip()
+        if not branch or branch == "HEAD":
+            log("WARN git_sync: not on a branch (detached HEAD?), skipping push")
+            return
+
+        run("git", "add", "data/", "debug/")
+        diff = run("git", "diff", "--cached", "--quiet")
+        if diff.returncode == 0:
+            return  # nothing to commit
+
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        commit = run("git", "commit", "-m", f"Scrape crowd data (Mac) {timestamp}")
+        if commit.returncode != 0:
+            log(f"WARN git_sync: commit failed: {commit.stderr.strip()}")
+            return
+
+        for attempt in range(1, 5):
+            pull = run("git", "pull", "--rebase", "origin", branch, timeout=60)
+            if pull.returncode != 0:
+                log(f"WARN git_sync: pull --rebase failed (attempt {attempt}): {pull.stderr.strip()}")
+                continue
+            push = run("git", "push", "origin", f"HEAD:{branch}", timeout=60)
+            if push.returncode == 0:
+                log("git_sync: pushed successfully")
+                return
+            log(f"WARN git_sync: push failed (attempt {attempt}): {push.stderr.strip()}")
+        log("WARN git_sync: gave up after 4 attempts; data is committed locally but not pushed")
+    except Exception as exc:  # noqa: BLE001
+        log(f"WARN git_sync: unexpected error during git sync: {exc}")
+
+
 def main() -> int:
     rows = scrape()
     if not rows:
@@ -214,6 +262,7 @@ def main() -> int:
         return 1
     append_to_csv(rows)
     log(f"Appended {len(rows)} rows to {CSV_PATH}")
+    git_sync()
     return 0
 
 
