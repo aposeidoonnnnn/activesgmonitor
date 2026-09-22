@@ -258,3 +258,19 @@ to set your account's default identity.
 Omit --global to set the identity only in this repository.
 
 fatal: empty ident name (for <runner@runnervmlun5p.zffkd2uo0zjudbjxkls2vkaceb.bx.internal.cloudapp.net>) not allowed
+2026-09-22T12:05:13.088963+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-22T12:05:22.768230+00:00 SUCCESS extracted 30 gyms
+2026-09-22T12:05:22.805273+00:00 Appended 30 rows to /home/runner/work/activesgmonitor/activesgmonitor/data/crowd_log.csv
+2026-09-22T12:05:22.844273+00:00 WARN git_sync: commit failed: Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmlun5p.gwsxv2ois3gero3osach3nzdnc.xx.internal.cloudapp.net>) not allowed
