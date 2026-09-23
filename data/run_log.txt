@@ -287,3 +287,19 @@ fatal: empty ident name (for <runner@runnervmlun5p.gwsxv2ois3gero3osach3nzdnc.xx
 2026-09-23T06:27:11.893958+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
 2026-09-23T06:27:21.977521+00:00 BLOCKED Cloudflare challenge still present, giving up this run
 2026-09-23T06:27:22.022077+00:00 No rows scraped this run; CSV not updated
+2026-09-23T12:00:35.130346+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-23T12:00:45.381459+00:00 SUCCESS extracted 30 gyms
+2026-09-23T12:00:45.423694+00:00 Appended 30 rows to /home/runner/work/activesgmonitor/activesgmonitor/data/crowd_log.csv
+2026-09-23T12:00:45.465762+00:00 WARN git_sync: commit failed: Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <runner@runnervmlun5p.m4k4wa1psnoergown2ffm0edlg.yx.internal.cloudapp.net>) not allowed
