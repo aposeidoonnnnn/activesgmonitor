@@ -554,3 +554,8 @@ to set your account's default identity.
 Omit --global to set the identity only in this repository.
 
 fatal: empty ident name (for <runner@runnervmtr4k5.bkhibpbvnskenjep0uqn2emqoe.gx.internal.cloudapp.net>) not allowed
+2026-09-30T14:58:16.600801+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-09-30T14:58:46.811262+00:00 WARN networkidle wait timed out, continuing anyway
+2026-09-30T14:58:46.816475+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
+2026-09-30T14:58:56.896147+00:00 BLOCKED Cloudflare challenge still present, giving up this run
+2026-09-30T14:58:56.934881+00:00 No rows scraped this run; CSV not updated
