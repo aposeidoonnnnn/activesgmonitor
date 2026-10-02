@@ -38,18 +38,17 @@ minutes and logs them to `data/crowd_log.csv`.
   source in practice — GitHub Actions' `schedule` trigger has fired far
   less often than every 15 minutes despite correct YAML/permissions/
   billing (see commit history around 2026-09-10/11 for the debugging).
-- **Known data quality caveat**: every gym shows a minimum reading of
-  0%. Most of this is real — gyms are genuinely near-empty right at 7am
-  opening and in the last ~45 min before 10pm closing, and this pattern
-  repeats across many different gyms on many different days. But three
-  specific gyms (Enabling Village, Delta, Queenstown) were flatlined at
-  exactly 0% for a full ~13-hour stretch on 2026-09-14 (a Monday) while
-  showing normal values on 2026-09-13 and 2026-09-15 — confirmed not a
-  scraper bug (the scraper faithfully recorded what the page showed),
-  but unclear whether it reflects real facility closures that day or a
-  stale reading on ActiveSG's own site. Not scrubbed from the data since
-  that couldn't be confirmed either way — worth knowing about if you see
-  a gym's stats look off.
+- **Known data quality caveat**: the raw CSV contains many 0% readings.
+  Some are genuine "not open yet / closed" states at 7am opening and after
+  closing, and three specific gyms (Enabling Village, Delta, Queenstown)
+  were flatlined at exactly 0% for a full ~13-hour stretch on 2026-09-14
+  (a Monday) while showing normal values on 2026-09-13 and 2026-09-15 —
+  confirmed not a scraper bug (the scraper faithfully recorded what the
+  page showed), but unclear whether it reflects real facility closures
+  that day or a stale reading on ActiveSG's own site. The raw CSV is left
+  untouched, but the report and dashboard now treat every individual 0%
+  reading as "gym not open / no data" and exclude it from all statistics
+  (see below).
 
 ## Files
 
@@ -137,34 +136,15 @@ screen readers.
 
 All times are displayed in Singapore time (SGT, UTC+8) even though
 `data/crowd_log.csv` stores UTC — SGT is what matters for opening hours
-and the audience's clock. Scrape events where every single gym reads 0%
-simultaneously are excluded from the report/dashboard (treated as the
-site showing a "closed" state rather than real crowd data); partial
-near-zero readings at open/close are left in since those are genuine
-gym behavior, not an artifact.
+and the audience's clock. Two exclusions apply to the report/dashboard
+(the raw CSV is never modified):
 
-**On "live" data**: the page fetches `report_data.json` (same folder)
-on every load, so it always shows whatever data is currently committed
-to the repo rather than a stale snapshot from whenever the page was last
-generated. This is *not* a live scrape of activesg.gov.sg on page
-open — that site is Cloudflare-protected and needs a real headless
-browser to load, which a static page can't run client-side (would hit
-CORS and the same Cloudflare wall `scrape.py` exists to get around).
-The "predicted crowd" feature is a historical-pattern lookup (same
-day-of-week + hour average), not a live reading.
-
-Chart.js is vendored locally as `docs/chart.umd.js` rather than loaded
-from a CDN. It was originally CDN-loaded, but a real visitor reported a
-blank dashboard (all stat cards worked, all charts/lists/tables empty —
-the exact signature of the `Chart` global not existing, i.e. the CDN
-script failed to load, most likely blocked by a browser extension or
-network policy on their end). Vendoring it removes that whole class of
-failure for any visitor, at the cost of a ~200KB static file checked
-into the repo.
-
-**To make it a live website, enable GitHub Pages once:**
-Settings → Pages → Source: "Deploy from a branch" → Branch:
-`claude/activesg-gym-crowd-scraper-slihpx` / `/docs` → Save. It will then be
-served at `https://aposeidoonnnnn.github.io/activesgmonitor/` and update
-automatically whenever `report.yml` runs — which is within minutes of new
-data landing in `data/crowd_log.csv`, not just weekly.
+- Every individual 0% reading is dropped (treated as "gym not open / no
+  data", not an empty gym), as are scrape events where every gym reads 0%
+  at once. The count is reported as `excluded_zero_readings` in
+  `report_data.json` and in the report/dashboard text. Per-gym "min"
+  therefore no longer shows 0%.
+- The 07:00 SGT slot is never chosen as a quietest / best time to visit
+  (the gym is only just opening). It still appears in the charts, and no
+  other times are excluded. It is set by `QUIETEST_EXCLUDED_SLOT` in
+  `generate_report.py`.

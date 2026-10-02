@@ -12,7 +12,13 @@ opening hours and the audience's timezone.
 
 Scrape events where every gym simultaneously reads 0% are excluded from
 analysis (treated as "actually closed / no real data" rather than genuine
-crowd data) but left untouched in the raw CSV.
+crowd data) but left untouched in the raw CSV. Likewise every individual
+0% reading is excluded from all statistics: a 0% reading means the gym isn't
+open / has no data, not that it is genuinely empty.
+
+The 07:00 SGT slot (QUIETEST_EXCLUDED_SLOT) is never offered as the quietest
+or best time to visit -- it's just the gym opening, which would otherwise
+always "win". It is still shown in the charts.
 
 crowd_value may be either a percentage ("42%") or a level word (e.g. "Not
 Crowded", "Moderately Crowded", "Crowded", "Low", "Moderate", "High") --
@@ -57,6 +63,16 @@ LEVEL_SCALE = {
 # 15-minute buckets covering the "day trend" chart window, 7:00am-9:45pm SGT.
 DAY_PATTERN_SLOTS = [(h, m) for h in range(7, 22) for m in (0, 15, 30, 45)]
 DAY_PATTERN_SLOTS_SET = set(DAY_PATTERN_SLOTS)
+
+# (hour, minute) slot that is never a candidate for quietest / best time
+# (the gym is only just opening). Still plotted in charts. The website JS gets
+# the same value injected from here.
+QUIETEST_EXCLUDED_SLOT = (7, 0)
+
+
+def is_quietest_excluded(hour: int, minute: int) -> bool:
+    """True if a reading at hour:minute falls inside the excluded slot."""
+    return (hour, (minute // 15) * 15) == QUIETEST_EXCLUDED_SLOT
 
 
 def parse_crowd_value(raw: str) -> float | None:
@@ -104,6 +120,13 @@ def exclude_all_zero_events(rows: list[dict]) -> tuple[list[dict], int]:
 
     kept = [r for r in rows if r["timestamp"] not in excluded_ts]
     return kept, len(excluded_ts)
+
+
+def exclude_zero_readings(rows: list[dict]) -> tuple[list[dict], int]:
+    """Drop every individual 0% reading -- treated as "gym not open / no
+    data", not as a genuinely empty gym. Non-numeric rows are left alone."""
+    kept = [r for r in rows if r["crowd_value"] != 0]
+    return kept, len(rows) - len(kept)
 
 
 def linear_trend_slope(series: list[float]) -> float | None:
@@ -187,6 +210,7 @@ def dow_hour_matrix_for(entries: list[dict]) -> dict:
 
 def build_report_data(all_rows: list[dict]) -> dict:
     rows, excluded_events = exclude_all_zero_events(all_rows)
+    rows, excluded_zero_readings = exclude_zero_readings(rows)
     numeric_rows = [r for r in rows if r["crowd_value"] is not None]
 
     data: dict = {
@@ -194,6 +218,12 @@ def build_report_data(all_rows: list[dict]) -> dict:
         "total_readings": len(rows),
         "numeric_readings": len(numeric_rows),
         "excluded_all_zero_events": excluded_events,
+        "excluded_zero_readings": excluded_zero_readings,
+        "quietest_excluded_slot": {
+            "hour": QUIETEST_EXCLUDED_SLOT[0],
+            "minute": QUIETEST_EXCLUDED_SLOT[1],
+            "label": f"{QUIETEST_EXCLUDED_SLOT[0]:02d}:{QUIETEST_EXCLUDED_SLOT[1]:02d}",
+        },
     }
 
     if not rows:
@@ -236,12 +266,19 @@ def build_report_data(all_rows: list[dict]) -> dict:
         min_entry = min(nums, key=lambda e: e["crowd_value"])
 
         by_hour = defaultdict(list)
+        by_hour_quiet = defaultdict(list)  # same, minus the excluded slot
         for e in nums:
-            by_hour[e["timestamp_sgt"].hour].append(e["crowd_value"])
+            ts = e["timestamp_sgt"]
+            by_hour[ts.hour].append(e["crowd_value"])
+            if not is_quietest_excluded(ts.hour, ts.minute):
+                by_hour_quiet[ts.hour].append(e["crowd_value"])
         hour_avgs = sorted(
             ((h, statistics.mean(v)) for h, v in by_hour.items()), key=lambda x: x[1]
         )
-        quietest_hour = hour_avgs[0] if hour_avgs else None
+        quiet_hour_avgs = sorted(
+            ((h, statistics.mean(v)) for h, v in by_hour_quiet.items()), key=lambda x: x[1]
+        )
+        quietest_hour = quiet_hour_avgs[0] if quiet_hour_avgs else None
         busiest_hour = hour_avgs[-1] if hour_avgs else None
 
         per_gym.append(
@@ -288,7 +325,15 @@ def build_report_data(all_rows: list[dict]) -> dict:
         ((s["label"], s["average"]) for s in data["day_pattern"] if s["average"] is not None),
         key=lambda x: x[1],
     )
-    data["quietest_times"] = [{"label": l, "average": a} for l, a in known_slots[:3]]
+    quiet_candidates = [
+        (s["label"], s["average"]) for s in sorted(
+            (s for s in data["day_pattern"]
+             if s["average"] is not None
+             and (s["hour"], s["minute"]) != QUIETEST_EXCLUDED_SLOT),
+            key=lambda s: s["average"],
+        )
+    ]
+    data["quietest_times"] = [{"label": l, "average": a} for l, a in quiet_candidates[:3]]
     data["busiest_times"] = [{"label": l, "average": a} for l, a in known_slots[-3:][::-1]]
 
     # ---- day-of-week pattern, all gyms combined ----
@@ -357,6 +402,15 @@ def render_markdown(data: dict) -> str:
             f"\n_{data['excluded_all_zero_events']} scrape events excluded: every gym "
             "read 0% simultaneously (treated as 'closed', not real data)._"
         )
+    if data["excluded_zero_readings"]:
+        lines.append(
+            f"\n_{data['excluded_zero_readings']} individual 0% readings excluded from all "
+            "statistics (treated as 'gym not open / no data', not an empty gym)._"
+        )
+    lines.append(
+        f"\n_The {data['quietest_excluded_slot']['label']} slot is never chosen as a "
+        "quietest/best time (the gym is only just opening); other times are not excluded._"
+    )
     lines.append("")
 
     lines.append("## Per-gym summary")
@@ -448,6 +502,9 @@ def render_html(markdown_body: str) -> str:
 
 def render_website(data: dict) -> str:
     payload = json.dumps(data)
+    excluded_slot_js = json.dumps(
+        {"hour": QUIETEST_EXCLUDED_SLOT[0], "minute": QUIETEST_EXCLUDED_SLOT[1]}
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -683,6 +740,9 @@ const embeddedData = JSON.parse(document.getElementById('report-data').textConte
 let data = embeddedData;
 let charts = {{}};
 const DAY_NAMES_SUN_FIRST = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+// Slot never offered as quietest / best time (gym only just opening); still charted.
+const QUIETEST_EXCLUDED_SLOT = {excluded_slot_js};
+function isQuietestExcluded(s) {{ return s.hour === QUIETEST_EXCLUDED_SLOT.hour && s.minute === QUIETEST_EXCLUDED_SLOT.minute; }}
 
 function fmtPct(v, digits = 1) {{ return v === null || v === undefined ? 'n/a' : v.toFixed(digits) + '%'; }}
 function fmtNum(v) {{ return v === null || v === undefined ? 'n/a' : Number(v).toLocaleString('en-US'); }}
@@ -736,7 +796,8 @@ function renderOverview() {{
   }}
   document.getElementById('subtitle').textContent =
     `${{data.span_start}} to ${{data.span_end}} (SGT) — ${{fmtNum(data.total_readings)}} readings across ${{data.gym_count}} gyms`
-    + (data.excluded_all_zero_events ? ` (${{data.excluded_all_zero_events}} closed-state events excluded)` : '');
+    + (data.excluded_all_zero_events ? ` (${{data.excluded_all_zero_events}} closed-state events excluded)` : '')
+    + (data.excluded_zero_readings ? ` (${{fmtNum(data.excluded_zero_readings)}} individual 0% readings excluded as "gym not open")` : '');
   renderFreshness();
 
   const cards = [
@@ -765,7 +826,7 @@ function renderOverview() {{
   }});
 
   const busiestSlot = data.day_pattern.reduce((a, b) => (b.average !== null && (a === null || b.average > a.average)) ? b : a, null);
-  const quietestSlot = data.day_pattern.reduce((a, b) => (b.average !== null && (a === null || b.average < a.average)) ? b : a, null);
+  const quietestSlot = data.day_pattern.reduce((a, b) => (b.average !== null && !isQuietestExcluded(b) && (a === null || b.average < a.average)) ? b : a, null);
   document.getElementById('day-trend-caption').textContent =
     busiestSlot && quietestSlot ? `Busiest around ${{busiestSlot.label}} (${{fmtPct(busiestSlot.average)}}), quietest around ${{quietestSlot.label}} (${{fmtPct(quietestSlot.average)}}).` : '';
   destroyChart('dayPatternChart');
@@ -816,7 +877,11 @@ function renderOverview() {{
     <td>${{hourLabel(g.busiest_hour)}}</td><td>${{hourLabel(g.quietest_hour)}}</td>
   </tr>`).join('');
 
-  document.getElementById('footer').textContent = 'Generated ' + data.generated_at;
+  const slotLabel = String(QUIETEST_EXCLUDED_SLOT.hour).padStart(2, '0') + ':' + String(QUIETEST_EXCLUDED_SLOT.minute).padStart(2, '0');
+  document.getElementById('footer').textContent = 'Generated ' + data.generated_at
+    + '. Individual 0% readings are excluded from all statistics (treated as "gym not open / no data")'
+    + (data.excluded_zero_readings ? ` — ${{fmtNum(data.excluded_zero_readings)}} excluded` : '')
+    + `. The ${{slotLabel}} slot is never suggested as the quietest/best time (gym just opening); it still appears in the charts.`;
 }}
 
 let selectedGym = null;
@@ -838,12 +903,12 @@ function bestTimeToVisit(gymName) {{
   const dayName = DAY_NAMES_SUN_FIRST[now.getDay()];
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
-  const todaySlots = (patternByDow[dayName] || []).filter(s => s.average !== null);
+  const todaySlots = (patternByDow[dayName] || []).filter(s => s.average !== null && !isQuietestExcluded(s));
   let source = todaySlots.filter(s => (s.hour * 60 + s.minute) >= nowMinutes);
   let when = 'later today';
   if (!source.length) {{
     const tomorrowName = DAY_NAMES_SUN_FIRST[(now.getDay() + 1) % 7];
-    source = (patternByDow[tomorrowName] || []).filter(s => s.average !== null);
+    source = (patternByDow[tomorrowName] || []).filter(s => s.average !== null && !isQuietestExcluded(s));
     when = 'tomorrow';
   }}
   if (!source.length) return null;
