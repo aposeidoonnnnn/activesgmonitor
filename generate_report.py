@@ -257,7 +257,7 @@ def build_report_data(all_rows: list[dict]) -> dict:
             per_gym.append(
                 {"name": gym, "count": len(entries), "average": None, "peak": None,
                  "peak_time": None, "min": None, "min_time": None, "stdev": None,
-                 "busiest_hour": None, "quietest_hour": None}
+                 "busiest_time": None, "quietest_time": None}
             )
             continue
 
@@ -265,21 +265,11 @@ def build_report_data(all_rows: list[dict]) -> dict:
         peak_entry = max(nums, key=lambda e: e["crowd_value"])
         min_entry = min(nums, key=lambda e: e["crowd_value"])
 
-        by_hour = defaultdict(list)
-        by_hour_quiet = defaultdict(list)  # same, minus the excluded slot
-        for e in nums:
-            ts = e["timestamp_sgt"]
-            by_hour[ts.hour].append(e["crowd_value"])
-            if not is_quietest_excluded(ts.hour, ts.minute):
-                by_hour_quiet[ts.hour].append(e["crowd_value"])
-        hour_avgs = sorted(
-            ((h, statistics.mean(v)) for h, v in by_hour.items()), key=lambda x: x[1]
-        )
-        quiet_hour_avgs = sorted(
-            ((h, statistics.mean(v)) for h, v in by_hour_quiet.items()), key=lambda x: x[1]
-        )
-        quietest_hour = quiet_hour_avgs[0] if quiet_hour_avgs else None
-        busiest_hour = hour_avgs[-1] if hour_avgs else None
+        # busiest / quietest as a 15-min slot; the excluded slot is never "quietest"
+        slot_avgs = [sl for sl in per_gym_day_pattern[gym] if sl["average"] is not None]
+        quiet_slots = [sl for sl in slot_avgs if (sl["hour"], sl["minute"]) != QUIETEST_EXCLUDED_SLOT]
+        quietest_slot = min(quiet_slots, key=lambda sl: sl["average"]) if quiet_slots else None
+        busiest_slot = max(slot_avgs, key=lambda sl: sl["average"]) if slot_avgs else None
 
         per_gym.append(
             {
@@ -291,10 +281,10 @@ def build_report_data(all_rows: list[dict]) -> dict:
                 "min": min_entry["crowd_value"],
                 "min_time": min_entry["timestamp_sgt"].isoformat(),
                 "stdev": statistics.pstdev(values) if len(values) > 1 else 0.0,
-                "busiest_hour": busiest_hour[0] if busiest_hour else None,
-                "busiest_hour_avg": busiest_hour[1] if busiest_hour else None,
-                "quietest_hour": quietest_hour[0] if quietest_hour else None,
-                "quietest_hour_avg": quietest_hour[1] if quietest_hour else None,
+                "busiest_time": busiest_slot["label"] if busiest_slot else None,
+                "busiest_time_avg": busiest_slot["average"] if busiest_slot else None,
+                "quietest_time": quietest_slot["label"] if quietest_slot else None,
+                "quietest_time_avg": quietest_slot["average"] if quietest_slot else None,
             }
         )
     data["per_gym"] = per_gym
@@ -415,13 +405,13 @@ def render_markdown(data: dict) -> str:
 
     lines.append("## Per-gym summary")
     lines.append("")
-    lines.append("| Gym | Readings | Avg | Peak | Min | Std dev | Busiest hour | Quietest hour |")
+    lines.append("| Gym | Readings | Avg | Peak | Min | Std dev | Busiest time | Quietest time |")
     lines.append("|---|---|---|---|---|---|---|---|")
     for g in data["per_gym"]:
         def fmt(v):
             return f"{v:.1f}" if v is not None else "n/a"
-        busiest = f"{g['busiest_hour']:02d}:00" if g.get("busiest_hour") is not None else "n/a"
-        quietest = f"{g['quietest_hour']:02d}:00" if g.get("quietest_hour") is not None else "n/a"
+        busiest = g.get("busiest_time") or "n/a"
+        quietest = g.get("quietest_time") or "n/a"
         lines.append(
             f"| {g['name']} | {g['count']} | {fmt(g['average'])} | {fmt(g['peak'])} | "
             f"{fmt(g['min'])} | {fmt(g['stdev'])} | {busiest} | {quietest} |"
@@ -703,11 +693,11 @@ def render_website(data: dict) -> str:
   <h2 id="h-allgyms">All gyms</h2>
   <div class="table-scroll">
   <table id="gym-table">
-    <caption class="visually-hidden">Full statistics for every gym: readings, average, peak, minimum, standard deviation, busiest and quietest hour</caption>
+    <caption class="visually-hidden">Full statistics for every gym: readings, average, peak, minimum, standard deviation, busiest and quietest time</caption>
     <thead>
       <tr><th scope="col">Gym</th><th scope="col" class="num">Readings</th><th scope="col" class="num">Avg</th>
           <th scope="col" class="num">Peak</th><th scope="col" class="num">Min</th>
-          <th scope="col" class="num">Std dev</th><th scope="col">Busiest hour</th><th scope="col">Quietest hour</th></tr>
+          <th scope="col" class="num">Std dev</th><th scope="col">Busiest time</th><th scope="col">Quietest time</th></tr>
     </thead>
     <tbody></tbody>
   </table>
@@ -752,7 +742,7 @@ function crowdColor(v) {{
   if (v < 55) return 'var(--warn)';
   return 'var(--busy)';
 }}
-function hourLabel(h) {{ return h === null || h === undefined ? 'n/a' : String(h).padStart(2, '0') + ':00'; }}
+function timeLabel(t) {{ return t === null || t === undefined ? 'n/a' : t; }}
 function destroyChart(id) {{ if (charts[id]) {{ charts[id].destroy(); delete charts[id]; }} }}
 function nowSgt() {{ return new Date(new Date().toLocaleString('en-US', {{ timeZone: 'Asia/Singapore' }})); }}
 
@@ -874,7 +864,7 @@ function renderOverview() {{
   tbody.innerHTML = data.per_gym.map(g => `<tr>
     <td>${{g.name}}</td><td class="num">${{fmtNum(g.count)}}</td><td class="num">${{fmtPct(g.average)}}</td><td class="num">${{fmtPct(g.peak)}}</td>
     <td class="num">${{fmtPct(g.min)}}</td><td class="num">${{fmtPct(g.stdev)}}</td>
-    <td>${{hourLabel(g.busiest_hour)}}</td><td>${{hourLabel(g.quietest_hour)}}</td>
+    <td>${{timeLabel(g.busiest_time)}}</td><td>${{timeLabel(g.quietest_time)}}</td>
   </tr>`).join('');
 
   const slotLabel = String(QUIETEST_EXCLUDED_SLOT.hour).padStart(2, '0') + ':' + String(QUIETEST_EXCLUDED_SLOT.minute).padStart(2, '0');

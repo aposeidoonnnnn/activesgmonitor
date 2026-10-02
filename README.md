@@ -22,7 +22,7 @@ minutes and logs them to `data/crowd_log.csv`.
   run's 60 raw rows were cleaned to 30 unique rows in this commit.
 - `generate_report.py` has been tested against real collected data.
   Analysis includes per-gym average/peak/min/variability, busiest and
-  quietest hour per gym, a 24-hour crowd profile, weekday vs weekend
+  quietest 15-min time per gym, a 24-hour crowd profile, weekday vs weekend
   comparison, busiest/quietest/most-variable gym rankings, and daily +
   week-over-week trend with direction.
 - **Dashboard website confirmed rendering correctly** — verified with a
