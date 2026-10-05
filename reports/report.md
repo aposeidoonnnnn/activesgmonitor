@@ -1,8 +1,8 @@
 # ActiveSG Gym Crowd Report
 
-Data range (SGT): **2026-09-10T16:20:35.729033+08:00** to **2026-10-02T17:30:13.732787+08:00** (34390 readings across 30 gyms)
+Data range (SGT): **2026-09-10T16:20:35.729033+08:00** to **2026-10-05T15:43:52.119612+08:00** (34506 readings across 30 gyms)
 
-_1220 individual 0% readings excluded from all statistics (treated as 'gym not open / no data', not an empty gym)._
+_1224 individual 0% readings excluded from all statistics (treated as 'gym not open / no data', not an empty gym)._
 
 _The 07:00 slot is never chosen as a quietest/best time (the gym is only just opening); other times are not excluded._
 
@@ -10,41 +10,41 @@ _The 07:00 slot is never chosen as a quietest/best time (the gym is only just op
 
 | Gym | Readings | Avg | Peak | Min | Std dev | Busiest time | Quietest time |
 |---|---|---|---|---|---|---|---|
-| ActiveSG Gym @ Ang Mo Kio Community Centre | 1169 | 38.8 | 75.0 | 7.0 | 10.8 | 20:00 | 07:15 |
-| ActiveSG Gym @ Enabling Village | 1103 | 27.0 | 71.0 | 7.0 | 10.1 | 19:30 | 07:15 |
-| ActiveSG Gym @ Fernvale Square | 1167 | 47.4 | 87.0 | 10.0 | 12.8 | 20:45 | 07:15 |
-| ActiveSG Gym @ Serangoon Central | 1167 | 50.5 | 100.0 | 10.0 | 16.7 | 19:30 | 21:45 |
-| ActiveSG Gym @ Toa Payoh | 1170 | 48.6 | 100.0 | 1.0 | 13.4 | 19:30 | 07:15 |
-| ActiveSG Gym @ Toa Payoh West Community Centre | 1168 | 25.7 | 64.0 | 1.0 | 9.6 | 20:00 | 07:15 |
-| ActiveSG Hockey Village @ Boon Lay Gym | 1102 | 25.4 | 48.0 | 2.0 | 8.0 | 20:00 | 07:15 |
-| ActiveSG Sport Park @ Teck Ghee ActiveSG Gym | 1164 | 33.4 | 77.0 | 6.0 | 10.1 | 20:00 | 07:15 |
-| Bishan ActiveSG Gym | 1169 | 43.8 | 96.0 | 6.0 | 16.0 | 20:00 | 07:15 |
-| Bukit Batok ActiveSG Gym | 1134 | 53.6 | 98.0 | 10.0 | 15.4 | 20:00 | 07:15 |
-| Bukit Canberra ActiveSG Gym | 1181 | 46.5 | 89.0 | 2.0 | 15.7 | 20:00 | 07:15 |
-| Bukit Gombak ActiveSG Gym | 1152 | 52.9 | 93.0 | 11.0 | 16.3 | 19:30 | 07:15 |
-| Choa Chu Kang ActiveSG Gym | 1150 | 52.0 | 93.0 | 12.0 | 13.6 | 20:15 | 07:15 |
-| Clementi ActiveSG Gym | 1099 | 56.3 | 96.0 | 13.0 | 16.0 | 20:00 | 07:15 |
-| Delta ActiveSG Gym | 1109 | 41.8 | 99.0 | 1.0 | 13.5 | 19:30 | 07:15 |
-| Heartbeat @ Bedok ActiveSG Gym | 1167 | 45.8 | 76.0 | 10.0 | 11.6 | 19:45 | 07:15 |
-| Hougang ActiveSG Gym | 1166 | 42.8 | 94.0 | 2.0 | 13.6 | 20:00 | 07:15 |
-| Jalan Besar ActiveSG Gym | 1165 | 52.6 | 100.0 | 1.0 | 15.9 | 19:00 | 07:15 |
-| Jurong East ActiveSG Gym | 1162 | 33.4 | 68.0 | 3.0 | 11.7 | 19:30 | 07:15 |
-| Jurong Lake Gardens ActiveSG Gym | 1167 | 26.4 | 63.0 | 2.0 | 8.6 | 20:00 | 07:15 |
-| Jurong West ActiveSG Gym | 1100 | 26.2 | 67.0 | 1.0 | 8.2 | 19:30 | 07:15 |
-| Katong ActiveSG Gym | 1162 | 46.0 | 97.0 | 3.0 | 12.8 | 19:00 | 07:15 |
-| Pasir Ris ActiveSG Gym | 1170 | 39.8 | 85.0 | 4.0 | 11.3 | 20:00 | 07:15 |
-| Queenstown ActiveSG Gym | 1103 | 40.3 | 92.0 | 4.0 | 13.3 | 19:30 | 07:15 |
-| Sengkang ActiveSG Gym | 1166 | 63.4 | 100.0 | 1.0 | 15.5 | 20:00 | 07:15 |
-| Senja-Cashew ActiveSG Gym | 1157 | 60.5 | 100.0 | 11.0 | 14.2 | 20:00 | 07:15 |
-| Tampines ActiveSG Gym | 1165 | 52.4 | 88.0 | 8.0 | 12.4 | 19:30 | 07:15 |
-| Woodlands ActiveSG Gym | 1160 | 39.9 | 86.0 | 1.0 | 12.3 | 19:45 | 07:15 |
-| Yio Chu Kang ActiveSG Gym | 1110 | 35.3 | 80.0 | 2.0 | 11.6 | 19:30 | 07:15 |
+| ActiveSG Gym @ Ang Mo Kio Community Centre | 1173 | 38.8 | 75.0 | 7.0 | 10.8 | 20:00 | 07:15 |
+| ActiveSG Gym @ Enabling Village | 1107 | 27.0 | 71.0 | 7.0 | 10.1 | 19:30 | 07:15 |
+| ActiveSG Gym @ Fernvale Square | 1171 | 47.4 | 87.0 | 10.0 | 12.8 | 20:45 | 07:15 |
+| ActiveSG Gym @ Serangoon Central | 1171 | 50.5 | 100.0 | 10.0 | 16.7 | 19:30 | 21:45 |
+| ActiveSG Gym @ Toa Payoh | 1174 | 48.6 | 100.0 | 1.0 | 13.4 | 19:30 | 07:15 |
+| ActiveSG Gym @ Toa Payoh West Community Centre | 1172 | 25.7 | 64.0 | 1.0 | 9.6 | 20:00 | 07:15 |
+| ActiveSG Hockey Village @ Boon Lay Gym | 1106 | 25.4 | 48.0 | 2.0 | 8.0 | 20:00 | 07:15 |
+| ActiveSG Sport Park @ Teck Ghee ActiveSG Gym | 1168 | 33.4 | 77.0 | 6.0 | 10.0 | 20:00 | 07:15 |
+| Bishan ActiveSG Gym | 1173 | 43.8 | 96.0 | 6.0 | 15.9 | 20:00 | 07:15 |
+| Bukit Batok ActiveSG Gym | 1138 | 53.6 | 98.0 | 10.0 | 15.4 | 20:00 | 07:15 |
+| Bukit Canberra ActiveSG Gym | 1185 | 46.5 | 89.0 | 2.0 | 15.6 | 20:00 | 07:15 |
+| Bukit Gombak ActiveSG Gym | 1156 | 52.9 | 93.0 | 11.0 | 16.3 | 19:30 | 07:15 |
+| Choa Chu Kang ActiveSG Gym | 1154 | 52.0 | 93.0 | 12.0 | 13.6 | 20:15 | 07:15 |
+| Clementi ActiveSG Gym | 1103 | 56.3 | 96.0 | 13.0 | 16.0 | 20:00 | 07:15 |
+| Delta ActiveSG Gym | 1113 | 41.8 | 99.0 | 1.0 | 13.5 | 19:30 | 07:15 |
+| Heartbeat @ Bedok ActiveSG Gym | 1171 | 45.8 | 76.0 | 10.0 | 11.5 | 19:45 | 07:15 |
+| Hougang ActiveSG Gym | 1170 | 42.8 | 94.0 | 2.0 | 13.6 | 20:00 | 07:15 |
+| Jalan Besar ActiveSG Gym | 1169 | 52.6 | 100.0 | 1.0 | 15.9 | 19:00 | 07:15 |
+| Jurong East ActiveSG Gym | 1166 | 33.4 | 68.0 | 3.0 | 11.7 | 19:30 | 07:15 |
+| Jurong Lake Gardens ActiveSG Gym | 1171 | 26.4 | 63.0 | 2.0 | 8.6 | 20:00 | 07:15 |
+| Jurong West ActiveSG Gym | 1104 | 26.2 | 67.0 | 1.0 | 8.1 | 19:30 | 07:15 |
+| Katong ActiveSG Gym | 1166 | 46.0 | 97.0 | 3.0 | 12.8 | 19:00 | 07:15 |
+| Pasir Ris ActiveSG Gym | 1174 | 39.8 | 85.0 | 4.0 | 11.3 | 20:00 | 07:15 |
+| Queenstown ActiveSG Gym | 1107 | 40.3 | 92.0 | 4.0 | 13.3 | 19:30 | 07:15 |
+| Sengkang ActiveSG Gym | 1170 | 63.3 | 100.0 | 1.0 | 15.5 | 20:00 | 07:15 |
+| Senja-Cashew ActiveSG Gym | 1161 | 60.5 | 100.0 | 11.0 | 14.1 | 20:00 | 07:15 |
+| Tampines ActiveSG Gym | 1169 | 52.4 | 88.0 | 8.0 | 12.4 | 19:30 | 07:15 |
+| Woodlands ActiveSG Gym | 1164 | 39.9 | 86.0 | 1.0 | 12.3 | 19:45 | 07:15 |
+| Yio Chu Kang ActiveSG Gym | 1114 | 35.3 | 80.0 | 2.0 | 11.6 | 19:30 | 07:15 |
 | Yishun ActiveSG Gym | 1066 | 40.7 | 87.0 | 1.0 | 13.1 | 20:30 | 07:15 |
 
 ## Rankings
 
 **Busiest gyms (highest average crowd):**
-- Sengkang ActiveSG Gym — avg 63.4
+- Sengkang ActiveSG Gym — avg 63.3
 - Senja-Cashew ActiveSG Gym — avg 60.5
 - Clementi ActiveSG Gym — avg 56.3
 - Bukit Batok ActiveSG Gym — avg 53.6
@@ -61,7 +61,7 @@ _The 07:00 slot is never chosen as a quietest/best time (the gym is only just op
 - ActiveSG Gym @ Serangoon Central — std dev 16.7
 - Bukit Gombak ActiveSG Gym — std dev 16.3
 - Clementi ActiveSG Gym — std dev 16.0
-- Bishan ActiveSG Gym — std dev 16.0
+- Bishan ActiveSG Gym — std dev 15.9
 - Jalan Besar ActiveSG Gym — std dev 15.9
 
 ## Day trend, 7am-9:45pm (SGT, all gyms combined)
@@ -80,20 +80,20 @@ _The 07:00 slot is never chosen as a quietest/best time (the gym is only just op
 
 | Day | Avg crowd | Readings |
 |---|---|---|
-| Monday | 47.3 | 4871 |
+| Monday | 47.3 | 4929 |
 | Tuesday | 45.3 | 5357 |
 | Wednesday | 44.0 | 5291 |
 | Thursday | 42.6 | 5443 |
 | Friday | 42.9 | 4150 |
-| Saturday | 38.7 | 3803 |
-| Sunday | 39.6 | 5475 |
+| Saturday | 38.7 | 3832 |
+| Sunday | 39.6 | 5504 |
 
 ## Weekday vs weekend
 
-- Weekday average: 44.4
+- Weekday average: 44.5
 - Weekend average: 39.2
 
-Overall trend direction: **flat** (-0.05 crowd pts/day)
+Overall trend direction: **flat** (-0.00 crowd pts/day)
 
 ## Week-over-week
 
@@ -102,4 +102,5 @@ Overall trend direction: **flat** (-0.05 crowd pts/day)
 | 2026-W37 | 40.5 | 2186 |
 | 2026-W38 | 43.6 | 12560 |
 | 2026-W39 | 41.9 | 11300 |
-| 2026-W40 | 44.4 | 8344 |
+| 2026-W40 | 44.3 | 8402 |
+| 2026-W41 | 46.9 | 58 |

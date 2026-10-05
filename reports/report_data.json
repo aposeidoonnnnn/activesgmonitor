@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T12:58:11.681933+00:00",
-  "total_readings": 34390,
-  "numeric_readings": 34390,
+  "generated_at": "2026-10-05T07:46:18.810359+00:00",
+  "total_readings": 34506,
+  "numeric_readings": 34506,
   "excluded_all_zero_events": 0,
-  "excluded_zero_readings": 1220,
+  "excluded_zero_readings": 1224,
   "quietest_excluded_slot": {
     "hour": 7,
     "minute": 0,
@@ -11,17 +11,17 @@
   },
   "has_data": true,
   "span_start": "2026-09-10T16:20:35.729033+08:00",
-  "span_end": "2026-10-02T17:30:13.732787+08:00",
+  "span_end": "2026-10-05T15:43:52.119612+08:00",
   "per_gym": [
     {
       "name": "ActiveSG Gym @ Ang Mo Kio Community Centre",
-      "count": 1169,
-      "average": 38.795551753635586,
+      "count": 1173,
+      "average": 38.8235294117647,
       "peak": 75.0,
       "peak_time": "2026-09-15T19:30:13.887447+08:00",
       "min": 7.0,
       "min_time": "2026-09-27T13:45:13.954069+08:00",
-      "stdev": 10.756347196917366,
+      "stdev": 10.754426539153487,
       "busiest_time": "20:00",
       "busiest_time_avg": 46.0,
       "quietest_time": "07:15",
@@ -29,13 +29,13 @@
     },
     {
       "name": "ActiveSG Gym @ Enabling Village",
-      "count": 1103,
-      "average": 27.038077969174978,
+      "count": 1107,
+      "average": 27.022583559168925,
       "peak": 71.0,
       "peak_time": "2026-09-15T19:30:13.887447+08:00",
       "min": 7.0,
       "min_time": "2026-09-13T20:00:13.643790+08:00",
-      "stdev": 10.069585667145068,
+      "stdev": 10.076869657172459,
       "busiest_time": "19:30",
       "busiest_time_avg": 36.78947368421053,
       "quietest_time": "07:15",
@@ -43,13 +43,13 @@
     },
     {
       "name": "ActiveSG Gym @ Fernvale Square",
-      "count": 1167,
-      "average": 47.37446443873179,
+      "count": 1171,
+      "average": 47.39282664389411,
       "peak": 87.0,
       "peak_time": "2026-09-15T20:45:14.162868+08:00",
       "min": 10.0,
       "min_time": "2026-09-26T07:15:53.315614+08:00",
-      "stdev": 12.77688569602751,
+      "stdev": 12.760264023668249,
       "busiest_time": "20:45",
       "busiest_time_avg": 58.73684210526316,
       "quietest_time": "07:15",
@@ -57,13 +57,13 @@
     },
     {
       "name": "ActiveSG Gym @ Serangoon Central",
-      "count": 1167,
-      "average": 50.46186803770351,
+      "count": 1171,
+      "average": 50.49786507258753,
       "peak": 100.0,
       "peak_time": "2026-09-23T19:45:13.904677+08:00",
       "min": 10.0,
       "min_time": "2026-09-26T21:45:13.746642+08:00",
-      "stdev": 16.67754708588108,
+      "stdev": 16.719077008187558,
       "busiest_time": "19:30",
       "busiest_time_avg": 67.5,
       "quietest_time": "21:45",
@@ -71,13 +71,13 @@
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh",
-      "count": 1170,
-      "average": 48.598290598290596,
+      "count": 1174,
+      "average": 48.62776831345826,
       "peak": 100.0,
       "peak_time": "2026-10-01T19:30:14.092809+08:00",
       "min": 1.0,
       "min_time": "2026-09-27T07:00:11.673134+08:00",
-      "stdev": 13.442412678399936,
+      "stdev": 13.436085522494505,
       "busiest_time": "19:30",
       "busiest_time_avg": 67.65,
       "quietest_time": "07:15",
@@ -85,13 +85,13 @@
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh West Community Centre",
-      "count": 1168,
-      "average": 25.67722602739726,
+      "count": 1172,
+      "average": 25.68088737201365,
       "peak": 64.0,
       "peak_time": "2026-09-29T20:15:14.185670+08:00",
       "min": 1.0,
       "min_time": "2026-09-13T07:00:12.138379+08:00",
-      "stdev": 9.630649658928581,
+      "stdev": 9.62525882268613,
       "busiest_time": "20:00",
       "busiest_time_avg": 38.77272727272727,
       "quietest_time": "07:15",
@@ -99,13 +99,13 @@
     },
     {
       "name": "ActiveSG Hockey Village @ Boon Lay Gym",
-      "count": 1102,
-      "average": 25.358439201451905,
+      "count": 1106,
+      "average": 25.358047016274863,
       "peak": 48.0,
       "peak_time": "2026-09-28T19:30:14.046299+08:00",
       "min": 2.0,
       "min_time": "2026-09-15T07:00:11.835686+08:00",
-      "stdev": 8.018547946824484,
+      "stdev": 8.022020630262958,
       "busiest_time": "20:00",
       "busiest_time_avg": 34.4,
       "quietest_time": "07:15",
@@ -113,13 +113,13 @@
     },
     {
       "name": "ActiveSG Sport Park @ Teck Ghee ActiveSG Gym",
-      "count": 1164,
-      "average": 33.43814432989691,
+      "count": 1168,
+      "average": 33.445205479452056,
       "peak": 77.0,
       "peak_time": "2026-09-27T12:45:13.893555+08:00",
       "min": 6.0,
       "min_time": "2026-09-20T07:15:14.312187+08:00",
-      "stdev": 10.056649951168493,
+      "stdev": 10.046317952853821,
       "busiest_time": "20:00",
       "busiest_time_avg": 41.77272727272727,
       "quietest_time": "07:15",
@@ -127,13 +127,13 @@
     },
     {
       "name": "Bishan ActiveSG Gym",
-      "count": 1169,
-      "average": 43.787852865697175,
+      "count": 1173,
+      "average": 43.789428815004264,
       "peak": 96.0,
       "peak_time": "2026-10-01T20:00:13.935146+08:00",
       "min": 6.0,
       "min_time": "2026-09-13T07:00:12.138379+08:00",
-      "stdev": 15.96856909360026,
+      "stdev": 15.94761749496831,
       "busiest_time": "20:00",
       "busiest_time_avg": 65.68181818181819,
       "quietest_time": "07:15",
@@ -141,13 +141,13 @@
     },
     {
       "name": "Bukit Batok ActiveSG Gym",
-      "count": 1134,
-      "average": 53.564373897707235,
+      "count": 1138,
+      "average": 53.556239015817226,
       "peak": 98.0,
       "peak_time": "2026-09-23T19:15:13.758739+08:00",
       "min": 10.0,
       "min_time": "2026-09-16T07:00:11.809222+08:00",
-      "stdev": 15.376658388514105,
+      "stdev": 15.36843650759694,
       "busiest_time": "20:00",
       "busiest_time_avg": 67.04545454545455,
       "quietest_time": "07:15",
@@ -155,13 +155,13 @@
     },
     {
       "name": "Bukit Canberra ActiveSG Gym",
-      "count": 1181,
-      "average": 46.54191363251482,
+      "count": 1185,
+      "average": 46.53586497890296,
       "peak": 89.0,
       "peak_time": "2026-10-01T19:30:14.092809+08:00",
       "min": 2.0,
       "min_time": "2026-09-25T07:00:09.328564+08:00",
-      "stdev": 15.655401506764704,
+      "stdev": 15.636124076974628,
       "busiest_time": "20:00",
       "busiest_time_avg": 67.81818181818181,
       "quietest_time": "07:15",
@@ -169,13 +169,13 @@
     },
     {
       "name": "Bukit Gombak ActiveSG Gym",
-      "count": 1152,
-      "average": 52.907986111111114,
+      "count": 1156,
+      "average": 52.910899653979236,
       "peak": 93.0,
       "peak_time": "2026-09-10T20:23:59.068164+08:00",
       "min": 11.0,
       "min_time": "2026-09-27T07:24:53.845080+08:00",
-      "stdev": 16.268372267133223,
+      "stdev": 16.267014586287317,
       "busiest_time": "19:30",
       "busiest_time_avg": 70.05,
       "quietest_time": "07:15",
@@ -183,13 +183,13 @@
     },
     {
       "name": "Choa Chu Kang ActiveSG Gym",
-      "count": 1150,
-      "average": 51.96782608695652,
+      "count": 1154,
+      "average": 51.9792027729636,
       "peak": 93.0,
       "peak_time": "2026-09-16T19:30:11.855404+08:00",
       "min": 12.0,
       "min_time": "2026-09-19T07:15:14.205153+08:00",
-      "stdev": 13.574202180582086,
+      "stdev": 13.559212874788853,
       "busiest_time": "20:15",
       "busiest_time_avg": 70.05263157894737,
       "quietest_time": "07:15",
@@ -197,13 +197,13 @@
     },
     {
       "name": "Clementi ActiveSG Gym",
-      "count": 1099,
-      "average": 56.289353958143764,
+      "count": 1103,
+      "average": 56.30190389845875,
       "peak": 96.0,
       "peak_time": "2026-09-14T19:45:14.222008+08:00",
       "min": 13.0,
       "min_time": "2026-09-13T07:15:14.220789+08:00",
-      "stdev": 16.033290703240638,
+      "stdev": 16.014569126236733,
       "busiest_time": "20:00",
       "busiest_time_avg": 75.23809523809524,
       "quietest_time": "07:15",
@@ -211,13 +211,13 @@
     },
     {
       "name": "Delta ActiveSG Gym",
-      "count": 1109,
-      "average": 41.78809738503156,
+      "count": 1113,
+      "average": 41.77807726864331,
       "peak": 99.0,
       "peak_time": "2026-09-15T19:45:14.335162+08:00",
       "min": 1.0,
       "min_time": "2026-09-17T07:00:10.931010+08:00",
-      "stdev": 13.542612268552224,
+      "stdev": 13.52167688598364,
       "busiest_time": "19:30",
       "busiest_time_avg": 64.47368421052632,
       "quietest_time": "07:15",
@@ -225,13 +225,13 @@
     },
     {
       "name": "Heartbeat @ Bedok ActiveSG Gym",
-      "count": 1167,
-      "average": 45.76263924592973,
+      "count": 1171,
+      "average": 45.75832621690863,
       "peak": 76.0,
       "peak_time": "2026-09-15T19:15:14.012188+08:00",
       "min": 10.0,
       "min_time": "2026-09-13T21:30:13.766355+08:00",
-      "stdev": 11.55736228669033,
+      "stdev": 11.549270915705444,
       "busiest_time": "19:45",
       "busiest_time_avg": 55.0,
       "quietest_time": "07:15",
@@ -239,13 +239,13 @@
     },
     {
       "name": "Hougang ActiveSG Gym",
-      "count": 1166,
-      "average": 42.812178387650086,
+      "count": 1170,
+      "average": 42.83247863247863,
       "peak": 94.0,
       "peak_time": "2026-09-14T20:30:14.524967+08:00",
       "min": 2.0,
       "min_time": "2026-09-13T21:45:14.249807+08:00",
-      "stdev": 13.579947729347642,
+      "stdev": 13.561608891894904,
       "busiest_time": "20:00",
       "busiest_time_avg": 57.22727272727273,
       "quietest_time": "07:15",
@@ -253,13 +253,13 @@
     },
     {
       "name": "Jalan Besar ActiveSG Gym",
-      "count": 1165,
-      "average": 52.64635193133047,
+      "count": 1169,
+      "average": 52.64071856287425,
       "peak": 100.0,
       "peak_time": "2026-10-01T19:15:14.435451+08:00",
       "min": 1.0,
       "min_time": "2026-09-15T07:00:11.835686+08:00",
-      "stdev": 15.933561011899418,
+      "stdev": 15.924358780284454,
       "busiest_time": "19:00",
       "busiest_time_avg": 75.10526315789474,
       "quietest_time": "07:15",
@@ -267,13 +267,13 @@
     },
     {
       "name": "Jurong East ActiveSG Gym",
-      "count": 1162,
-      "average": 33.35972461273666,
+      "count": 1166,
+      "average": 33.3704974271012,
       "peak": 68.0,
       "peak_time": "2026-09-14T19:15:16.098087+08:00",
       "min": 3.0,
       "min_time": "2026-09-27T07:24:53.845080+08:00",
-      "stdev": 11.682902873237643,
+      "stdev": 11.66844512297593,
       "busiest_time": "19:30",
       "busiest_time_avg": 48.65,
       "quietest_time": "07:15",
@@ -281,13 +281,13 @@
     },
     {
       "name": "Jurong Lake Gardens ActiveSG Gym",
-      "count": 1167,
-      "average": 26.40616966580977,
+      "count": 1171,
+      "average": 26.391118701964132,
       "peak": 63.0,
       "peak_time": "2026-09-15T21:00:14.038512+08:00",
       "min": 2.0,
       "min_time": "2026-09-16T07:00:11.809222+08:00",
-      "stdev": 8.608771536517699,
+      "stdev": 8.603758023194935,
       "busiest_time": "20:00",
       "busiest_time_avg": 39.09090909090909,
       "quietest_time": "07:15",
@@ -295,13 +295,13 @@
     },
     {
       "name": "Jurong West ActiveSG Gym",
-      "count": 1100,
-      "average": 26.22,
+      "count": 1104,
+      "average": 26.206521739130434,
       "peak": 67.0,
       "peak_time": "2026-09-20T18:15:14.822648+08:00",
       "min": 1.0,
       "min_time": "2026-09-16T07:00:11.809222+08:00",
-      "stdev": 8.156579051182046,
+      "stdev": 8.147358481160744,
       "busiest_time": "19:30",
       "busiest_time_avg": 36.73684210526316,
       "quietest_time": "07:15",
@@ -309,13 +309,13 @@
     },
     {
       "name": "Katong ActiveSG Gym",
-      "count": 1162,
-      "average": 45.97160068846816,
+      "count": 1166,
+      "average": 45.97941680960549,
       "peak": 97.0,
       "peak_time": "2026-09-14T20:30:14.524967+08:00",
       "min": 3.0,
       "min_time": "2026-09-16T07:00:11.809222+08:00",
-      "stdev": 12.834242561186846,
+      "stdev": 12.822762845862309,
       "busiest_time": "19:00",
       "busiest_time_avg": 59.31578947368421,
       "quietest_time": "07:15",
@@ -323,13 +323,13 @@
     },
     {
       "name": "Pasir Ris ActiveSG Gym",
-      "count": 1170,
-      "average": 39.75811965811966,
+      "count": 1174,
+      "average": 39.78620102214651,
       "peak": 85.0,
       "peak_time": "2026-09-29T19:15:14.077682+08:00",
       "min": 4.0,
       "min_time": "2026-10-01T07:00:13.268130+08:00",
-      "stdev": 11.259432811360668,
+      "stdev": 11.252837478869909,
       "busiest_time": "20:00",
       "busiest_time_avg": 52.04545454545455,
       "quietest_time": "07:15",
@@ -337,13 +337,13 @@
     },
     {
       "name": "Queenstown ActiveSG Gym",
-      "count": 1103,
-      "average": 40.320942883046236,
+      "count": 1107,
+      "average": 40.335140018066845,
       "peak": 92.0,
       "peak_time": "2026-09-15T20:15:14.486777+08:00",
       "min": 4.0,
       "min_time": "2026-09-20T17:09:18.864816+08:00",
-      "stdev": 13.328215533272315,
+      "stdev": 13.310707871519037,
       "busiest_time": "19:30",
       "busiest_time_avg": 58.94736842105263,
       "quietest_time": "07:15",
@@ -351,13 +351,13 @@
     },
     {
       "name": "Sengkang ActiveSG Gym",
-      "count": 1166,
-      "average": 63.35420240137221,
+      "count": 1170,
+      "average": 63.33247863247863,
       "peak": 100.0,
       "peak_time": "2026-09-14T19:30:15.925046+08:00",
       "min": 1.0,
       "min_time": "2026-09-29T07:00:11.481706+08:00",
-      "stdev": 15.488243602390574,
+      "stdev": 15.468182557565022,
       "busiest_time": "20:00",
       "busiest_time_avg": 80.13636363636364,
       "quietest_time": "07:15",
@@ -365,13 +365,13 @@
     },
     {
       "name": "Senja-Cashew ActiveSG Gym",
-      "count": 1157,
-      "average": 60.45030250648228,
+      "count": 1161,
+      "average": 60.46856158484066,
       "peak": 100.0,
       "peak_time": "2026-09-15T19:45:14.335162+08:00",
       "min": 11.0,
       "min_time": "2026-09-14T21:45:13.755240+08:00",
-      "stdev": 14.152105932635669,
+      "stdev": 14.14996286849846,
       "busiest_time": "20:00",
       "busiest_time_avg": 69.86363636363636,
       "quietest_time": "07:15",
@@ -379,13 +379,13 @@
     },
     {
       "name": "Tampines ActiveSG Gym",
-      "count": 1165,
-      "average": 52.4206008583691,
+      "count": 1169,
+      "average": 52.41830624465355,
       "peak": 88.0,
       "peak_time": "2026-09-14T19:30:15.925046+08:00",
       "min": 8.0,
       "min_time": "2026-09-26T07:00:09.042083+08:00",
-      "stdev": 12.440688662727547,
+      "stdev": 12.424018800429838,
       "busiest_time": "19:30",
       "busiest_time_avg": 70.0,
       "quietest_time": "07:15",
@@ -393,13 +393,13 @@
     },
     {
       "name": "Woodlands ActiveSG Gym",
-      "count": 1160,
-      "average": 39.87931034482759,
+      "count": 1164,
+      "average": 39.87800687285223,
       "peak": 86.0,
       "peak_time": "2026-09-30T20:30:14.029682+08:00",
       "min": 1.0,
       "min_time": "2026-09-12T21:15:03.815977+08:00",
-      "stdev": 12.298622836005126,
+      "stdev": 12.279767009776112,
       "busiest_time": "19:45",
       "busiest_time_avg": 55.9,
       "quietest_time": "07:15",
@@ -407,13 +407,13 @@
     },
     {
       "name": "Yio Chu Kang ActiveSG Gym",
-      "count": 1110,
-      "average": 35.26756756756757,
+      "count": 1114,
+      "average": 35.334829443447035,
       "peak": 80.0,
       "peak_time": "2026-09-17T19:30:14.084827+08:00",
       "min": 2.0,
       "min_time": "2026-09-15T07:00:11.835686+08:00",
-      "stdev": 11.615519768339162,
+      "stdev": 11.64966264286799,
       "busiest_time": "19:30",
       "busiest_time_avg": 51.526315789473685,
       "quietest_time": "07:15",
@@ -501,13 +501,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 40.05
+        "average": 39.95238095238095
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 40.857142857142854
+        "average": 41.5
       },
       {
         "label": "10:00",
@@ -519,7 +519,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 44.85
+        "average": 44.95238095238095
       },
       {
         "label": "10:30",
@@ -645,7 +645,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 41.5
+        "average": 41.80952380952381
       },
       {
         "label": "15:45",
@@ -863,13 +863,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 21.894736842105264
+        "average": 21.25
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 22.85
+        "average": 22.80952380952381
       },
       {
         "label": "10:00",
@@ -881,7 +881,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 30.05263157894737
+        "average": 29.55
       },
       {
         "label": "10:30",
@@ -1007,7 +1007,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 26.894736842105264
+        "average": 27.55
       },
       {
         "label": "15:45",
@@ -1225,13 +1225,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 44.5
+        "average": 44.666666666666664
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 46.76190476190476
+        "average": 47.04545454545455
       },
       {
         "label": "10:00",
@@ -1243,7 +1243,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 48.05
+        "average": 48.476190476190474
       },
       {
         "label": "10:30",
@@ -1369,7 +1369,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 49.0
+        "average": 49.19047619047619
       },
       {
         "label": "15:45",
@@ -1587,13 +1587,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 51.5
+        "average": 53.80952380952381
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 50.76190476190476
+        "average": 51.18181818181818
       },
       {
         "label": "10:00",
@@ -1605,7 +1605,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 53.1
+        "average": 52.333333333333336
       },
       {
         "label": "10:30",
@@ -1731,7 +1731,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 42.55
+        "average": 42.76190476190476
       },
       {
         "label": "15:45",
@@ -1949,13 +1949,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 47.15
+        "average": 48.0
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 50.714285714285715
+        "average": 51.04545454545455
       },
       {
         "label": "10:00",
@@ -1967,7 +1967,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 52.9
+        "average": 52.523809523809526
       },
       {
         "label": "10:30",
@@ -2093,7 +2093,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 45.65
+        "average": 46.38095238095238
       },
       {
         "label": "15:45",
@@ -2311,13 +2311,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 23.7
+        "average": 23.904761904761905
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 22.047619047619047
+        "average": 22.0
       },
       {
         "label": "10:00",
@@ -2329,7 +2329,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 24.75
+        "average": 24.476190476190474
       },
       {
         "label": "10:30",
@@ -2455,7 +2455,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 23.4
+        "average": 24.142857142857142
       },
       {
         "label": "15:45",
@@ -2673,13 +2673,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 20.263157894736842
+        "average": 19.95
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 20.35
+        "average": 20.523809523809526
       },
       {
         "label": "10:00",
@@ -2691,7 +2691,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 21.736842105263158
+        "average": 21.85
       },
       {
         "label": "10:30",
@@ -2817,7 +2817,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 27.63157894736842
+        "average": 28.2
       },
       {
         "label": "15:45",
@@ -3035,13 +3035,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 28.65
+        "average": 29.0
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 30.904761904761905
+        "average": 30.727272727272727
       },
       {
         "label": "10:00",
@@ -3053,7 +3053,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 33.6
+        "average": 33.666666666666664
       },
       {
         "label": "10:30",
@@ -3179,7 +3179,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 35.15
+        "average": 35.57142857142857
       },
       {
         "label": "15:45",
@@ -3397,13 +3397,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 35.75
+        "average": 36.0
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 34.904761904761905
+        "average": 35.36363636363637
       },
       {
         "label": "10:00",
@@ -3415,7 +3415,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 36.9
+        "average": 36.80952380952381
       },
       {
         "label": "10:30",
@@ -3541,7 +3541,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 42.9
+        "average": 43.523809523809526
       },
       {
         "label": "15:45",
@@ -3759,13 +3759,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 53.05
+        "average": 53.142857142857146
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 55.095238095238095
+        "average": 55.18181818181818
       },
       {
         "label": "10:00",
@@ -3777,7 +3777,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 61.15
+        "average": 59.666666666666664
       },
       {
         "label": "10:30",
@@ -3903,7 +3903,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 47.85
+        "average": 48.57142857142857
       },
       {
         "label": "15:45",
@@ -4121,13 +4121,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 39.7
+        "average": 40.23809523809524
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 40.285714285714285
+        "average": 40.22727272727273
       },
       {
         "label": "10:00",
@@ -4139,7 +4139,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 42.2
+        "average": 41.857142857142854
       },
       {
         "label": "10:30",
@@ -4265,7 +4265,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 47.05
+        "average": 47.38095238095238
       },
       {
         "label": "15:45",
@@ -4483,13 +4483,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 48.35
+        "average": 47.857142857142854
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 48.42857142857143
+        "average": 49.5
       },
       {
         "label": "10:00",
@@ -4501,7 +4501,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 49.95
+        "average": 50.76190476190476
       },
       {
         "label": "10:30",
@@ -4627,7 +4627,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 55.05
+        "average": 54.23809523809524
       },
       {
         "label": "15:45",
@@ -4845,13 +4845,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 45.4
+        "average": 45.666666666666664
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 48.04761904761905
+        "average": 48.0
       },
       {
         "label": "10:00",
@@ -4863,7 +4863,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 54.7
+        "average": 54.76190476190476
       },
       {
         "label": "10:30",
@@ -4989,7 +4989,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 53.3
+        "average": 53.95238095238095
       },
       {
         "label": "15:45",
@@ -5207,13 +5207,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 50.26315789473684
+        "average": 51.3
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 52.9
+        "average": 52.80952380952381
       },
       {
         "label": "10:00",
@@ -5225,7 +5225,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 59.05263157894737
+        "average": 58.65
       },
       {
         "label": "10:30",
@@ -5351,7 +5351,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 52.78947368421053
+        "average": 53.45
       },
       {
         "label": "15:45",
@@ -5569,13 +5569,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 37.36842105263158
+        "average": 37.35
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 38.1
+        "average": 37.857142857142854
       },
       {
         "label": "10:00",
@@ -5587,7 +5587,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 39.78947368421053
+        "average": 39.95
       },
       {
         "label": "10:30",
@@ -5713,7 +5713,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 40.36842105263158
+        "average": 40.5
       },
       {
         "label": "15:45",
@@ -5931,13 +5931,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 39.45
+        "average": 39.333333333333336
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 40.61904761904762
+        "average": 40.5
       },
       {
         "label": "10:00",
@@ -5949,7 +5949,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 46.7
+        "average": 46.57142857142857
       },
       {
         "label": "10:30",
@@ -6075,7 +6075,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 50.5
+        "average": 50.904761904761905
       },
       {
         "label": "15:45",
@@ -6293,13 +6293,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 36.85
+        "average": 37.476190476190474
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 38.19047619047619
+        "average": 38.63636363636363
       },
       {
         "label": "10:00",
@@ -6311,7 +6311,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 39.85
+        "average": 40.142857142857146
       },
       {
         "label": "10:30",
@@ -6437,7 +6437,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 47.6
+        "average": 47.76190476190476
       },
       {
         "label": "15:45",
@@ -6655,13 +6655,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 45.05
+        "average": 44.61904761904762
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 48.95238095238095
+        "average": 49.95454545454545
       },
       {
         "label": "10:00",
@@ -6673,7 +6673,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 52.0
+        "average": 51.666666666666664
       },
       {
         "label": "10:30",
@@ -6799,7 +6799,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 52.35
+        "average": 52.333333333333336
       },
       {
         "label": "15:45",
@@ -7017,13 +7017,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 28.05
+        "average": 28.476190476190474
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 29.904761904761905
+        "average": 30.545454545454547
       },
       {
         "label": "10:00",
@@ -7035,7 +7035,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 32.5
+        "average": 32.666666666666664
       },
       {
         "label": "10:30",
@@ -7161,7 +7161,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 32.9
+        "average": 32.714285714285715
       },
       {
         "label": "15:45",
@@ -7379,13 +7379,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 23.05
+        "average": 22.666666666666668
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 23.476190476190474
+        "average": 23.454545454545453
       },
       {
         "label": "10:00",
@@ -7397,7 +7397,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 25.3
+        "average": 25.047619047619047
       },
       {
         "label": "10:30",
@@ -7523,7 +7523,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 24.55
+        "average": 24.80952380952381
       },
       {
         "label": "15:45",
@@ -7741,13 +7741,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 23.894736842105264
+        "average": 23.8
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 24.4
+        "average": 24.238095238095237
       },
       {
         "label": "10:00",
@@ -7759,7 +7759,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 26.57894736842105
+        "average": 26.2
       },
       {
         "label": "10:30",
@@ -7885,7 +7885,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 23.263157894736842
+        "average": 23.5
       },
       {
         "label": "15:45",
@@ -8103,13 +8103,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 45.35
+        "average": 44.80952380952381
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 44.95238095238095
+        "average": 45.22727272727273
       },
       {
         "label": "10:00",
@@ -8121,7 +8121,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 47.25
+        "average": 47.714285714285715
       },
       {
         "label": "10:30",
@@ -8247,7 +8247,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 45.25
+        "average": 45.523809523809526
       },
       {
         "label": "15:45",
@@ -8465,13 +8465,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 38.25
+        "average": 38.714285714285715
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 38.523809523809526
+        "average": 38.72727272727273
       },
       {
         "label": "10:00",
@@ -8483,7 +8483,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 44.05
+        "average": 44.523809523809526
       },
       {
         "label": "10:30",
@@ -8609,7 +8609,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 41.6
+        "average": 41.857142857142854
       },
       {
         "label": "15:45",
@@ -8827,13 +8827,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 34.578947368421055
+        "average": 34.85
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 36.0
+        "average": 36.19047619047619
       },
       {
         "label": "10:00",
@@ -8845,7 +8845,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 40.526315789473685
+        "average": 40.65
       },
       {
         "label": "10:30",
@@ -8971,7 +8971,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 40.0
+        "average": 40.7
       },
       {
         "label": "15:45",
@@ -9189,13 +9189,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 55.85
+        "average": 55.904761904761905
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 54.523809523809526
+        "average": 54.90909090909091
       },
       {
         "label": "10:00",
@@ -9207,7 +9207,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 60.85
+        "average": 60.38095238095238
       },
       {
         "label": "10:30",
@@ -9333,7 +9333,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 64.95
+        "average": 64.57142857142857
       },
       {
         "label": "15:45",
@@ -9551,13 +9551,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 64.25
+        "average": 64.47619047619048
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 66.04761904761905
+        "average": 66.27272727272727
       },
       {
         "label": "10:00",
@@ -9569,7 +9569,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 63.0
+        "average": 62.142857142857146
       },
       {
         "label": "10:30",
@@ -9695,7 +9695,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 61.85
+        "average": 62.61904761904762
       },
       {
         "label": "15:45",
@@ -9913,13 +9913,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 44.0
+        "average": 44.095238095238095
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 46.0
+        "average": 46.09090909090909
       },
       {
         "label": "10:00",
@@ -9931,7 +9931,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 49.2
+        "average": 49.333333333333336
       },
       {
         "label": "10:30",
@@ -10057,7 +10057,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 56.65
+        "average": 56.857142857142854
       },
       {
         "label": "15:45",
@@ -10275,13 +10275,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 35.4
+        "average": 35.76190476190476
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 37.333333333333336
+        "average": 37.22727272727273
       },
       {
         "label": "10:00",
@@ -10293,7 +10293,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 38.7
+        "average": 38.95238095238095
       },
       {
         "label": "10:30",
@@ -10419,7 +10419,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 41.35
+        "average": 41.095238095238095
       },
       {
         "label": "15:45",
@@ -10637,13 +10637,13 @@
         "label": "09:30",
         "hour": 9,
         "minute": 30,
-        "average": 34.21052631578947
+        "average": 35.3
       },
       {
         "label": "09:45",
         "hour": 9,
         "minute": 45,
-        "average": 36.55
+        "average": 37.285714285714285
       },
       {
         "label": "10:00",
@@ -10655,7 +10655,7 @@
         "label": "10:15",
         "hour": 10,
         "minute": 15,
-        "average": 34.31578947368421
+        "average": 35.15
       },
       {
         "label": "10:30",
@@ -10781,7 +10781,7 @@
         "label": "15:30",
         "hour": 15,
         "minute": 30,
-        "average": 36.68421052631579
+        "average": 37.7
       },
       {
         "label": "15:45",
@@ -11301,8 +11301,8 @@
     "ActiveSG Gym @ Ang Mo Kio Community Centre": [
       {
         "day": "Monday",
-        "average": 43.44378698224852,
-        "readings": 169
+        "average": 43.43859649122807,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11326,20 +11326,20 @@
       },
       {
         "day": "Saturday",
-        "average": 33.59842519685039,
-        "readings": 127
+        "average": 33.765625,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 34.032967032967036,
-        "readings": 182
+        "average": 34.10382513661202,
+        "readings": 183
       }
     ],
     "ActiveSG Gym @ Enabling Village": [
       {
         "day": "Monday",
-        "average": 29.08411214953271,
-        "readings": 107
+        "average": 29.0,
+        "readings": 109
       },
       {
         "day": "Tuesday",
@@ -11363,20 +11363,20 @@
       },
       {
         "day": "Saturday",
-        "average": 22.825396825396826,
-        "readings": 126
+        "average": 22.818897637795274,
+        "readings": 127
       },
       {
         "day": "Sunday",
-        "average": 22.557377049180328,
-        "readings": 183
+        "average": 22.543478260869566,
+        "readings": 184
       }
     ],
     "ActiveSG Gym @ Fernvale Square": [
       {
         "day": "Monday",
-        "average": 53.260355029585796,
-        "readings": 169
+        "average": 53.228070175438596,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11400,20 +11400,20 @@
       },
       {
         "day": "Saturday",
-        "average": 46.01574803149607,
-        "readings": 127
+        "average": 46.0703125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 44.114754098360656,
-        "readings": 183
+        "average": 44.18478260869565,
+        "readings": 184
       }
     ],
     "ActiveSG Gym @ Serangoon Central": [
       {
         "day": "Monday",
-        "average": 57.62721893491124,
-        "readings": 169
+        "average": 57.812865497076025,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11437,20 +11437,20 @@
       },
       {
         "day": "Saturday",
-        "average": 43.74015748031496,
-        "readings": 127
+        "average": 43.8671875,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 41.20765027322405,
-        "readings": 183
+        "average": 41.18478260869565,
+        "readings": 184
       }
     ],
     "ActiveSG Gym @ Toa Payoh": [
       {
         "day": "Monday",
-        "average": 48.707602339181285,
-        "readings": 171
+        "average": 48.872832369942195,
+        "readings": 173
       },
       {
         "day": "Tuesday",
@@ -11474,20 +11474,20 @@
       },
       {
         "day": "Saturday",
-        "average": 43.125,
-        "readings": 128
+        "average": 43.24031007751938,
+        "readings": 129
       },
       {
         "day": "Sunday",
-        "average": 43.404371584699454,
-        "readings": 183
+        "average": 43.41304347826087,
+        "readings": 184
       }
     ],
     "ActiveSG Gym @ Toa Payoh West Community Centre": [
       {
         "day": "Monday",
-        "average": 28.311764705882354,
-        "readings": 170
+        "average": 28.372093023255815,
+        "readings": 172
       },
       {
         "day": "Tuesday",
@@ -11511,20 +11511,20 @@
       },
       {
         "day": "Saturday",
-        "average": 21.37795275590551,
-        "readings": 127
+        "average": 21.375,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 23.60655737704918,
-        "readings": 183
+        "average": 23.581521739130434,
+        "readings": 184
       }
     ],
     "ActiveSG Hockey Village @ Boon Lay Gym": [
       {
         "day": "Monday",
-        "average": 28.547619047619047,
-        "readings": 168
+        "average": 28.523529411764706,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11548,20 +11548,20 @@
       },
       {
         "day": "Saturday",
-        "average": 24.475806451612904,
-        "readings": 124
+        "average": 24.472,
+        "readings": 125
       },
       {
         "day": "Sunday",
-        "average": 23.994505494505493,
-        "readings": 182
+        "average": 23.994535519125684,
+        "readings": 183
       }
     ],
     "ActiveSG Sport Park @ Teck Ghee ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 37.52662721893491,
-        "readings": 169
+        "average": 37.55555555555556,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11585,20 +11585,20 @@
       },
       {
         "day": "Saturday",
-        "average": 32.968503937007874,
-        "readings": 127
+        "average": 32.921875,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 35.08196721311475,
-        "readings": 183
+        "average": 35.08152173913044,
+        "readings": 184
       }
     ],
     "Bishan ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 52.67455621301775,
-        "readings": 169
+        "average": 52.62573099415204,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11622,20 +11622,20 @@
       },
       {
         "day": "Saturday",
-        "average": 37.7007874015748,
-        "readings": 127
+        "average": 37.7578125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 35.119565217391305,
-        "readings": 184
+        "average": 35.11891891891892,
+        "readings": 185
       }
     ],
     "Bukit Batok ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 56.828220858895705,
-        "readings": 163
+        "average": 56.85454545454545,
+        "readings": 165
       },
       {
         "day": "Tuesday",
@@ -11659,20 +11659,20 @@
       },
       {
         "day": "Saturday",
-        "average": 53.818897637795274,
-        "readings": 127
+        "average": 53.84375,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 44.8,
-        "readings": 175
+        "average": 44.71590909090909,
+        "readings": 176
       }
     ],
     "Bukit Canberra ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 49.707602339181285,
-        "readings": 171
+        "average": 49.73988439306358,
+        "readings": 173
       },
       {
         "day": "Tuesday",
@@ -11696,20 +11696,20 @@
       },
       {
         "day": "Saturday",
-        "average": 47.674418604651166,
-        "readings": 129
+        "average": 47.60769230769231,
+        "readings": 130
       },
       {
         "day": "Sunday",
-        "average": 40.404371584699454,
-        "readings": 183
+        "average": 40.375,
+        "readings": 184
       }
     ],
     "Bukit Gombak ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 53.88095238095238,
-        "readings": 168
+        "average": 53.694117647058825,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11733,20 +11733,20 @@
       },
       {
         "day": "Saturday",
-        "average": 41.94488188976378,
-        "readings": 127
+        "average": 42.1796875,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 50.68131868131868,
-        "readings": 182
+        "average": 50.77049180327869,
+        "readings": 183
       }
     ],
     "Choa Chu Kang ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 51.125748502994014,
-        "readings": 167
+        "average": 51.218934911242606,
+        "readings": 169
       },
       {
         "day": "Tuesday",
@@ -11770,20 +11770,20 @@
       },
       {
         "day": "Saturday",
-        "average": 49.976377952755904,
-        "readings": 127
+        "average": 49.953125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 50.205555555555556,
-        "readings": 180
+        "average": 50.23756906077348,
+        "readings": 181
       }
     ],
     "Clementi ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 61.79761904761905,
-        "readings": 168
+        "average": 61.87647058823529,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11807,20 +11807,20 @@
       },
       {
         "day": "Saturday",
-        "average": 49.416,
-        "readings": 125
+        "average": 49.42857142857143,
+        "readings": 126
       },
       {
         "day": "Sunday",
-        "average": 55.21311475409836,
-        "readings": 183
+        "average": 55.19021739130435,
+        "readings": 184
       }
     ],
     "Delta ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 42.06481481481482,
-        "readings": 108
+        "average": 42.027272727272724,
+        "readings": 110
       },
       {
         "day": "Tuesday",
@@ -11844,20 +11844,20 @@
       },
       {
         "day": "Saturday",
-        "average": 36.542635658914726,
-        "readings": 129
+        "average": 36.51538461538462,
+        "readings": 130
       },
       {
         "day": "Sunday",
-        "average": 43.185792349726775,
-        "readings": 183
+        "average": 43.18478260869565,
+        "readings": 184
       }
     ],
     "Heartbeat @ Bedok ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 49.071005917159766,
-        "readings": 169
+        "average": 49.058479532163744,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -11881,20 +11881,20 @@
       },
       {
         "day": "Saturday",
-        "average": 50.125984251968504,
-        "readings": 127
+        "average": 50.03125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 34.61748633879781,
-        "readings": 183
+        "average": 34.66847826086956,
+        "readings": 184
       }
     ],
     "Hougang ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 55.095238095238095,
-        "readings": 168
+        "average": 55.04117647058823,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11918,20 +11918,20 @@
       },
       {
         "day": "Saturday",
-        "average": 34.023622047244096,
-        "readings": 127
+        "average": 34.1328125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 38.94535519125683,
-        "readings": 183
+        "average": 38.983695652173914,
+        "readings": 184
       }
     ],
     "Jalan Besar ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 58.279761904761905,
-        "readings": 168
+        "average": 58.11176470588235,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11955,20 +11955,20 @@
       },
       {
         "day": "Saturday",
-        "average": 45.65079365079365,
-        "readings": 126
+        "average": 45.8503937007874,
+        "readings": 127
       },
       {
         "day": "Sunday",
-        "average": 51.66111111111111,
-        "readings": 180
+        "average": 51.6243093922652,
+        "readings": 181
       }
     ],
     "Jurong East ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 36.714285714285715,
-        "readings": 168
+        "average": 36.67058823529412,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -11992,20 +11992,20 @@
       },
       {
         "day": "Saturday",
-        "average": 28.563492063492063,
-        "readings": 126
+        "average": 28.68503937007874,
+        "readings": 127
       },
       {
         "day": "Sunday",
-        "average": 31.316939890710383,
-        "readings": 183
+        "average": 31.342391304347824,
+        "readings": 184
       }
     ],
     "Jurong Lake Gardens ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 27.43859649122807,
-        "readings": 171
+        "average": 27.38150289017341,
+        "readings": 173
       },
       {
         "day": "Tuesday",
@@ -12029,20 +12029,20 @@
       },
       {
         "day": "Saturday",
-        "average": 24.8503937007874,
-        "readings": 127
+        "average": 24.8359375,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 25.666666666666668,
-        "readings": 183
+        "average": 25.63586956521739,
+        "readings": 184
       }
     ],
     "Jurong West ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 29.246987951807228,
-        "readings": 166
+        "average": 29.196428571428573,
+        "readings": 168
       },
       {
         "day": "Tuesday",
@@ -12066,20 +12066,20 @@
       },
       {
         "day": "Saturday",
-        "average": 23.62992125984252,
-        "readings": 127
+        "average": 23.609375,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 25.868852459016395,
-        "readings": 183
+        "average": 25.831521739130434,
+        "readings": 184
       }
     ],
     "Katong ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 49.538922155688624,
-        "readings": 167
+        "average": 49.455621301775146,
+        "readings": 169
       },
       {
         "day": "Tuesday",
@@ -12103,20 +12103,20 @@
       },
       {
         "day": "Saturday",
-        "average": 40.171875,
-        "readings": 128
+        "average": 40.25581395348837,
+        "readings": 129
       },
       {
         "day": "Sunday",
-        "average": 48.169398907103826,
-        "readings": 183
+        "average": 48.21739130434783,
+        "readings": 184
       }
     ],
     "Pasir Ris ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 45.088235294117645,
-        "readings": 170
+        "average": 45.116279069767444,
+        "readings": 172
       },
       {
         "day": "Tuesday",
@@ -12140,20 +12140,20 @@
       },
       {
         "day": "Saturday",
-        "average": 35.25984251968504,
-        "readings": 127
+        "average": 35.3203125,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 38.10928961748634,
-        "readings": 183
+        "average": 38.19565217391305,
+        "readings": 184
       }
     ],
     "Queenstown ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 44.429906542056074,
-        "readings": 107
+        "average": 44.477064220183486,
+        "readings": 109
       },
       {
         "day": "Tuesday",
@@ -12177,20 +12177,20 @@
       },
       {
         "day": "Saturday",
-        "average": 35.803149606299215,
-        "readings": 127
+        "average": 35.8359375,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 33.61538461538461,
-        "readings": 182
+        "average": 33.666666666666664,
+        "readings": 183
       }
     ],
     "Sengkang ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 73.35502958579882,
-        "readings": 169
+        "average": 73.16374269005848,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -12214,20 +12214,20 @@
       },
       {
         "day": "Saturday",
-        "average": 56.818897637795274,
-        "readings": 127
+        "average": 56.8671875,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 62.16393442622951,
-        "readings": 183
+        "average": 62.10326086956522,
+        "readings": 184
       }
     ],
     "Senja-Cashew ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 66.48214285714286,
-        "readings": 168
+        "average": 66.56470588235294,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -12251,20 +12251,20 @@
       },
       {
         "day": "Saturday",
-        "average": 50.344,
-        "readings": 125
+        "average": 50.507936507936506,
+        "readings": 126
       },
       {
         "day": "Sunday",
-        "average": 55.86740331491713,
-        "readings": 181
+        "average": 55.80769230769231,
+        "readings": 182
       }
     ],
     "Tampines ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 55.654761904761905,
-        "readings": 168
+        "average": 55.629411764705885,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -12288,20 +12288,20 @@
       },
       {
         "day": "Saturday",
-        "average": 50.21875,
-        "readings": 128
+        "average": 50.201550387596896,
+        "readings": 129
       },
       {
         "day": "Sunday",
-        "average": 51.752747252747255,
-        "readings": 182
+        "average": 51.75409836065574,
+        "readings": 183
       }
     ],
     "Woodlands ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 43.30952380952381,
-        "readings": 168
+        "average": 43.26470588235294,
+        "readings": 170
       },
       {
         "day": "Tuesday",
@@ -12325,20 +12325,20 @@
       },
       {
         "day": "Saturday",
-        "average": 37.50406504065041,
-        "readings": 123
+        "average": 37.483870967741936,
+        "readings": 124
       },
       {
         "day": "Sunday",
-        "average": 37.167567567567566,
-        "readings": 185
+        "average": 37.204301075268816,
+        "readings": 186
       }
     ],
     "Yio Chu Kang ActiveSG Gym": [
       {
         "day": "Monday",
-        "average": 38.917159763313606,
-        "readings": 169
+        "average": 39.12280701754386,
+        "readings": 171
       },
       {
         "day": "Tuesday",
@@ -12362,13 +12362,13 @@
       },
       {
         "day": "Saturday",
-        "average": 28.228346456692915,
-        "readings": 127
+        "average": 28.4140625,
+        "readings": 128
       },
       {
         "day": "Sunday",
-        "average": 30.87027027027027,
-        "readings": 185
+        "average": 30.978494623655912,
+        "readings": 186
       }
     ],
     "Yishun ActiveSG Gym": [
@@ -12414,13 +12414,13 @@
       "Monday": {
         "7": 30.4,
         "8": 41.3,
-        "9": 46.3,
+        "9": 45.7,
         "10": 50.7,
         "11": 40.8,
         "12": 30.5,
         "13": 31.0,
         "14": 41.4,
-        "15": 49.1,
+        "15": 49.0,
         "16": 51.6,
         "17": 50.8,
         "18": 44.0,
@@ -12501,7 +12501,7 @@
         "21": 34.5,
         "7": 25.3,
         "8": 34.6,
-        "9": 23.5,
+        "9": 26.4,
         "10": 38.6,
         "11": 39.6,
         "12": 41.6,
@@ -12517,7 +12517,7 @@
         "7": 16.8,
         "8": 23.6,
         "9": 31.4,
-        "10": 44.6,
+        "10": 44.8,
         "11": 43.7,
         "12": 31.4,
         "13": 24.6,
@@ -12535,13 +12535,13 @@
       "Monday": {
         "7": 22.2,
         "8": 27.6,
-        "9": 25.9,
+        "9": 24.2,
         "10": 28.6,
         "11": 25.2,
         "12": 26.4,
         "13": 25.0,
         "14": 23.0,
-        "15": 24.2,
+        "15": 25.8,
         "16": 31.6,
         "17": 35.5,
         "18": 47.1,
@@ -12638,7 +12638,7 @@
         "7": 12.0,
         "8": 16.4,
         "9": 14.5,
-        "10": 26.1,
+        "10": 25.6,
         "11": 25.2,
         "12": 20.2,
         "13": 22.9,
@@ -12656,13 +12656,13 @@
       "Monday": {
         "7": 38.1,
         "8": 48.6,
-        "9": 46.7,
+        "9": 46.8,
         "10": 52.4,
         "11": 62.1,
         "12": 69.5,
         "13": 52.9,
         "14": 47.0,
-        "15": 44.3,
+        "15": 44.9,
         "16": 54.4,
         "17": 57.7,
         "18": 45.6,
@@ -12743,7 +12743,7 @@
         "21": 56.3,
         "7": 19.2,
         "8": 28.6,
-        "9": 45.2,
+        "9": 45.9,
         "10": 53.0,
         "11": 52.2,
         "12": 48.4,
@@ -12759,7 +12759,7 @@
         "7": 24.1,
         "8": 31.9,
         "9": 35.8,
-        "10": 47.2,
+        "10": 48.0,
         "11": 61.8,
         "12": 47.5,
         "13": 31.1,
@@ -12777,13 +12777,13 @@
       "Monday": {
         "7": 77.5,
         "8": 60.3,
-        "9": 67.0,
+        "9": 69.4,
         "10": 61.8,
         "11": 68.5,
         "12": 55.8,
         "13": 64.1,
         "14": 50.4,
-        "15": 35.5,
+        "15": 36.3,
         "16": 37.7,
         "17": 57.0,
         "18": 82.2,
@@ -12864,7 +12864,7 @@
         "21": 28.8,
         "7": 33.5,
         "8": 40.0,
-        "9": 43.0,
+        "9": 44.5,
         "10": 58.2,
         "11": 61.1,
         "12": 54.5,
@@ -12880,7 +12880,7 @@
         "7": 33.6,
         "8": 43.6,
         "9": 41.2,
-        "10": 48.2,
+        "10": 47.4,
         "11": 44.7,
         "12": 43.5,
         "13": 37.7,
@@ -12898,13 +12898,13 @@
       "Monday": {
         "7": 28.8,
         "8": 41.6,
-        "9": 52.5,
+        "9": 53.4,
         "10": 61.0,
         "11": 58.4,
         "12": 48.8,
         "13": 40.4,
         "14": 37.2,
-        "15": 40.8,
+        "15": 42.3,
         "16": 41.3,
         "17": 46.7,
         "18": 55.0,
@@ -12985,7 +12985,7 @@
         "21": 32.5,
         "7": 21.7,
         "8": 32.2,
-        "9": 49.5,
+        "9": 50.3,
         "10": 52.4,
         "11": 53.1,
         "12": 58.9,
@@ -13001,7 +13001,7 @@
         "7": 23.9,
         "8": 33.6,
         "9": 43.5,
-        "10": 42.8,
+        "10": 43.0,
         "11": 47.8,
         "12": 42.1,
         "13": 33.1,
@@ -13025,7 +13025,7 @@
         "12": 27.7,
         "13": 27.5,
         "14": 23.5,
-        "15": 24.8,
+        "15": 25.9,
         "16": 26.9,
         "17": 29.2,
         "18": 33.3,
@@ -13106,7 +13106,7 @@
         "21": 18.5,
         "7": 8.0,
         "8": 15.2,
-        "9": 22.5,
+        "9": 22.4,
         "10": 27.5,
         "11": 24.0,
         "12": 26.9,
@@ -13122,7 +13122,7 @@
         "7": 6.3,
         "8": 15.6,
         "9": 24.7,
-        "10": 24.2,
+        "10": 23.8,
         "11": 23.7,
         "12": 26.2,
         "13": 20.2,
@@ -13140,13 +13140,13 @@
       "Monday": {
         "7": 11.1,
         "8": 16.5,
-        "9": 20.7,
+        "9": 20.2,
         "10": 24.8,
         "11": 27.5,
         "12": 24.0,
         "13": 25.2,
         "14": 29.0,
-        "15": 30.5,
+        "15": 31.1,
         "16": 34.7,
         "17": 32.0,
         "18": 34.7,
@@ -13227,7 +13227,7 @@
         "21": 27.3,
         "7": 10.5,
         "8": 17.1,
-        "9": 17.6,
+        "9": 18.2,
         "10": 21.9,
         "11": 27.0,
         "12": 25.0,
@@ -13243,7 +13243,7 @@
         "7": 7.1,
         "8": 12.8,
         "9": 18.7,
-        "10": 20.4,
+        "10": 20.7,
         "11": 24.3,
         "12": 26.3,
         "13": 25.8,
@@ -13261,13 +13261,13 @@
       "Monday": {
         "7": 22.9,
         "8": 31.6,
-        "9": 33.1,
+        "9": 33.3,
         "10": 37.3,
         "11": 35.8,
         "12": 31.7,
         "13": 29.2,
         "14": 34.6,
-        "15": 40.1,
+        "15": 40.4,
         "16": 43.1,
         "17": 38.6,
         "18": 41.5,
@@ -13348,7 +13348,7 @@
         "21": 33.8,
         "7": 13.2,
         "8": 18.5,
-        "9": 24.1,
+        "9": 24.4,
         "10": 34.9,
         "11": 35.6,
         "12": 27.5,
@@ -13364,7 +13364,7 @@
         "7": 11.3,
         "8": 20.3,
         "9": 29.8,
-        "10": 37.3,
+        "10": 37.2,
         "11": 54.7,
         "12": 66.1,
         "13": 42.8,
@@ -13382,13 +13382,13 @@
       "Monday": {
         "7": 30.9,
         "8": 35.2,
-        "9": 39.2,
+        "9": 39.4,
         "10": 42.2,
         "11": 50.3,
         "12": 49.3,
         "13": 47.5,
         "14": 51.7,
-        "15": 51.3,
+        "15": 51.6,
         "16": 58.0,
         "17": 59.6,
         "18": 64.0,
@@ -13469,7 +13469,7 @@
         "21": 34.8,
         "7": 18.7,
         "8": 33.1,
-        "9": 43.7,
+        "9": 43.8,
         "10": 39.8,
         "11": 33.2,
         "12": 32.9,
@@ -13485,7 +13485,7 @@
         "7": 12.1,
         "8": 22.2,
         "9": 28.5,
-        "10": 28.8,
+        "10": 29.2,
         "11": 40.0,
         "12": 33.8,
         "13": 29.8,
@@ -13503,13 +13503,13 @@
       "Monday": {
         "7": 52.4,
         "8": 58.6,
-        "9": 50.4,
+        "9": 50.7,
         "10": 53.3,
         "11": 57.6,
         "12": 47.4,
         "13": 46.0,
         "14": 48.8,
-        "15": 51.0,
+        "15": 51.9,
         "16": 58.6,
         "17": 67.9,
         "18": 64.2,
@@ -13590,7 +13590,7 @@
         "21": 39.3,
         "7": 47.2,
         "8": 63.1,
-        "9": 63.2,
+        "9": 62.6,
         "10": 62.0,
         "11": 49.5,
         "12": 47.9,
@@ -13606,7 +13606,7 @@
         "7": 33.1,
         "8": 35.3,
         "9": 43.3,
-        "10": 60.1,
+        "10": 57.8,
         "11": 57.8,
         "12": 43.1,
         "13": 34.0,
@@ -13624,13 +13624,13 @@
       "Monday": {
         "7": 17.3,
         "8": 35.6,
-        "9": 41.7,
+        "9": 42.4,
         "10": 43.8,
         "11": 48.0,
         "12": 49.4,
         "13": 44.3,
         "14": 44.1,
-        "15": 46.5,
+        "15": 47.0,
         "16": 52.4,
         "17": 56.8,
         "18": 59.0,
@@ -13711,7 +13711,7 @@
         "21": 36.8,
         "7": 17.1,
         "8": 34.2,
-        "9": 43.2,
+        "9": 42.8,
         "10": 47.9,
         "11": 51.8,
         "12": 50.4,
@@ -13727,7 +13727,7 @@
         "7": 16.2,
         "8": 28.1,
         "9": 32.6,
-        "10": 38.8,
+        "10": 38.5,
         "11": 42.1,
         "12": 42.2,
         "13": 35.2,
@@ -13745,13 +13745,13 @@
       "Monday": {
         "7": 32.9,
         "8": 41.2,
-        "9": 44.6,
+        "9": 44.1,
         "10": 44.2,
         "11": 46.6,
         "12": 51.0,
         "13": 42.1,
         "14": 41.8,
-        "15": 58.8,
+        "15": 57.3,
         "16": 58.2,
         "17": 57.8,
         "18": 69.9,
@@ -13832,7 +13832,7 @@
         "21": 40.3,
         "7": 30.3,
         "8": 46.0,
-        "9": 41.5,
+        "9": 44.3,
         "10": 51.6,
         "11": 51.6,
         "12": 45.9,
@@ -13848,7 +13848,7 @@
         "7": 19.8,
         "8": 42.4,
         "9": 53.1,
-        "10": 58.4,
+        "10": 59.1,
         "11": 62.2,
         "12": 52.1,
         "13": 41.5,
@@ -13866,13 +13866,13 @@
       "Monday": {
         "7": 31.4,
         "8": 42.0,
-        "9": 42.5,
+        "9": 43.1,
         "10": 55.2,
         "11": 53.2,
         "12": 42.8,
         "13": 42.0,
         "14": 41.7,
-        "15": 48.2,
+        "15": 49.5,
         "16": 52.9,
         "17": 57.3,
         "18": 60.7,
@@ -13953,7 +13953,7 @@
         "21": 51.3,
         "7": 24.3,
         "8": 37.2,
-        "9": 43.7,
+        "9": 44.0,
         "10": 54.5,
         "11": 65.8,
         "12": 60.2,
@@ -13987,13 +13987,13 @@
       "Monday": {
         "7": 39.6,
         "8": 52.8,
-        "9": 55.2,
+        "9": 56.4,
         "10": 68.1,
         "11": 72.9,
         "12": 68.9,
         "13": 63.8,
         "14": 59.7,
-        "15": 52.0,
+        "15": 53.0,
         "16": 52.9,
         "17": 61.9,
         "18": 64.7,
@@ -14074,7 +14074,7 @@
         "21": 48.3,
         "7": 30.7,
         "8": 37.5,
-        "9": 46.7,
+        "9": 47.1,
         "10": 59.4,
         "11": 66.5,
         "12": 49.6,
@@ -14090,7 +14090,7 @@
         "7": 22.7,
         "8": 31.2,
         "9": 41.5,
-        "10": 57.7,
+        "10": 57.2,
         "11": 75.3,
         "12": 66.2,
         "13": 66.5,
@@ -14108,13 +14108,13 @@
       "Monday": {
         "7": 19.8,
         "8": 36.2,
-        "9": 39.7,
+        "9": 39.4,
         "10": 40.5,
         "11": 37.1,
         "12": 35.1,
         "13": 32.2,
         "14": 35.9,
-        "15": 40.8,
+        "15": 41.0,
         "16": 45.0,
         "17": 48.7,
         "18": 53.7,
@@ -14195,7 +14195,7 @@
         "21": 28.1,
         "7": 18.2,
         "8": 25.5,
-        "9": 30.3,
+        "9": 30.5,
         "10": 41.0,
         "11": 42.6,
         "12": 40.1,
@@ -14211,7 +14211,7 @@
         "7": 19.9,
         "8": 30.7,
         "9": 37.8,
-        "10": 47.3,
+        "10": 47.0,
         "11": 47.0,
         "12": 33.7,
         "13": 29.1,
@@ -14229,13 +14229,13 @@
       "Monday": {
         "7": 29.9,
         "8": 36.4,
-        "9": 40.0,
+        "9": 39.8,
         "10": 44.7,
         "11": 49.1,
         "12": 50.8,
         "13": 45.9,
         "14": 49.1,
-        "15": 54.4,
+        "15": 54.7,
         "16": 57.0,
         "17": 50.7,
         "18": 56.6,
@@ -14316,7 +14316,7 @@
         "21": 49.2,
         "7": 20.2,
         "8": 28.0,
-        "9": 39.3,
+        "9": 39.2,
         "10": 45.9,
         "11": 45.8,
         "12": 49.4,
@@ -14350,13 +14350,13 @@
       "Monday": {
         "7": 23.1,
         "8": 35.7,
-        "9": 41.3,
+        "9": 41.9,
         "10": 46.8,
         "11": 52.2,
         "12": 55.1,
         "13": 47.0,
         "14": 48.4,
-        "15": 56.4,
+        "15": 56.0,
         "16": 65.6,
         "17": 63.6,
         "18": 66.7,
@@ -14437,7 +14437,7 @@
         "21": 33.7,
         "7": 17.5,
         "8": 27.6,
-        "9": 33.4,
+        "9": 34.7,
         "10": 32.0,
         "11": 31.9,
         "12": 33.0,
@@ -14471,13 +14471,13 @@
       "Monday": {
         "7": 36.5,
         "8": 51.1,
-        "9": 52.7,
+        "9": 51.5,
         "10": 54.6,
         "11": 61.0,
         "12": 72.6,
         "13": 52.5,
         "14": 45.5,
-        "15": 57.0,
+        "15": 56.6,
         "16": 70.0,
         "17": 55.8,
         "18": 72.1,
@@ -14558,7 +14558,7 @@
         "21": 42.9,
         "7": 25.0,
         "8": 30.4,
-        "9": 37.6,
+        "9": 40.6,
         "10": 45.2,
         "11": 49.0,
         "12": 49.1,
@@ -14574,7 +14574,7 @@
         "7": 21.8,
         "8": 27.0,
         "9": 40.2,
-        "10": 51.6,
+        "10": 51.1,
         "11": 63.8,
         "12": 58.9,
         "13": 43.2,
@@ -14592,13 +14592,13 @@
       "Monday": {
         "7": 17.6,
         "8": 24.9,
-        "9": 28.3,
+        "9": 28.9,
         "10": 33.3,
         "11": 39.2,
         "12": 36.2,
         "13": 30.2,
         "14": 29.8,
-        "15": 32.4,
+        "15": 32.1,
         "16": 42.7,
         "17": 46.6,
         "18": 50.8,
@@ -14679,7 +14679,7 @@
         "21": 31.5,
         "7": 14.0,
         "8": 21.1,
-        "9": 24.3,
+        "9": 26.1,
         "10": 25.1,
         "11": 21.2,
         "12": 23.5,
@@ -14713,13 +14713,13 @@
       "Monday": {
         "7": 16.4,
         "8": 23.8,
-        "9": 22.7,
+        "9": 22.1,
         "10": 25.5,
         "11": 27.2,
         "12": 28.5,
         "13": 27.4,
         "14": 24.7,
-        "15": 25.6,
+        "15": 25.9,
         "16": 27.1,
         "17": 31.2,
         "18": 34.9,
@@ -14800,7 +14800,7 @@
         "21": 22.6,
         "7": 14.8,
         "8": 20.9,
-        "9": 25.0,
+        "9": 24.8,
         "10": 29.6,
         "11": 34.6,
         "12": 31.8,
@@ -14816,7 +14816,7 @@
         "7": 11.1,
         "8": 17.9,
         "9": 22.5,
-        "10": 30.1,
+        "10": 29.3,
         "11": 31.7,
         "12": 27.8,
         "13": 20.6,
@@ -14834,13 +14834,13 @@
       "Monday": {
         "7": 15.1,
         "8": 21.7,
-        "9": 26.7,
+        "9": 26.4,
         "10": 29.2,
         "11": 27.1,
         "12": 25.8,
         "13": 19.2,
         "14": 18.9,
-        "15": 25.7,
+        "15": 25.9,
         "16": 31.2,
         "17": 37.2,
         "18": 43.2,
@@ -14921,7 +14921,7 @@
         "21": 22.8,
         "7": 10.0,
         "8": 14.6,
-        "9": 21.6,
+        "9": 21.5,
         "10": 24.6,
         "11": 24.9,
         "12": 24.8,
@@ -14937,7 +14937,7 @@
         "7": 8.6,
         "8": 16.0,
         "9": 22.7,
-        "10": 30.2,
+        "10": 29.4,
         "11": 30.1,
         "12": 25.3,
         "13": 20.3,
@@ -14955,13 +14955,13 @@
       "Monday": {
         "7": 29.6,
         "8": 40.0,
-        "9": 44.2,
+        "9": 43.5,
         "10": 42.7,
         "11": 42.8,
         "12": 44.3,
         "13": 44.5,
         "14": 43.3,
-        "15": 46.8,
+        "15": 47.1,
         "16": 46.0,
         "17": 50.6,
         "18": 57.7,
@@ -15042,7 +15042,7 @@
         "21": 43.7,
         "7": 18.1,
         "8": 35.4,
-        "9": 45.7,
+        "9": 46.2,
         "10": 49.5,
         "11": 46.5,
         "12": 46.1,
@@ -15058,7 +15058,7 @@
         "7": 13.0,
         "8": 21.7,
         "9": 35.8,
-        "10": 49.5,
+        "10": 50.1,
         "11": 57.7,
         "12": 53.8,
         "13": 47.7,
@@ -15076,13 +15076,13 @@
       "Monday": {
         "7": 25.9,
         "8": 43.0,
-        "9": 46.5,
+        "9": 46.6,
         "10": 51.3,
         "11": 51.2,
         "12": 43.3,
         "13": 34.2,
         "14": 43.6,
-        "15": 48.2,
+        "15": 48.1,
         "16": 31.9,
         "17": 40.4,
         "18": 45.5,
@@ -15163,7 +15163,7 @@
         "21": 27.3,
         "7": 21.7,
         "8": 28.0,
-        "9": 36.5,
+        "9": 37.1,
         "10": 44.0,
         "11": 45.1,
         "12": 35.5,
@@ -15179,7 +15179,7 @@
         "7": 15.0,
         "8": 28.7,
         "9": 34.4,
-        "10": 46.2,
+        "10": 46.8,
         "11": 48.3,
         "12": 40.2,
         "13": 27.8,
@@ -15203,7 +15203,7 @@
         "12": 39.2,
         "13": 37.6,
         "14": 34.0,
-        "15": 39.9,
+        "15": 41.3,
         "16": 46.2,
         "17": 45.8,
         "18": 61.0,
@@ -15284,7 +15284,7 @@
         "21": 26.1,
         "7": 12.0,
         "8": 23.5,
-        "9": 30.7,
+        "9": 31.5,
         "10": 35.1,
         "11": 38.9,
         "12": 40.8,
@@ -15300,7 +15300,7 @@
         "7": 13.9,
         "8": 25.3,
         "9": 29.5,
-        "10": 35.5,
+        "10": 36.1,
         "11": 40.8,
         "12": 37.8,
         "13": 28.8,
@@ -15318,13 +15318,13 @@
       "Monday": {
         "7": 32.5,
         "8": 53.4,
-        "9": 58.9,
+        "9": 58.8,
         "10": 66.7,
         "11": 73.6,
         "12": 77.4,
         "13": 75.0,
         "14": 73.5,
-        "15": 81.6,
+        "15": 79.9,
         "16": 81.4,
         "17": 81.7,
         "18": 82.9,
@@ -15405,7 +15405,7 @@
         "21": 60.7,
         "7": 35.8,
         "8": 50.5,
-        "9": 55.3,
+        "9": 56.0,
         "10": 53.1,
         "11": 53.9,
         "12": 47.5,
@@ -15421,7 +15421,7 @@
         "7": 31.0,
         "8": 48.9,
         "9": 56.1,
-        "10": 67.7,
+        "10": 66.4,
         "11": 70.9,
         "12": 60.2,
         "13": 54.0,
@@ -15439,13 +15439,13 @@
       "Monday": {
         "7": 44.0,
         "8": 71.2,
-        "9": 75.6,
+        "9": 75.1,
         "10": 70.7,
         "11": 67.2,
         "12": 73.7,
         "13": 58.2,
         "14": 62.8,
-        "15": 62.3,
+        "15": 63.4,
         "16": 66.3,
         "17": 63.0,
         "18": 70.7,
@@ -15526,7 +15526,7 @@
         "21": 49.1,
         "7": 38.2,
         "8": 44.8,
-        "9": 55.6,
+        "9": 57.0,
         "10": 59.1,
         "11": 59.1,
         "12": 65.1,
@@ -15542,7 +15542,7 @@
         "7": 36.4,
         "8": 49.6,
         "9": 63.7,
-        "10": 58.3,
+        "10": 57.3,
         "11": 60.5,
         "12": 61.8,
         "13": 45.8,
@@ -15560,13 +15560,13 @@
       "Monday": {
         "7": 23.6,
         "8": 36.6,
-        "9": 43.4,
+        "9": 43.6,
         "10": 48.5,
         "11": 58.2,
         "12": 57.3,
         "13": 51.0,
         "14": 47.9,
-        "15": 57.5,
+        "15": 57.7,
         "16": 61.1,
         "17": 66.8,
         "18": 69.1,
@@ -15647,7 +15647,7 @@
         "21": 58.8,
         "7": 19.9,
         "8": 36.2,
-        "9": 42.5,
+        "9": 43.0,
         "10": 47.4,
         "11": 51.9,
         "12": 48.5,
@@ -15663,7 +15663,7 @@
         "7": 24.8,
         "8": 34.8,
         "9": 43.8,
-        "10": 57.1,
+        "10": 56.7,
         "11": 60.8,
         "12": 61.1,
         "13": 48.5,
@@ -15681,13 +15681,13 @@
       "Monday": {
         "7": 16.9,
         "8": 28.8,
-        "9": 37.4,
+        "9": 37.8,
         "10": 45.2,
         "11": 42.7,
         "12": 40.3,
         "13": 36.6,
         "14": 39.0,
-        "15": 39.1,
+        "15": 38.9,
         "16": 47.6,
         "17": 56.1,
         "18": 53.6,
@@ -15768,7 +15768,7 @@
         "21": 29.9,
         "7": 12.9,
         "8": 28.1,
-        "9": 36.3,
+        "9": 36.2,
         "10": 41.4,
         "11": 44.9,
         "12": 36.8,
@@ -15784,7 +15784,7 @@
         "7": 15.6,
         "8": 25.9,
         "9": 28.5,
-        "10": 33.5,
+        "10": 34.3,
         "11": 38.2,
         "12": 37.6,
         "13": 30.8,
@@ -15802,13 +15802,13 @@
       "Monday": {
         "7": 22.1,
         "8": 34.6,
-        "9": 36.6,
+        "9": 38.0,
         "10": 34.0,
         "11": 30.3,
         "12": 37.2,
         "13": 27.4,
         "14": 34.5,
-        "15": 42.5,
+        "15": 43.5,
         "16": 41.6,
         "17": 38.4,
         "18": 47.3,
@@ -15889,7 +15889,7 @@
         "21": 16.1,
         "7": 19.8,
         "8": 21.8,
-        "9": 29.3,
+        "9": 31.4,
         "10": 27.5,
         "11": 31.9,
         "12": 28.2,
@@ -15905,7 +15905,7 @@
         "7": 11.5,
         "8": 22.6,
         "9": 33.2,
-        "10": 31.2,
+        "10": 32.8,
         "11": 33.1,
         "12": 35.2,
         "13": 36.2,
@@ -16108,7 +16108,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 45.0
+          "average": 43.25
         },
         {
           "label": "09:45",
@@ -16252,7 +16252,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 49.25
+          "average": 49.0
         },
         {
           "label": "15:45",
@@ -17924,7 +17924,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 22.0
+          "average": 33.0
         },
         {
           "label": "10:00",
@@ -18298,7 +18298,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 43.333333333333336
+          "average": 44.25
         },
         {
           "label": "10:30",
@@ -18644,7 +18644,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 25.5
+          "average": 20.0
         },
         {
           "label": "09:45",
@@ -18788,7 +18788,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 22.0
+          "average": 26.5
         },
         {
           "label": "15:45",
@@ -20460,7 +20460,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 26.5
+          "average": 25.0
         },
         {
           "label": "10:00",
@@ -20834,7 +20834,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 27.333333333333332
+          "average": 25.5
         },
         {
           "label": "10:30",
@@ -21180,7 +21180,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 47.666666666666664
+          "average": 47.75
         },
         {
           "label": "09:45",
@@ -21324,7 +21324,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 42.5
+          "average": 44.6
         },
         {
           "label": "15:45",
@@ -22996,7 +22996,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 52.5
+          "average": 52.666666666666664
         },
         {
           "label": "10:00",
@@ -23370,7 +23370,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 42.333333333333336
+          "average": 46.0
         },
         {
           "label": "10:30",
@@ -23716,7 +23716,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 68.0
+          "average": 76.0
         },
         {
           "label": "09:45",
@@ -23860,7 +23860,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 37.75
+          "average": 39.6
         },
         {
           "label": "15:45",
@@ -25532,7 +25532,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 46.5
+          "average": 51.0
         },
         {
           "label": "10:00",
@@ -25906,7 +25906,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 48.666666666666664
+          "average": 45.75
         },
         {
           "label": "10:30",
@@ -26252,7 +26252,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 53.666666666666664
+          "average": 56.5
         },
         {
           "label": "09:45",
@@ -26396,7 +26396,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 38.25
+          "average": 42.8
         },
         {
           "label": "15:45",
@@ -28068,7 +28068,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 57.5
+          "average": 57.666666666666664
         },
         {
           "label": "10:00",
@@ -28442,7 +28442,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 41.333333333333336
+          "average": 42.25
         },
         {
           "label": "10:30",
@@ -28788,7 +28788,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 30.666666666666668
+          "average": 30.0
         },
         {
           "label": "09:45",
@@ -28932,7 +28932,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 25.25
+          "average": 28.0
         },
         {
           "label": "15:45",
@@ -30604,7 +30604,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 22.0
+          "average": 21.666666666666668
         },
         {
           "label": "10:00",
@@ -30978,7 +30978,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 24.0
+          "average": 22.75
         },
         {
           "label": "10:30",
@@ -31324,7 +31324,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 22.666666666666668
+          "average": 20.5
         },
         {
           "label": "09:45",
@@ -31468,7 +31468,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 31.75
+          "average": 33.2
         },
         {
           "label": "15:45",
@@ -33140,7 +33140,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 18.0
+          "average": 20.0
         },
         {
           "label": "10:00",
@@ -33514,7 +33514,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 19.666666666666668
+          "average": 20.75
         },
         {
           "label": "10:30",
@@ -33860,7 +33860,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 33.666666666666664
+          "average": 34.25
         },
         {
           "label": "09:45",
@@ -34004,7 +34004,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 40.25
+          "average": 41.0
         },
         {
           "label": "15:45",
@@ -35676,7 +35676,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 29.5
+          "average": 28.666666666666668
         },
         {
           "label": "10:00",
@@ -36050,7 +36050,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 36.333333333333336
+          "average": 36.0
         },
         {
           "label": "10:30",
@@ -36396,7 +36396,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 40.0
+          "average": 40.25
         },
         {
           "label": "09:45",
@@ -36540,7 +36540,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 50.0
+          "average": 51.2
         },
         {
           "label": "15:45",
@@ -38212,7 +38212,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 44.0
+          "average": 44.333333333333336
         },
         {
           "label": "10:00",
@@ -38586,7 +38586,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 25.0
+          "average": 27.5
         },
         {
           "label": "10:30",
@@ -38932,7 +38932,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 51.666666666666664
+          "average": 52.5
         },
         {
           "label": "09:45",
@@ -39076,7 +39076,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 51.5
+          "average": 53.8
         },
         {
           "label": "15:45",
@@ -40748,7 +40748,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 64.0
+          "average": 61.666666666666664
         },
         {
           "label": "10:00",
@@ -41122,7 +41122,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 61.666666666666664
+          "average": 53.75
         },
         {
           "label": "10:30",
@@ -41468,7 +41468,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 42.0
+          "average": 44.25
         },
         {
           "label": "09:45",
@@ -41612,7 +41612,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 46.5
+          "average": 48.0
         },
         {
           "label": "15:45",
@@ -43284,7 +43284,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 45.5
+          "average": 43.333333333333336
         },
         {
           "label": "10:00",
@@ -43658,7 +43658,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 39.0
+          "average": 38.0
         },
         {
           "label": "10:30",
@@ -44004,7 +44004,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 47.0
+          "average": 44.75
         },
         {
           "label": "09:45",
@@ -44148,7 +44148,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 61.0
+          "average": 56.4
         },
         {
           "label": "15:45",
@@ -45820,7 +45820,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 48.0
+          "average": 56.0
         },
         {
           "label": "10:00",
@@ -46194,7 +46194,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 54.666666666666664
+          "average": 57.75
         },
         {
           "label": "10:30",
@@ -46540,7 +46540,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 44.0
+          "average": 45.75
         },
         {
           "label": "09:45",
@@ -46684,7 +46684,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 54.0
+          "average": 56.6
         },
         {
           "label": "15:45",
@@ -48730,7 +48730,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 54.333333333333336
+          "average": 54.75
         },
         {
           "label": "10:30",
@@ -49076,7 +49076,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 57.333333333333336
+          "average": 60.75
         },
         {
           "label": "09:45",
@@ -49220,7 +49220,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 47.25
+          "average": 51.0
         },
         {
           "label": "15:45",
@@ -50892,7 +50892,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 52.5
+          "average": 52.0
         },
         {
           "label": "10:00",
@@ -51266,7 +51266,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 54.0
+          "average": 53.25
         },
         {
           "label": "10:30",
@@ -51612,7 +51612,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 40.5
+          "average": 39.333333333333336
         },
         {
           "label": "09:45",
@@ -51756,7 +51756,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 39.333333333333336
+          "average": 40.25
         },
         {
           "label": "15:45",
@@ -53428,7 +53428,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 37.0
+          "average": 35.666666666666664
         },
         {
           "label": "10:00",
@@ -53802,7 +53802,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 46.0
+          "average": 45.25
         },
         {
           "label": "10:30",
@@ -54148,7 +54148,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 40.333333333333336
+          "average": 39.5
         },
         {
           "label": "09:45",
@@ -54292,7 +54292,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 56.0
+          "average": 56.6
         },
         {
           "label": "15:45",
@@ -55964,7 +55964,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 41.0
+          "average": 40.0
         },
         {
           "label": "10:00",
@@ -56338,7 +56338,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 42.0
+          "average": 42.5
         },
         {
           "label": "10:30",
@@ -56684,7 +56684,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 40.333333333333336
+          "average": 42.75
         },
         {
           "label": "09:45",
@@ -56828,7 +56828,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 56.75
+          "average": 55.6
         },
         {
           "label": "15:45",
@@ -58500,7 +58500,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 35.0
+          "average": 39.333333333333336
         },
         {
           "label": "10:00",
@@ -58874,7 +58874,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 45.333333333333336
+          "average": 45.5
         },
         {
           "label": "10:30",
@@ -59220,7 +59220,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 54.333333333333336
+          "average": 49.75
         },
         {
           "label": "09:45",
@@ -59364,7 +59364,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 58.5
+          "average": 57.2
         },
         {
           "label": "15:45",
@@ -61036,7 +61036,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 41.5
+          "average": 51.333333333333336
         },
         {
           "label": "10:00",
@@ -61410,7 +61410,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 53.333333333333336
+          "average": 51.25
         },
         {
           "label": "10:30",
@@ -61756,7 +61756,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 29.666666666666668
+          "average": 31.5
         },
         {
           "label": "09:45",
@@ -61900,7 +61900,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 33.5
+          "average": 32.6
         },
         {
           "label": "15:45",
@@ -63572,7 +63572,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 26.0
+          "average": 32.0
         },
         {
           "label": "10:00",
@@ -63946,7 +63946,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 37.666666666666664
+          "average": 37.25
         },
         {
           "label": "10:30",
@@ -64292,7 +64292,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 23.333333333333332
+          "average": 21.25
         },
         {
           "label": "09:45",
@@ -64436,7 +64436,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 25.25
+          "average": 26.2
         },
         {
           "label": "15:45",
@@ -66108,7 +66108,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 25.5
+          "average": 24.666666666666668
         },
         {
           "label": "10:00",
@@ -66482,7 +66482,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 28.666666666666668
+          "average": 26.5
         },
         {
           "label": "10:30",
@@ -66828,7 +66828,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 27.333333333333332
+          "average": 26.0
         },
         {
           "label": "09:45",
@@ -66972,7 +66972,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 26.25
+          "average": 26.6
         },
         {
           "label": "15:45",
@@ -68644,7 +68644,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 23.0
+          "average": 22.333333333333332
         },
         {
           "label": "10:00",
@@ -69018,7 +69018,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 30.333333333333332
+          "average": 27.5
         },
         {
           "label": "10:30",
@@ -69364,7 +69364,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 45.666666666666664
+          "average": 42.75
         },
         {
           "label": "09:45",
@@ -69508,7 +69508,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 45.0
+          "average": 46.2
         },
         {
           "label": "15:45",
@@ -71180,7 +71180,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 48.5
+          "average": 49.333333333333336
         },
         {
           "label": "10:00",
@@ -71554,7 +71554,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 52.0
+          "average": 53.25
         },
         {
           "label": "10:30",
@@ -71900,7 +71900,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 46.333333333333336
+          "average": 46.75
         },
         {
           "label": "09:45",
@@ -72044,7 +72044,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 49.0
+          "average": 48.6
         },
         {
           "label": "15:45",
@@ -73716,7 +73716,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 40.0
+          "average": 41.0
         },
         {
           "label": "10:00",
@@ -74090,7 +74090,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 47.0
+          "average": 48.75
         },
         {
           "label": "10:30",
@@ -74436,7 +74436,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 41.5
+          "average": 41.0
         },
         {
           "label": "09:45",
@@ -74580,7 +74580,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 40.666666666666664
+          "average": 44.0
         },
         {
           "label": "15:45",
@@ -76252,7 +76252,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 36.0
+          "average": 37.333333333333336
         },
         {
           "label": "10:00",
@@ -76626,7 +76626,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 34.666666666666664
+          "average": 36.75
         },
         {
           "label": "10:30",
@@ -76972,7 +76972,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 58.666666666666664
+          "average": 58.25
         },
         {
           "label": "09:45",
@@ -77116,7 +77116,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 82.5
+          "average": 77.4
         },
         {
           "label": "15:45",
@@ -78788,7 +78788,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 54.0
+          "average": 57.0
         },
         {
           "label": "10:00",
@@ -79162,7 +79162,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 66.33333333333333
+          "average": 62.5
         },
         {
           "label": "10:30",
@@ -79508,7 +79508,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 75.66666666666667
+          "average": 74.0
         },
         {
           "label": "09:45",
@@ -79652,7 +79652,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 63.0
+          "average": 66.0
         },
         {
           "label": "15:45",
@@ -81324,7 +81324,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 58.0
+          "average": 62.333333333333336
         },
         {
           "label": "10:00",
@@ -81698,7 +81698,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 54.0
+          "average": 51.75
         },
         {
           "label": "10:30",
@@ -82044,7 +82044,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 44.666666666666664
+          "average": 45.0
         },
         {
           "label": "09:45",
@@ -82188,7 +82188,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 57.5
+          "average": 58.2
         },
         {
           "label": "15:45",
@@ -83860,7 +83860,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 45.5
+          "average": 46.333333333333336
         },
         {
           "label": "10:00",
@@ -84234,7 +84234,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 58.0
+          "average": 56.5
         },
         {
           "label": "10:30",
@@ -84580,7 +84580,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 39.333333333333336
+          "average": 40.25
         },
         {
           "label": "09:45",
@@ -84724,7 +84724,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 41.0
+          "average": 40.0
         },
         {
           "label": "15:45",
@@ -86396,7 +86396,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 39.5
+          "average": 38.0
         },
         {
           "label": "10:00",
@@ -86770,7 +86770,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 32.333333333333336
+          "average": 35.25
         },
         {
           "label": "10:30",
@@ -87116,7 +87116,7 @@
           "label": "09:30",
           "hour": 9,
           "minute": 30,
-          "average": 36.666666666666664
+          "average": 41.5
         },
         {
           "label": "09:45",
@@ -87260,7 +87260,7 @@
           "label": "15:30",
           "hour": 15,
           "minute": 30,
-          "average": 41.0
+          "average": 44.2
         },
         {
           "label": "15:45",
@@ -88932,7 +88932,7 @@
           "label": "09:45",
           "hour": 9,
           "minute": 45,
-          "average": 32.0
+          "average": 38.666666666666664
         },
         {
           "label": "10:00",
@@ -89306,7 +89306,7 @@
           "label": "10:15",
           "hour": 10,
           "minute": 15,
-          "average": 32.0
+          "average": 36.75
         },
         {
           "label": "10:30",
@@ -92126,67 +92126,67 @@
   "top_busiest_gyms": [
     {
       "name": "Sengkang ActiveSG Gym",
-      "average": 63.35420240137221
+      "average": 63.33247863247863
     },
     {
       "name": "Senja-Cashew ActiveSG Gym",
-      "average": 60.45030250648228
+      "average": 60.46856158484066
     },
     {
       "name": "Clementi ActiveSG Gym",
-      "average": 56.289353958143764
+      "average": 56.30190389845875
     },
     {
       "name": "Bukit Batok ActiveSG Gym",
-      "average": 53.564373897707235
+      "average": 53.556239015817226
     },
     {
       "name": "Bukit Gombak ActiveSG Gym",
-      "average": 52.907986111111114
+      "average": 52.910899653979236
     }
   ],
   "top_quietest_gyms": [
     {
       "name": "ActiveSG Hockey Village @ Boon Lay Gym",
-      "average": 25.358439201451905
+      "average": 25.358047016274863
     },
     {
       "name": "ActiveSG Gym @ Toa Payoh West Community Centre",
-      "average": 25.67722602739726
+      "average": 25.68088737201365
     },
     {
       "name": "Jurong West ActiveSG Gym",
-      "average": 26.22
+      "average": 26.206521739130434
     },
     {
       "name": "Jurong Lake Gardens ActiveSG Gym",
-      "average": 26.40616966580977
+      "average": 26.391118701964132
     },
     {
       "name": "ActiveSG Gym @ Enabling Village",
-      "average": 27.038077969174978
+      "average": 27.022583559168925
     }
   ],
   "most_variable_gyms": [
     {
       "name": "ActiveSG Gym @ Serangoon Central",
-      "stdev": 16.67754708588108
+      "stdev": 16.719077008187558
     },
     {
       "name": "Bukit Gombak ActiveSG Gym",
-      "stdev": 16.268372267133223
+      "stdev": 16.267014586287317
     },
     {
       "name": "Clementi ActiveSG Gym",
-      "stdev": 16.033290703240638
+      "stdev": 16.014569126236733
     },
     {
       "name": "Bishan ActiveSG Gym",
-      "stdev": 15.96856909360026
+      "stdev": 15.94761749496831
     },
     {
       "name": "Jalan Besar ActiveSG Gym",
-      "stdev": 15.933561011899418
+      "stdev": 15.924358780284454
     }
   ],
   "day_pattern": [
@@ -92254,13 +92254,13 @@
       "label": "09:30",
       "hour": 9,
       "minute": 30,
-      "average": 39.12690355329949
+      "average": 39.348387096774196
     },
     {
       "label": "09:45",
       "hour": 9,
       "minute": 45,
-      "average": 40.35322580645161
+      "average": 40.57164869029276
     },
     {
       "label": "10:00",
@@ -92272,7 +92272,7 @@
       "label": "10:15",
       "hour": 10,
       "minute": 15,
-      "average": 43.313028764805416
+      "average": 43.23548387096774
     },
     {
       "label": "10:30",
@@ -92398,7 +92398,7 @@
       "label": "15:30",
       "hour": 15,
       "minute": 30,
-      "average": 43.14382402707276
+      "average": 43.461290322580645
     },
     {
       "label": "15:45",
@@ -92582,8 +92582,8 @@
   "day_of_week_pattern": [
     {
       "day": "Monday",
-      "average": 47.34202422500513,
-      "readings": 4871
+      "average": 47.33678230878474,
+      "readings": 4929
     },
     {
       "day": "Tuesday",
@@ -92607,17 +92607,17 @@
     },
     {
       "day": "Saturday",
-      "average": 38.66368656323955,
-      "readings": 3803
+      "average": 38.713465553235906,
+      "readings": 3832
     },
     {
       "day": "Sunday",
-      "average": 39.61150684931507,
-      "readings": 5475
+      "average": 39.622274709302324,
+      "readings": 5504
     }
   ],
-  "weekday_average": 44.44643994902835,
-  "weekend_average": 39.2230006466911,
+  "weekday_average": 44.452085816448154,
+  "weekend_average": 39.24925021422451,
   "weekly_trend": [
     {
       "week": "2026-W37",
@@ -92636,10 +92636,15 @@
     },
     {
       "week": "2026-W40",
-      "average": 44.35318791946309,
-      "readings": 8344
+      "average": 44.34694120447512,
+      "readings": 8402
+    },
+    {
+      "week": "2026-W41",
+      "average": 46.89655172413793,
+      "readings": 58
     }
   ],
-  "trend_slope_per_day": -0.05499190097709162,
+  "trend_slope_per_day": -0.0005741625331695054,
   "trend_direction": "flat"
 }
