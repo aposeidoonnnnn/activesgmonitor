@@ -734,3 +734,8 @@ fatal: empty ident name (for <runner@runnervm8df0l.bs0b5lstmaiuho1adin4c0mwvd.gx
 2026-10-06T09:28:43.677699+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
 2026-10-06T09:28:53.778776+00:00 BLOCKED Cloudflare challenge still present, giving up this run
 2026-10-06T09:28:53.827499+00:00 No rows scraped this run; CSV not updated
+2026-10-06T16:13:12.413190+00:00 Navigating to https://activesg.gov.sg/gym-pool-crowd
+2026-10-06T16:13:42.701919+00:00 WARN networkidle wait timed out, continuing anyway
+2026-10-06T16:13:42.707268+00:00 BLOCKED Cloudflare challenge page detected after initial load; waiting 10s and retrying once
+2026-10-06T16:13:52.785212+00:00 BLOCKED Cloudflare challenge still present, giving up this run
+2026-10-06T16:13:52.836463+00:00 No rows scraped this run; CSV not updated
